@@ -26,15 +26,6 @@ include("../inc/header.php");
     <div class="carousel">
 
         <article>
-            <img class="imgPosition" src="../assets/pictures/promotion.jpg" alt="" width="560" height="440"/>
-            <div class="content">
-                <h2>Promotions</h2>
-                <p><?php ?>
-                    .</p>
-            </div>
-        </article>
-
-        <article>
             <img class="imgPosition" src="../assets/pictures/work.jpg" alt="" width="560" height="440"/>
             <div class="content">
                 <h2>Expertise</h2>

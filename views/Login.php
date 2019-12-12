@@ -35,7 +35,8 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="../assets/pictures/mechanic_icon.png" alt="member icon" height="300px" width="400px">
+                    <br><br><br>
+					<img src="../assets/pictures/GCCMEC.png" alt="member icon" height="100px" >
 				</div>
 
 				<form class="login100-form validate-form" method="GET" action="../controllers/UserLogin.php">
