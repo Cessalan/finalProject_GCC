@@ -35,14 +35,14 @@ include(PREAMBLE.'inc/head.php');?>
 
     <div class="carousel">
         <article>
-            <a class="image" href="#" data-position="center"><img src="images/pic08.jpg" alt="" /></a>
+            <img class="imgPosition" src="../assets/pictures/work.jpg" alt="" width="560" height="440"/>
             <div class="content">
                 <h2>Expertise</h2>
                 <p> Le Garage Chemin de Chambly offre un service à la clientèle exceptionnel et courtois. Profitez de l'expertise de notre équipe qui saura analyser, réparer et entretenir votre automobile. Notre garage à Longueuil est équipé avec les outils les plus modernes afin d'effectuer des réparations de mécanique américaine, mécanique asiatique et mécanique européenne.</p>
             </div>
         </article>
         <article>
-            <a class="image" href="#" data-position="center"><img src="images/pic09.jpg" alt="" /></a>
+            <img class="imgPosition" src="../assets/pictures/tire_change2.jpg" alt="" width="560" height="440"/>
             <div class="content">
                 <h2>Pneus</h2>
                 <p>Le Garage Chemin de Chambly est détaillant de pneus neufs de la plupart des marques, modèles et dimensions pour automobile et camion léger à Longueuil.
@@ -96,7 +96,7 @@ include(PREAMBLE.'inc/head.php');?>
                 <div class="contact-icons">
                     <ul>
                         <li><a href="#" class="icon fa-envelope"><span>gcc@gmail.com</span></a></li>
-                        <li><a href="#" class="icon fa-facebook"><span>Garage Chemin Chambly</span></a></li>
+                        <li><a href="https://www.facebook.com/pg/Chemin-Chambly-Auto-Service-128131274628393/about/" class="icon fa-facebook"><span>Garage Chemin Chambly</span></a></li>
                     </ul>
                     <ul>
                         <li><a href="#" class="icon fa-phone"><span>1(450) 647 2000</span></a></li>
@@ -115,7 +115,7 @@ include(PREAMBLE.'inc/head.php');?>
             </div>
         </div>
         <div class="copyright">
-            &copy; Fatsy.R & Haroon.M
+            &copy; Garage Chemin De Chambly
         </div>
     </div>
 </section>
