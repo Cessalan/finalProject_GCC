@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="fr">
 <?php
 define('PREAMBLE', '../');
 include(PREAMBLE.'inc/head.php');?>
-<body class="is-preload">
+<body >
 
 <!-- Header -->
 <header id="header">

@@ -22,7 +22,6 @@ include("../inc/header.php");
 
 <!-- Two -->
 <section id="two">
-
     <div class="carousel">
 
         <article>
@@ -48,6 +47,7 @@ include("../inc/header.php");
             <a href="#" class="next"><span class="label">Next</span></a>
         </nav>
     </div>
+
 
 </section>
 
@@ -104,8 +104,6 @@ include("../inc/header.php");
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="copyright">
             &copy; Fatsy&Haroon
         </div>
     </div>
@@ -113,5 +111,3 @@ include("../inc/header.php");
 <?php
 include(PREAMBLE.'inc/scripts.php');
 ?>
-</body>
-</html>
