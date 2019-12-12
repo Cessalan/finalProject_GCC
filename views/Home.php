@@ -95,7 +95,7 @@ include(PREAMBLE.'inc/head.php');?>
                 </header>
                 <div class="contact-icons">
                     <ul>
-                        <li><a href="#" class="icon fa-envelope"><span>gcc@gmail.com</span></a></li>
+                        <li><a class="icon fa-envelope"><span>garagecheminchambly@gmail.com</span></a></li>
                         <li><a href="https://www.facebook.com/pg/Chemin-Chambly-Auto-Service-128131274628393/about/" class="icon fa-facebook"><span>Garage Chemin Chambly</span></a></li>
                     </ul>
                     <ul>
@@ -115,7 +115,7 @@ include(PREAMBLE.'inc/head.php');?>
             </div>
         </div>
         <div class="copyright">
-            &copy; Garage Chemin De Chambly
+            &copy; Fatsy&Haroon
         </div>
     </div>
 </section>
