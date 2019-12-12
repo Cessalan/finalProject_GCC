@@ -1,28 +1,18 @@
-<!DOCTYPE HTML>
-<html>
 <?php
-define('PREAMBLE', '../');
-include(PREAMBLE.'inc/head.php');?>
-<body class="is-preload">
-
-<!-- Header -->
-<header id="header">
-    <?php include(PREAMBLE.'inc/nav-bar.php');?>
-    <!-- Logo -->
-    <a class="logo" href="index.html"> <span>GCC</span></a>
-</header>
+include("../inc/header.php");
+?>
 
 <!-- Banner -->
 <section id="banner">
-    <article class="full">
-        <div class="image" data-position="center">
-            <img src="images/pic01.jpg" alt="" />
+    <article >
+        <div class="image" data-position="center" >
+            <img src="../assets/pictures/inside2.jpg" alt="" />
         </div>
         <div class="content">
-            <h1 class="alt"><a href="#">Le Garage Chemin Chambly</a></h1>
+            <h1 class="alt"><a href="#"><u>Le Garage Chemin Chambly</u></a></h1>
             <h2 class="alt"> offre un service à la clientèle exceptionnel et courtois. Profitez de l'expertise de notre équipe qui saura analyser, réparer et entretenir votre automobile. Notre garage à Longueuil est équipé avec les outils les plus modernes afin d'effectuer des réparations de mécanique américaine, mécanique asiatique et mécanique européenne.</h2>
             <ul class="actions">
-                <li><a href="#" class="button">Learn More</a></li>
+                <li><a href="../views/Services.php" class="button">Learn More</a></li>
             </ul>
         </div>
     </article>

@@ -6,7 +6,7 @@
         <li>
             <a href="#" class="dropdown">Services</a>
             <ul>
-                <li><a href="#">Nos services</a></li>
+                <li><a href="../views/Services.php">Nos services</a></li>
                 <li><a href="../views/Login.php">Membres</a></li>
                 <li>
                     <a href="#">Rendez-vous</a>

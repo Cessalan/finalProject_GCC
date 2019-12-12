@@ -1,14 +1,6 @@
-<!DOCTYPE HTML>
-<html>
 <?php
-define('PREAMBLE', '../');
-include(PREAMBLE.'inc/head.php');?>
-<body class="is-preload">
-<header id="header">
-    <?php include(PREAMBLE.'inc/nav-bar.php');?>
-    <!-- Logo -->
-    <a class="logo" href="index.html"> <span>GCC</span></a>
-</header>
+include("../inc/header.php");
+?>
 
 
 <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="450" id="gmap_canvas"
