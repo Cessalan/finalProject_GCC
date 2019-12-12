@@ -2923,8 +2923,7 @@ input, select, textarea {
 			height: 8rem;
 			margin-top: -4rem;
 			opacity: 0.20;
-			position: sticky;
-			position: -webkit-sticky;
+			position: absolute;
 			top: 50%;
 			width: 6rem;
 			z-index: 99;
@@ -4125,7 +4124,7 @@ input, select, textarea {
 		}
 /*NAV SPACE*/
 		#header > nav {
-			margin: 0 auto 7rem auto;
+			margin: 0 auto 6rem auto;
 		}
 
 			#header > nav > ul {

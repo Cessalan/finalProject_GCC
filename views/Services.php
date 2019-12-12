@@ -26,7 +26,7 @@ include("../inc/header.php");
                         <li>Pièces automobiles</li>
                         <li>Vente de pneus neufs</li>
                         <li> Entretien véhicules antiques</li>
-                    </ul>                </ul>
+                    </ul>
                 </article>
             </div>
             <div>
@@ -69,3 +69,47 @@ include("../inc/header.php");
         </div>
     </div>
 </section>
+
+<section id="footer">
+    <div class="wrapper style3">
+        <div class="inner">
+            <div>
+                <header>
+                    <h3>Question?</h3>
+                </header>
+                <p>
+                    Si vous avez une quelquonce question à propos de nos services ou si vous avez
+                    besoin de renseignements additionels, n' hesitez pas à nous contacter. Nous nous ferons
+                    un plaisir de vous répondre.
+                </p>
+
+            </div>
+            <div>
+                <header>
+                    <h3>Contactez nous</h3>
+                </header>
+                <div class="contact-icons">
+                    <ul>
+                        <li><a class="icon fa-envelope"><span>garagecheminchambly@gmail.com</span></a></li>
+                        <li><a href="https://www.facebook.com/pg/Chemin-Chambly-Auto-Service-128131274628393/about/" class="icon fa-facebook"><span>Garage Chemin Chambly</span></a></li>
+                    </ul>
+                    <ul>
+                        <li><a href="#" class="icon fa-phone"><span>1(450) 647 2000</span></a></li>
+                        <li>
+                            <div class="icon fa-map-marker">
+                                <address>
+
+                                    2271 Chemin Chambly <br />
+                                    Longueuil, QC J4J 3Z5<br />
+                                    Canada
+                                </address>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            &copy; Fatsy&Haroon
+        </div>
+    </div>
+</section>
+
