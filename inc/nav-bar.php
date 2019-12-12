@@ -7,7 +7,7 @@
             <a href="#" class="dropdown">Services</a>
             <ul>
                 <li><a href="#">Horaire d'ouverture</a></li>
-                <li><a href="#">Membres</a></li>
+                <li><a href="../views/Login.php">Membres</a></li>
                 <li>
                     <a href="#">Rendez-vous</a>
                     <ul>
