@@ -12,13 +12,13 @@ function getAccount($email,$password){
     $conn=connection();
     $sqlGetAccount="SELECT email,password FROM  account WHERE email='".$email."'and password='".$password."'";
     $result=$conn->query($sqlGetAccount);
-
+    $msg="";
     if($result->num_rows<1){
-       echo"OUT";
+       $msg ="OUT";
     }else{
-      echo"IN";
+     $msg="IN";
     }
-
+return $msg;
 
 }
 
