@@ -12,7 +12,7 @@ include("../inc/header.php");
             <h1 class="alt"><a href="#"><u>Le Garage Chemin Chambly</u></a></h1>
             <h2 class="alt"> offre un service à la clientèle exceptionnel et courtois. Profitez de l'expertise de notre équipe qui saura analyser, réparer et entretenir votre automobile. Notre garage à Longueuil est équipé avec les outils les plus modernes afin d'effectuer des réparations de mécanique américaine, mécanique asiatique et mécanique européenne.</h2>
             <ul class="actions">
-                <li><a href="../views/Services.php" class="button">Learn More</a></li>
+                <li><a href="../views/Services.php" class="button">En Savoir Plus</a></li>
             </ul>
         </div>
     </article>
@@ -24,6 +24,16 @@ include("../inc/header.php");
 <section id="two">
 
     <div class="carousel">
+
+        <article>
+            <img class="imgPosition" src="../assets/pictures/promotion.jpg" alt="" width="560" height="440"/>
+            <div class="content">
+                <h2>Promotions</h2>
+                <p><?php ?>
+                    .</p>
+            </div>
+        </article>
+
         <article>
             <img class="imgPosition" src="../assets/pictures/work.jpg" alt="" width="560" height="440"/>
             <div class="content">

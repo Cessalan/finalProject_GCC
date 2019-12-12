@@ -27,49 +27,46 @@
 <body>
 <header id="header">
     <?php
-
     include(PREAMBLE.'inc/nav-bar.php');?>
     <a class="logo" href="index.html"> <span>GCC</span></a>
-
 </header>
 
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-					<img src="images/img-01.png" alt="IMG">
+					<img src="../assets/pictures/mechanic_icon.png" alt="member icon" height="300px" width="400px">
 				</div>
 
 				<form class="login100-form validate-form" method="GET" action="../controllers/UserLogin.php">
 					<span class="login100-form-title">
-						Se connecter
+                        Bienvenue cher membre
+
+					</span>
+                    <span class="login100-form-title">
+                        Se connecter:
+
 					</span>
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" placeholder="nom d'utilisateur">
-						<span class="focus-input100"></span>
-					</div>
+                        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                            <input class="input100" type="text" name="email" placeholder="courriel">
+                            <span class="focus-input100"></span>
+                        </div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="mot de passe">
-						<span class="focus-input100"></span>
-					</div>
-					
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" type="submit">
-							Login
-						</button>
-					</div>
+
+                            <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                                <input class="input100" type="password" name="pass" placeholder="mot de passe">
+                                <span class="focus-input100"></span>
+                            </div>
+
+
+
+                      <input type="submit" value="Se connecter" class="primary" />
 
 				</form>
 			</div>
 		</div>
 	</div>
-	
-	
-
-
-
 <div><!--===============================================================================================-->
     <script src="../assets/login/vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
