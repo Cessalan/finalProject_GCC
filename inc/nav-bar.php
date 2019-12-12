@@ -2,7 +2,7 @@
 <!-- Nav -->
 <nav id="nav">
     <ul>
-        <li class="current"><a href="/">Home</a></li>
+        <li class="current"><a href="../views/Home.php">Home</a></li>
         <li>
             <a href="#" class="dropdown">Services</a>
             <ul>
