@@ -29,12 +29,9 @@ body {
 ol, ul {
 	list-style: none;
 }
-#Info{
-	position:relative;left: 30px;
-}
 #Heures{
 	float:right;
-	padding-right: 100px;
+	padding-right: 250px;
 }
 
 blockquote, q {
@@ -2926,7 +2923,8 @@ input, select, textarea {
 			height: 8rem;
 			margin-top: -4rem;
 			opacity: 0.20;
-			position: absolute;
+			position: sticky;
+			position: -webkit-sticky;
 			top: 50%;
 			width: 6rem;
 			z-index: 99;
@@ -2964,7 +2962,8 @@ input, select, textarea {
 
 			.carousel nav {
 				bottom: 1rem;
-				position: absolute;
+				position: sticky;
+				position: -webkit-sticky;
 				right: 4rem;
 			}
 
@@ -4089,9 +4088,9 @@ input, select, textarea {
 		background: #0d0d0d;
 		color: rgba(255, 255, 255, 0.65);
 		cursor: default;
-		height: 25rem;
-		padding: 4rem 0;
-		position: relative;
+		padding: 1rem 0;
+		position: sticky;
+		position: -webkit-sticky;
 		text-align: center;
 		width: 100%;
 		z-index: 10001;
@@ -4124,7 +4123,7 @@ input, select, textarea {
 			color: #ffffff;
 			padding-top: 0.5rem;
 		}
-
+/*NAV SPACE*/
 		#header > nav {
 			margin: 0 auto 7rem auto;
 		}
@@ -4146,7 +4145,7 @@ input, select, textarea {
 					#header > nav > ul > li > a {
 						color: rgba(255, 255, 255, 0.65);
 						overflow: hidden;
-						position: relative;
+						position: sticky;
 						text-decoration: none;
 					}
 
@@ -4205,7 +4204,7 @@ input, select, textarea {
 						display: block;
 						height: 0.1rem;
 						left: -0.75rem;
-						position: absolute;
+						position: sticky;
 						width: calc(100% + 1.5rem);
 					}
 
