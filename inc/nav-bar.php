@@ -17,6 +17,6 @@
                 </li>
             </ul>
         </li>
-        <li><a href="/contact">Contact</a></li>
+        <li><a href="../views/Contact.php">Contant Us</a></li>
     </ul>
 </nav>

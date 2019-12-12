@@ -29,6 +29,13 @@ body {
 ol, ul {
 	list-style: none;
 }
+#Info{
+	position:relative;left: 30px;
+}
+#Heures{
+	float:right;
+	padding-right: 100px;
+}
 
 blockquote, q {
 	quotes: none;
@@ -3356,7 +3363,6 @@ input, select, textarea {
 		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
 		-moz-align-items: -moz-stretch;
-		-webkit-align-items: -webkit-stretch;
 		-ms-align-items: -ms-stretch;
 		align-items: stretch;
 	}
@@ -3373,7 +3379,7 @@ input, select, textarea {
 		}
 
 		.contact-icons > * {
-			width: 50%;
+			width: 60%;
 		}
 
 		.contact-icons > * {
@@ -3405,7 +3411,7 @@ input, select, textarea {
 		.contact-icons ul {
 			cursor: default;
 			list-style: none;
-			padding-left: 0;
+			padding-right: 2px;
 		}
 
 			.contact-icons ul li {
@@ -3422,7 +3428,7 @@ input, select, textarea {
 
 				.contact-icons ul li .icon:before {
 					float: left;
-					width: 25px;
+
 				}
 
 		@media screen and (max-width: 1680px) {
@@ -4076,6 +4082,9 @@ input, select, textarea {
 
 /* Header */
 
+.imgPosition{
+	padding-top: 20px;
+}
 	#header {
 		background: #0d0d0d;
 		color: rgba(255, 255, 255, 0.65);
