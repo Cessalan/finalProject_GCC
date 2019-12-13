@@ -104,7 +104,7 @@ include("../inc/header.php");
                     </ul>
                 </div>
             </div>
-            &copy; Fatsy&Haroon
+            &copy; Fatsy & Haroon
         </div>
     </div>
 </section>

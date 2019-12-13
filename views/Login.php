@@ -37,33 +37,29 @@
 				<div class="login100-pic js-tilt" data-tilt>
                     <br><br><br>
 					<img src="../assets/pictures/GCCMEC.png" alt="member icon" height="100px" >
+                    <p><?php if(isset($_GET['error']))echo "<h5 style='color:red'>".$_GET['error']."</h5>";?></p>
 				</div>
 
-				<form class="login100-form validate-form" method="GET" action="../controllers/UserLogin.php">
+				<form class="login100-form validate-form" method="GET" action="../controllers/Account_Login.php">
 					<span class="login100-form-title">
                         Bienvenue cher membre
 
 					</span>
                     <span class="login100-form-title">
                         Se connecter:
-
 					</span>
 
                         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                            <input class="input100" type="text" name="email" placeholder="courriel">
+                            <input class="input100" type="text" name="email" placeholder="courriel" required>
                             <span class="focus-input100"></span>
                         </div>
 
 
                             <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                <input class="input100" type="password" name="pass" placeholder="mot de passe">
+                                <input class="input100" type="password" name="pass" placeholder="mot de passe" required>
                                 <span class="focus-input100"></span>
                             </div>
-
-
-
                       <input type="submit" value="Se connecter" class="primary" />
-
 				</form>
 			</div>
 		</div>
@@ -86,7 +82,8 @@
     <script src="js/main.js"></script>
     <?php
     include(PREAMBLE.'inc/scripts.php');
-    ?></div>
+    ?>
+</div>
 
-</body>
 </html>
+

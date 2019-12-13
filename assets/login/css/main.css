@@ -168,11 +168,11 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background-image: url("../../pictures/front.jpg");
-  /*background: -webkit-linear-gradient(-135deg, rgba(22, 98, 244, 0.82), rgba(110, 214, 231, 0.92));*/
-  /*background: -o-linear-gradient(-135deg, rgba(22, 98, 244, 0.82), rgba(110, 214, 231, 0.92));*/
-  /*background: -moz-linear-gradient(-135deg, rgba(22, 98, 244, 0.82), rgba(110, 214, 231, 0.92));*/
-  /*background: linear-gradient(-135deg, rgba(22, 98, 244, 0.82), rgba(110, 214, 231, 0.92));*/
+  background: #e7e7e7;
+  background: -webkit-linear-gradient(-135deg, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0.92));
+  background: -o-linear-gradient(-135deg, rgba(255, 255, 255, 0.82), rgba(244, 244, 244, 0.92));
+  background: -moz-linear-gradient(-135deg, rgba(255, 255, 255, 0.82), rgba(231, 231, 231, 0.92));
+  background: linear-gradient(-135deg, rgba(255, 255, 255, 0.82), rgba(244, 244, 244, 0.92));
 }
 
 .wrap-login100 {
