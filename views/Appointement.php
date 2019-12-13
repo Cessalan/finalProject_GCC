@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../assets/appoint/main.css">
     <!--===============================================================================================-->
 </head>
+<body class ="is-preload">
 
 <div class="limiter">
     <div class="container-login100">
@@ -118,5 +119,4 @@
     include(PREAMBLE.'inc/scripts.php');
     ?>
 </div>
-
-</html>
+</body>
