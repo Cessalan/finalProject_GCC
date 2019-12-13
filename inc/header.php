@@ -3,7 +3,7 @@
 <?php
 define('PREAMBLE', '../');
 include(PREAMBLE.'inc/head.php');?>
-<body >
+<body class ="is-preload">
 
 <!-- Header -->
 <header id="header">
