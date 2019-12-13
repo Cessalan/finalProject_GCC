@@ -112,4 +112,6 @@ include("../inc/header.php");
         </div>
     </div>
 </section>
-
+<?php
+include(PREAMBLE.'inc/scripts.php');
+?>

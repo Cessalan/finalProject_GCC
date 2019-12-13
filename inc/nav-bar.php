@@ -3,15 +3,15 @@
 <nav id="nav">
     <ul>
         <li class="current"><a href="../views/Home.php">Home</a></li>
-        <li>
-            <a href="#" class="dropdown">Services</a>
+        <li> <a class="dropdown">Services</a>
+
             <ul>
                 <li><a href="../views/Services.php">Nos services</a></li>
                 <li><a href="../views/Login.php">Membres</a></li>
                 <li>
                     <a href="#">Rendez-vous</a>
                     <ul>
-                        <li><a href="#">Prendre rendez-vous</a></li>
+                        <li><a href="../views/Appointement.php">Prendre rendez-vous</a></li>
                         <li><a href="#">Annuler</a></li>
                     </ul>
                 </li>
