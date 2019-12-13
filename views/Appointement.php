@@ -27,21 +27,22 @@
                     </span>
                 <div class="row gtr-uniform">
                     <div class="col-6 col-12-xsmall">
-                        <input type="text" name="demo-firstName" id="demo-fName" value="" placeholder="Prénom" />
+                        <input type="text" name="demo-firstName" id="fName" value="" placeholder="Prénom" />
                     </div>
                     <div class="col-6 col-12-xsmall">
-                        <input type="email" name="demo-lastName" id="demo-lName" value="" placeholder="Nom" />
+                        <input type="email" name="demo-lastName" id="lName" value="" placeholder="Nom" />
                     </div>
                     <div class="col-6 col-12-xsmall">
-                        <input type="text" name="demo-phone" id="demo-fName" value="" placeholder="Téléphone" />
+                        <input type="text" name="demo-phone" id="phone" value="" placeholder="Téléphone" />
                     </div>
                     <div class="col-6 col-12-xsmall">
-                        <input type="text" name="demo-email" id="demo-fName" value="" placeholder="Courriel" />
+                        <input type="text" name="demo-email" id="email" value="" placeholder="Courriel" />
                     </div>
 
                     <!-- Break -->
                     <div class="col-12">
-                        <select name="demo-category" id="demo-category">
+                        <select name="demo-category" id="services" >
+                            <option selected="selected" class="services"></option>
                             <option value="">Votre rendez-vous est à quel sujet?  </option>
                             <option value="huile">Service de changement d'huile</option>
                             <option value="penus">Pneus</option>
@@ -62,7 +63,7 @@
                     <input type="date" id="date"  name="bday">
                     </div>
                     <?php
-                    
+
                     ?>
                     <!-- Break -->
                     <div class="col-4 col-12-small">
@@ -83,11 +84,11 @@
 
                     <!-- Break -->
                     <div class="col-12">
-                        <textarea name="demo-textarea" id="demo-textarea" placeholder="Plus de détails (Optional)" rows="6"></textarea>
+                        <textarea name="message" id="message" placeholder="Plus de détails (Optional)" rows="6"></textarea>
                     </div>
                     <!-- Break -->
                     <div id="act">
-                        <ul class="actions" s>
+                        <ul class="actions" >
                             <li><input type="submit" value="Submit Form" class="primary" /></li>
                             <li><input type="reset" value="Reset" /></li>
                         </ul>
@@ -108,7 +109,7 @@
     <script src="../assets/login/vendor/tilt/tilt.jquery.min.js"></script>
     <script >
         $('.js-tilt').tilt({
-            scale: 1.1
+            scale: 0.7
         })
     </script>
     <!--===============================================================================================-->
