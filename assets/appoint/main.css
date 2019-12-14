@@ -284,7 +284,7 @@ iframe {
 }
 
 .login100-form-btn {
-  font-family: Montserrat-Bold;
+  font-family: Montserrat-Bold, serif;
   font-size: 15px;
   line-height: 1.5;
   color: #fff;
@@ -379,7 +379,7 @@ iframe {
   right: 8px;
   pointer-events: none;
 
-  font-family: Poppins-Medium;
+  font-family: Poppins-Medium, serif;
   color: #c80000;
   font-size: 13px;
   line-height: 1.4;
@@ -396,7 +396,7 @@ iframe {
 
 .alert-validate::after {
   content: "\f06a";
-  font-family: FontAwesome;
+  font-family: FontAwesome, serif;
   display: block;
   position: absolute;
   color: #c80000;
