@@ -41,7 +41,22 @@ function getHours($date){
 //create account in db when admin creates account
 function insertAccount($email,$username,$password){
     $conn=connection();
-    $sqlCreateAccount="";
+    $sqlCreateAccount="INSERT into account (email, password) values($email,$password)";
+    if(getAccount($email,$password)){
+        //error page or message
+    }else{
+        //create new account
+        $result=$conn->query($sqlCreateAccount);
+
+        if($result===true){
+            //successful
+
+        }else{
+            //error message
+
+        }
+
+    }
 }
 
 //insert appointment in the db when users books an appointment
