@@ -1,5 +1,6 @@
 <?php
 include("../inc/header.php");
+
 ?>
 
 <!-- Banner -->
@@ -10,9 +11,9 @@ include("../inc/header.php");
         </div>
         <div class="content">
             <h1 class="alt"><a href="#"><u>Le Garage Chemin Chambly</u></a></h1>
-            <h2 class="alt"> offre un service à la clientèle exceptionnel et courtois. Profitez de l'expertise de notre équipe qui saura analyser, réparer et entretenir votre automobile. Notre garage à Longueuil est équipé avec les outils les plus modernes afin d'effectuer des réparations de mécanique américaine, mécanique asiatique et mécanique européenne.</h2>
+            <h2 class="alt">DESC_GARAGE</h2>
             <ul class="actions">
-                <li><a href="../views/Services.php" class="button">En Savoir Plus</a></li>
+                <li><a href="../views/Services.php" class="button">EN_SAVOIR</a></li>
             </ul>
         </div>
     </article>
@@ -28,23 +29,19 @@ include("../inc/header.php");
             <img class="imgPosition" src="../assets/pictures/work.jpg" alt="" width="560" height="440"/>
             <div class="content">
                 <h2>Expertise</h2>
-                <p> Le Garage Chemin de Chambly offre un service à la clientèle exceptionnel et courtois. Profitez de l'expertise de notre équipe qui saura analyser, réparer et entretenir votre automobile. Notre garage à Longueuil est équipé avec les outils les plus modernes afin d'effectuer des réparations de mécanique américaine, mécanique asiatique et mécanique européenne.</p>
+                <p>EXPERTISE_TEXT</p>
             </div>
         </article>
         <article>
             <img class="imgPosition" src="../assets/pictures/tire_change2.jpg" alt="" width="560" height="440"/>
             <div class="content">
-                <h2>Pneus</h2>
-                <p>Le Garage Chemin de Chambly est détaillant de pneus neufs de la plupart des marques, modèles et dimensions pour automobile et camion léger à Longueuil.
-
-                    Vous avez besoin de conseils pour l'achat de pneus neufs, pneus d'hiver et quatre-saisons? Nos conseillers s'occupent de trouver un produit qui correspond à vos besoins.
-
-                    .</p>
+                <h2>PNEUS</h2>
+                <p>PNEUS_TEXT</p>
             </div>
         </article>
         <nav>
-            <a href="#" class="previous"><span class="label">Previous</span></a>
-            <a href="#" class="next"><span class="label">Next</span></a>
+            <a href="#" class="previous"><span class="label">PREVIOUS</span></a>
+            <a href="#" class="next"><span class="label">NEXT</span></a>
         </nav>
     </div>
 
@@ -55,11 +52,11 @@ include("../inc/header.php");
 <section id="three">
     <div class="wrapper style2 special">
         <div class="inner">
-            <h2 class="alt">Faites partis des premier à être notifier de nos plus recents rabais.</h2>
-            <p>Entrez votre courriel pour vous inscrire </p>
+            <h2 class="alt">SUBSCRIPTION</h2>
+            <p>SUBSCRIPTION_EMAIL</p>
             <form method="post" action="#" class="combined">
-                <input type="email" name="email" id="email" placeholder="votre courriel" class="invert" />
-                <input type="submit" class="special" value="Subscribe" />
+                <input type="email" name="email" id="email" placeholder="email" class="invert" />
+                <input type="submit" class="special" value="SUBSCRIPTION_SUBMIT" />
             </form>
         </div>
     </div>
@@ -82,7 +79,7 @@ include("../inc/header.php");
             </div>
             <div>
                 <header>
-                    <h3>Contactez nous</h3>
+                    <h3>CONTACT_US</h3>
                 </header>
                 <div class="contact-icons">
                     <ul>
