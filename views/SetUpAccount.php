@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <?php
+    session_start();
     define('PREAMBLE', '../');
-    include(PREAMBLE . 'inc/head.php');?>
+    include(PREAMBLE.'inc/head.php');
+    include (PREAMBLE.'DB/DBManager.php')
+    ?>
     <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,9 +28,10 @@
     <!--===============================================================================================-->
 </head>
 <body>
+
 <header id="header">
     <?php
-    include(PREAMBLE . 'inc/nav-bar.php');?>
+    include(PREAMBLE.'inc/nav-bar.php');?>
     <a class="logo" href="index.html"> <span>GCC</span></a>
 </header>
 
@@ -37,50 +41,58 @@
             <div class="login100-pic js-tilt" data-tilt>
                 <br><br><br>
                 <img src="../assets/pictures/GCCMEC.png" alt="member icon" height="100px" >
-                <p> Notez que les jours de travails dépendent du gérant et de la clientèle.
-                    Nous ne donnons donc aucune garantie.
-                    Merci de votre compréhension.
-                </p>
+                <p><?php if(isset($_GET['error']))echo "<h5 style='color:red'>".$_GET['error']."</h5>";?></p>
             </div>
 
-            <form class="login100-form validate-form" method="GET" action="../controllers/Account_Login.php">
+            <?php
+            $accountInfo=getAccountInfos($_SESSION["currentAccount"]);
+//            echo $_SESSION["currentAccount"];
+            ////            var_dump($accountInfo);
+            ?>
+
+            <form class="login100-form validate-form" method="GET" action="../controllers/Account_SetUp.php">
 					<span class="login100-form-title">
-                       Donnez vos disponibiliés
+                        Bienvenue
 
 					</span>
                 <span class="login100-form-title">
-                        Cochez les jour pour lesquels vous desirez travailler:
+                        Informations:
 					</span>
 
-                <div class="col-6 col-12-small">
-                    <input type="checkbox"  id="monday"name="days">
-                    <label for="monday">Lundi</label>
-                </div><br>
-                <div class="col-6 col-12-small">
-                    <input type="checkbox"  id="tuesday" name="days" >
-                    <label for="tuesday">Mardi</label>
-                </div><br>
-                <div class="col-6 col-12-small">
-                    <input type="checkbox"  id="wednesday"name="days" >
-                    <label for="wednesday">Mercredi</label>
-                </div><br>
-                <div class="col-6 col-12-small">
-                    <input type="checkbox" id="thursday"name="days" >
-                    <label for="thursday">Jeudi</label>
-                </div><br>
-                <div class="col-6 col-12-small">
-                    <input type="checkbox" id="friday"  name="days" >
-                    <label for="friday">Vendredi</label>
-                </div><br>
-                <div class="col-6 col-12-small">
-                    <input type="checkbox" id="saturday"  name="days" >
-                    <label for="saturday">Samedi</label>
-                </div><br>
-                <input type="submit" value="Envoyer" class="primary" /><br><br>
-               <a href="../view/EmployeeSchedule.php"> <input type="Button" value="Voir mon horaire" class="primary"  onclick=""/></a>  <br> <br>
-                <a href="../views/SetUpAccount.php"><input type="Button" value="Mettre à jour mon compte" class="primary" /></a><br>
-            </form>
+                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                    <label>Prénom</label>
+                    <input class="input100" type="text" name="fname" placeholder="John" value="<?php echo $accountInfo['fname']?>" required>
+                    <span class="focus-input100"></span>
+                </div>
 
+                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                    <label> Nom </label>
+                    <input class="input100" type="text" name="lname" placeholder="Smith" value="<?php echo $accountInfo['lname']?>" required>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                    <label>Numéro de télephone</label>
+                    <input class="input100" type="text" name="telephone" placeholder="514-788-9999" value="<?php echo $accountInfo['phone_number']?>" required>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                    <lable>addresse</lable>
+                    <input class="input100" type="text" name="address" placeholder="930 Boulevard Roland-Therrien" value="<?php echo $accountInfo['address']?>" required>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                    <label>Code Postal</label>
+                    <input class="input100" type="text" name="zip" placeholder="J4L2T6" value="<?php echo $accountInfo['zip']?>" required>
+                    <span class="focus-input100"></span>
+                </div>
+
+                <input type="submit" value="Enregistrer" class="primary" /><br><br>
+                <a href=""><input type="button" value="Changer mot de passe" class="primary" /></a>
+
+            </form>
 
         </div>
     </div>
@@ -102,9 +114,10 @@
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
     <?php
-    include(PREAMBLE . 'inc/scripts.php');
+    include(PREAMBLE.'inc/scripts.php');
     ?>
 </div>
 
 </html>
+
 
