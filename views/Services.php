@@ -6,64 +6,65 @@ include("../inc/header.php");
         <div class="posts inner">
             <div>
                 <article>
-                    <h2>Services du Garage Chemin de Chambly</h2>
-                    <ul>
-                        <li>Remorquage</li>
-                        <li>Location de voiture de courtoisie</li>
-                        <li>Service de raccompagnement</li>
-                        <li>Air climatisé</li>
-                        <li>Entretien de flottes de véhicules</li>
-                        <li>Injection</li>
-                        <li>Réparation d'échappement</li>
-                        <li>Reprogrammation J2534</li>
-                        <li>Remplacement et réparation de pare-brise</li>
-                        <li>Mécanique générale et importée</li>
-                        <li>Entretiens préventifs</li>
-                        <li>Entretiens recommandés par le manufacturier</li>
-                        <li>Analyse moteur et électricité</li>
-                        <li>Service de changement d'huile</li>
-                        <li>Alignement de camion léger</li>
-                        <li>Pièces automobiles</li>
-                        <li>Vente de pneus neufs</li>
-                        <li> Entretien véhicules antiques</li>
-                    </ul>
+                    <h2><?php echo SERVICE_INFO ?></h2><br>
                 </article>
+                <ul>
+                    <?php
+                    foreach(SERVICE_LIST as $value)
+                    {
+                        echo "<li> $value</li>";
+                    }
+                    ?>
+                </ul>
             </div>
+
+            <!--
+             SERVICE_LIST
+            -->
             <div>
                 <article>
                     <img class="image fit" src="../assets/pictures/tool1.jpg" alt=""  />
-                    <h3>Mécanique générale et importée</h3>
-                    <p>Fiez-vous à des professionnels pour les réparations sur votre véhicule à votre garage à Longueuil.
-                        Nous effectuons des réparations de mécanique américaine, mécanique asiatique et mécanique européenne.
-                        De plus, nous sommes expérimentés en mécanique de camion léger et mécanique diesel.</p>
-<!--                        <br><br>Nous réparons toutes les composantes de votre automobile ou camion léger tel que le moteur, la direction,
-                        la suspension, les freins, le système d'échappement et bien plus.</p>-->
+                    <h3><?php
+                        echo DETAILS_MECHANIQUE1
+                        ?></h3>
+                    <p><?php
+                        echo DETAILS_MECHANIQUE1_TEXT
+                        ?></p>
 
                 </article>
                 <article>
                     <img class="image fit" src="../assets/pictures/entretien-voiture.jpg" alt="" height="258"/>
-                    <h3>Entretien préventif et recommandé  </h3>
-                    <p>Le programme d'entretien préventif du Garage Chemin de Chambly vous permettra de conserver votre voiture plus longtemps
-                        et en meilleur état. Nous respectons les recommandations des concessionnaires et manufacturiers automobiles.
-                        Nous entretenons également les véhicules antiques.</p>
+                    <h3><?php
+                        echo DETAILS_MECHANIQUE2
+                        ?> </h3>
+                    <p><?php
+                        echo DETAILS_MECHANIQUE2_TEXT
+                        ?></p>
 
                 </article>
             </div>
             <div>
                 <article>
                     <img class="image fit" src="../assets/pictures/tire_change.jpg" alt="" />
-                    <h3>Alignement automobile </h3>
-                    <p>Le spécialiste de l'alignement à Longueuil, c'est le Garage Chemin de Chambly. Après toute réparation de la conduite,
-                    de la suspension ou après un accident de la route il est important de vérifier et ajuster le parallélisme de vos roues
-                    afin de prolonger la vie de vos pneus et déconomiser en essence.</p>
+
+                    <h3><?php
+                      echo DETAILS_MECHANIQUE3
+                        ?> </h3>
+
+                    <p><?php
+                        echo DETAILS_MECHANIQUE3_TEXT
+                        ?></p>
                 </article>
                 <article>
                     <img class="image fit" src="../assets/pictures/tools.jpg" alt="" />
-                    <h3>Diagnostic de moteur & d'électricité</h3>
-                    <p>Les voyants lumineux de tableau de bord sont de plus en plus nombreux sur les véhicules modernes.
-                        Notre équipe possède des équipements à la fine pointe de la technologie afin
-                        de diagnostiquer les bris d'injection, d'électronique, d'électricité, de coussins gonflables, d'ABS et d'ordinateur
-                        sur votre automobile ou camion léger. Faites analyser votre lumière de check engine ici!</p>
+
+                    <h3><?php
+                        echo DETAILS_MECHANIQUE4
+                        ?></h3>
+
+                    <p><?php
+                        echo DETAILS_MECHANIQUE4_TEXT
+                        ?></p>
                 </article>
             </div>
         </div>
@@ -78,15 +79,19 @@ include("../inc/header.php");
                     <h3>Question?</h3>
                 </header>
                 <p>
-                    Si vous avez une quelquonce question à propos de nos services ou si vous avez
-                    besoin de renseignements additionels, n' hesitez pas à nous contacter. Nous nous ferons
-                    un plaisir de vous répondre.
+                    <?php
+                    echo QUESTION_TEXT
+                    ?>
                 </p>
 
             </div>
             <div>
                 <header>
-                    <h3>Contactez nous</h3>
+                    <h3>
+                        <?php
+                            echo CONTACT_US
+                        ?>
+                    </h3>
                 </header>
                 <div class="contact-icons">
                     <ul>

@@ -1,5 +1,6 @@
 <?php
 include("../inc/header.php");
+include_once("../inc/config.php");
 ?>
 
 <!-- Banner -->
@@ -9,10 +10,10 @@ include("../inc/header.php");
             <img src="../assets/pictures/inside2.jpg" alt="" />
         </div>
         <div class="content">
-            <h1 class="alt"><a href="#"><u>Le Garage Chemin Chambly</u></a></h1>
-            <h2 class="alt"> offre un service à la clientèle exceptionnel et courtois. Profitez de l'expertise de notre équipe qui saura analyser, réparer et entretenir votre automobile. Notre garage à Longueuil est équipé avec les outils les plus modernes afin d'effectuer des réparations de mécanique américaine, mécanique asiatique et mécanique européenne.</h2>
+            <h1 class="alt"><a href="#"><u><?php echo GARAGE_NAME?></u></a></h1>
+            <h2 class="alt"><?php echo DESC_GARAGE?></h2>
             <ul class="actions">
-                <li><a href="../views/Services.php" class="button">En Savoir Plus</a></li>
+                <li><a href="../views/Services.php" class="button"><?php echo EN_SAVOIR ?></a></li>
             </ul>
         </div>
     </article>
@@ -28,23 +29,19 @@ include("../inc/header.php");
             <img class="imgPosition" src="../assets/pictures/work.jpg" alt="" width="560" height="440"/>
             <div class="content">
                 <h2>Expertise</h2>
-                <p> Le Garage Chemin de Chambly offre un service à la clientèle exceptionnel et courtois. Profitez de l'expertise de notre équipe qui saura analyser, réparer et entretenir votre automobile. Notre garage à Longueuil est équipé avec les outils les plus modernes afin d'effectuer des réparations de mécanique américaine, mécanique asiatique et mécanique européenne.</p>
+                <p><?php echo EXPERTISE_TEXT ?></p>
             </div>
         </article>
         <article>
             <img class="imgPosition" src="../assets/pictures/tire_change2.jpg" alt="" width="560" height="440"/>
             <div class="content">
-                <h2>Pneus</h2>
-                <p>Le Garage Chemin de Chambly est détaillant de pneus neufs de la plupart des marques, modèles et dimensions pour automobile et camion léger à Longueuil.
-
-                    Vous avez besoin de conseils pour l'achat de pneus neufs, pneus d'hiver et quatre-saisons? Nos conseillers s'occupent de trouver un produit qui correspond à vos besoins.
-
-                    .</p>
+                <h2><?php echo PNEUS ?></h2>
+                <p><?php echo PNEUS_TEXT ?></p>
             </div>
         </article>
         <nav>
-            <a href="#" class="previous"><span class="label">Previous</span></a>
-            <a href="#" class="next"><span class="label">Next</span></a>
+            <a href="#" class="previous"><span class="label"><?php echo PREVIOUS ?></span></a>
+            <a href="#" class="next"><span class="label"><?php echo NEXT ?></span></a>
         </nav>
     </div>
 
@@ -55,11 +52,11 @@ include("../inc/header.php");
 <section id="three">
     <div class="wrapper style2 special">
         <div class="inner">
-            <h2 class="alt">Faites partis des premier à être notifier de nos plus recents rabais.</h2>
-            <p>Entrez votre courriel pour vous inscrire </p>
+            <h2 class="alt"><?php echo SUBSCRIPTION ?></h2>
+            <p><?php echo SUBSCRIPTION_EMAIL ?> </p>
             <form method="post" action="#" class="combined">
-                <input type="email" name="email" id="email" placeholder="votre courriel" class="invert" />
-                <input type="submit" class="special" value="Subscribe" />
+                <input type="email" name="email" id="email" placeholder="<?php echo EMAIL ?>" class="invert" />
+                <input type="submit" class="special" value="<?php echo SUBSCRIPTION_SUBMIT ?>" />
             </form>
         </div>
     </div>
@@ -74,15 +71,15 @@ include("../inc/header.php");
                     <h3>Question?</h3>
                 </header>
                 <p>
-                    Si vous avez une quelquonce question à propos de nos services ou si vous avez
-                    besoin de renseignements additionels, n' hesitez pas à nous contacter. Nous nous ferons
-                    un plaisir de vous répondre.
+                    <?php
+                    echo QUESTION_TEXT
+                    ?>
                 </p>
 
             </div>
             <div>
                 <header>
-                    <h3>Contactez nous</h3>
+                    <h3><?php echo CONTACT_US ?></h3>
                 </header>
                 <div class="contact-icons">
                     <ul>

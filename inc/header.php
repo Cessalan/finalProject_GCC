@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html lang="fr">
 <?php
+
 define('PREAMBLE', '../');
 include(PREAMBLE.'inc/head.php');?>
 
@@ -12,3 +13,5 @@ include(PREAMBLE.'inc/head.php');?>
     <a class="logo" href="../views/Home.php"><img src="../assets/pictures/LogoMakr_3BxS1j.png"></a>
 </header>
 <body class ="is-preload">
+
+<?php include_once("../inc/config.php");?>

@@ -1,4 +1,4 @@
-
+<?php include("../inc/config.php"); ?>
 <!-- Nav -->
 <nav id="nav">
     <ul>
@@ -17,7 +17,14 @@
                 </li>
             </ul>
         </li>
-        <li><a href="../views/Contact.php">Contant Us</a></li>
+        <li><a href="../views/Contact.php">Contact Us</a></li>
+            <form class="lang_btn" method='get' action='' id='form_lang' >
+                <select name='lang' onchange='changeLang();'>
+                    <option value='en' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } ?> >EN</option>
+                    <option value='fr' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'fr'){ echo "selected"; } ?> >FR</option>
+                </select>
+            </form>
+
     </ul>
 </nav>
 

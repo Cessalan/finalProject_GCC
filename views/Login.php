@@ -3,7 +3,7 @@
 <head>
     <?php
     define('PREAMBLE', '../');
-    include(PREAMBLE.'inc/head.php');?>
+    include(PREAMBLE.'inc/head.php'); ?>
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,24 +44,24 @@
 
 				<form class="login100-form validate-form" method="GET" action="../controllers/Account_Login.php">
 					<span class="login100-form-title">
-                        Bienvenue cher membre
+                       <?php echo Welcome ?>
 
 					</span>
                     <span class="login100-form-title">
-                        Se connecter:
+                        <?php echo Connect . ":"?>
 					</span>
 
                         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                            <input class="input100" type="text" name="email" placeholder="courriel" required>
+                            <input class="input100" type="text" name="email" placeholder="<?php echo placeholder_email?>" required>
                             <span class="focus-input100"></span>
                         </div>
 
 
                             <div class="wrap-input100 validate-input" data-validate = "Password is required">
-                                <input class="input100" type="password" name="pass" placeholder="mot de passe" required>
+                                <input class="input100" type="password" name="pass" placeholder="<?php echo Password ?>" required>
                                 <span class="focus-input100"></span>
                             </div>
-                      <input type="submit" value="Se connecter" class="primary" />
+                      <input type="submit" value="<?php echo Connect ?>" class="primary" />
 				</form>
 			</div>
 		</div>

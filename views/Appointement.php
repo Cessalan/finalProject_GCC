@@ -22,42 +22,44 @@
 
             <form class="login100-form validate-form" method="GET" action="../controllers/Account_Login.php">
 					<span class="login100-form-title">
-                        Voulez prendre une rendez-vous?
-                        <br>
-                        Remplissez le formulaire ci-dessous
+                        <?php
+                        echo APPOINTMENT_TEXT
+                        . "<br>"
+                        .
+                        FORM_TEXT
+                        ?>
                     </span>
                 <div class="row gtr-uniform">
                     <div class="col-6 col-12-xsmall">
-                        <input type="text" name="demo-firstName" id="fName" value="" placeholder="Prénom" />
+                        <input type="text" name="demo-firstName" id="fName" value="" placeholder=<?php echo placeholder_fName ?> />
                     </div>
                     <div class="col-6 col-12-xsmall">
-                        <input type="email" name="demo-lastName" id="lName" value="" placeholder="Nom" />
+                        <input type="email" name="demo-lastName" id="lName" value="" placeholder=<?php echo placeholder_lName ?> />
                     </div>
                     <div class="col-6 col-12-xsmall">
-                        <input type="text" name="demo-phone" id="phone" value="" placeholder="Téléphone" />
+                        <input type="text" name="demo-phone" id="phone" value="" placeholder=<?php echo placeholder_phone ?> />
                     </div>
                     <div class="col-6 col-12-xsmall">
-                        <input type="text" name="demo-email" id="email" value="" placeholder="Courriel" />
+                        <input type="text" name="demo-email" id="email" value="" placeholder=<?php echo placeholder_email ?> />
                     </div>
 
                     <!-- Break -->
                     <div class="col-12">
                         <select name="demo-category" id="services" >
-                            <option selected="selected" class="services"></option>
-                            <option value="">Votre rendez-vous est à quel sujet?  </option>
-                            <option value="huile">Service de changement d'huile</option>
-                            <option value="penus">Pneus</option>
-                            <option value="alignment">Alignement automobile</option>
-                            <option value="injection">Injection</option>
-                            <option value="echappment">Réparation d'échappement</option>
-                            <option value="pare-brise">Remplacement et réparation de pare-brise</option>
-                            <option value="analyse_moteur">Analyse moteur et électricité</option>
-                            <option value="freins">Freins</option>
+                            <option selected="selected" class="services"><?php echo SERVICE_QUESTION ?>  </option>
+                            <option value="huile"><?php echo SERVICE_HUILE ?></option>
+                            <option value="penus"><?php echo SERVICE_PNEUS ?></option>
+                            <option value="alignment"><?php echo SERVICE_ALIGNMENT ?></option>
+                            <option value="injection"><?php echo SERVICE_INJECTION ?></option>
+                            <option value="echappment"><?php echo SERVICE_ECHAPPMENT ?></option>
+                            <option value="pare-brise"><?php echo SERVICE_PARE_BRISE ?></option>
+                            <option value="analyse_moteur"><?php echo SERVICE_ANAYLSE_MOTEUR ?></option>
+                            <option value="freins"><?php echo SERVICE_FREINS ?></option>
                         </select>
                     </div>
 
                     <div class="col-4">
-                        <label>Choisissez votre date</label>
+                        <label><?php echo DATE ?></label>
 
                     </div>
                     <div class="col-8">
@@ -68,30 +70,30 @@
                     ?>
                     <!-- Break -->
                     <div class="col-4 col-12-small">
-                        <label>Vous désirez être contacté par:</label>
+                        <label><?php echo CONTACT_LABEL?></label>
                     </div>
 
 
                     <div class="col-2 col-12-small">
                         <input type="radio" id="demo-radio-alpha" name="demo-radio" checked>
-                        <label for="demo-radio-alpha">Téléphone</label>
+                        <label for="demo-radio-alpha"><?php echo placeholder_phone?></label>
                     </div>
                     <div class="col-2 col-12-small">
                         <input type="radio" id="demo-radio-beta" name="demo-radio">
-                        <label for="demo-radio-beta">Courriel</label>
+                        <label for="demo-radio-beta"><?php echo placeholder_email?></label>
                     </div>
 
 
 
                     <!-- Break -->
                     <div class="col-12">
-                        <textarea name="message" id="message" placeholder="Plus de détails (Optional)" rows="6"></textarea>
+                        <textarea name="message" id="message" placeholder="<?php echo MORE_DETAILS ?>" rows="6"></textarea>
                     </div>
                     <!-- Break -->
                     <div id="act">
                         <ul class="actions" >
-                            <li><input type="submit" value="Submit Form" class="primary" /></li>
-                            <li><input type="reset" value="Reset" /></li>
+                            <li><input type="submit" value="<?php echo submit?>" class="primary" /></li>
+                            <li><input type="reset" value="<?php echo reset?>" /></li>
                         </ul>
                     </div>
                 </div>
