@@ -15,21 +15,31 @@ use \PHPMailer\PHPMailer\Exception;
 
 $mail= new PHPMailer();
 $mail->isSMTP();
-$mail->host="smtp@gmail.com";
+$mail->Host="smtp.gmail.com";
 $mail->SMTPAuth=true;
-//$mail->SMTPSecure="tls";
-$mail->port="587";
-$mail->username="rockmichael655@gmail.com";
+$mail->SMTPSecure="TLS";
+$mail->Port="587";
+$mail->Username="rockmichael655@gmail.com";
 $mail->Password="Fuckyou1234";
 
+
+try{
+    $mail->setFrom("rockmichael655@gmail.com");
+    $mail->addAddress("haroonmasjide@gmail.com");
+
+}catch (Exception $e){
+    $e->getMessage();
+}
 $mail->Subject="Test Email Final Project";
-$mail->setFrom("rockmichael655@gmail.com");
 $mail->Body="PIK PIK PUC PUC THASSA GUN HOMIE";
-$mail->addAddress("haroonmasjide@gmail.com");
+
+
+
+$mail->SMTPDebug = 2;
 
 if($mail->Send()){
     echo "Email Sent.";
 }else{
-    echo $mail->isError();
+    echo $mail->ErrorInfo;
 };
 $mail->smtpClose();
