@@ -71,6 +71,25 @@ $conn->query($sqlUpdateAccount) or die($conn->error);
 
 }
 
+function updatePassword($email,$oldPassword,$newPassword){
+$conn=connection();
+
+// get old hash from database
+$sqlGetOldPassword="Select password from account where email='".$email."'";
+$hash=$conn->query($sqlGetOldPassword) or die($conn->error);
+
+//hash new password
+$newPassword=password_hash($newPassword,PASSWORD_DEFAULT);
+
+//update password if validation is correct
+$sqlUpdatePassword="Update account set passoword='$newPassword' where email='$email'";
+if(password_verify($oldPassword,$hash)){
+    $conn->query($sqlUpdatePassword) or die ($conn->error);
+}
+
+
+}
+
 //get hours for a specific date
 function getHours($date){
     $conn=connection();

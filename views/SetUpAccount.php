@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php
-    session_start();
+
     define('PREAMBLE', '../');
     include(PREAMBLE.'inc/head.php');
     include (PREAMBLE.'DB/DBManager.php')
