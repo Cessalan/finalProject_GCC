@@ -7,12 +7,12 @@ if(isset($_GET['lang']) && !empty($_GET['lang'])){
 }
 
 // Include Language file
-if(isset($_SESSION['lang']) && $_SESSION['lang'] == "en"){
-    include_once("../assets/lang/lang_en.php");
+if(isset($_SESSION['lang']) && $_SESSION['lang'] == "fr"){
+    include_once("../assets/lang/lang_fr.php");
 
 }
 else{
-    include_once("../assets/lang/lang_fr.php");
+    include_once("../assets/lang/lang_en.php");
 }
 ?>
 <script>

@@ -20,6 +20,10 @@ section, summary, time, mark, audio, video {
 
 .lang_btn{
 	float: right;
+	background-color: #0d0d0d;
+}
+.select-selected {
+	background-color: black;
 }
 
 article, aside, details, figcaption, figure,
@@ -3574,7 +3578,7 @@ input, select, textarea {
 		.wrapper.style2 {
 			background-color: #0d0d0d;
 			color: rgba(255, 255, 255, 0.65);
-			background: #2388fa;
+			background: #F0E68C;
 		}
 
 			.wrapper.style2 input, .wrapper.style2 select, .wrapper.style2 textarea {
@@ -4084,11 +4088,11 @@ input, select, textarea {
 
 /* Header */
 
-.imgPosition{
+/*.imgPosition{
 	padding-top: 20px;
-}
+}*/
 	#header {
-		background: #0d0d0d;
+			background: #0d0d0d;
 		color: rgba(255, 255, 255, 0.65);
 		cursor: default;
 		padding: 1rem 0;
@@ -4099,7 +4103,7 @@ input, select, textarea {
 		z-index: 10001;
 	}
 
-		#header > .logo {
+/*		#header > .logo {
 			color: #ffffff;
 			font-size: 2rem;
 			font-weight: 400;
@@ -4107,9 +4111,9 @@ input, select, textarea {
 			line-height: inherit;
 			padding: 0 1.25rem;
 			text-decoration: none;
-		}
+		}*/
 
-			#header > .logo span {
+		#header > .logo span {
 				color: rgba(255, 255, 255, 0.65);
 				font-weight: 300;
 			}
@@ -4118,35 +4122,37 @@ input, select, textarea {
 			font-size: 1rem;
 		}
 
-		#header.alt > nav {
+#header.alt > nav {
+			;
 			margin: 0 auto 5.5rem auto;
 		}
 
 		#header.alt h1 {
 			color: #ffffff;
-			padding-top: 0.5rem;
+			padding-top: 0.9rem;
 		}
+
 /*NAV SPACE*/
 		#header > nav {
 			margin: 0 auto 6rem auto;
+			padding-top: 70px;
+
 		}
 
 			#header > nav > ul {
 				list-style: none;
-				margin: 0;
-				padding: 0;
 			}
 
 				#header > nav > ul > li {
 					display: inline-block;
-					margin: 0 2rem;
-					padding: 0 0 .75rem 0;
+					margin: 0 3rem;
+					padding: 0 0 .65rem 0;
 					position: relative;
 					text-align: center;
 				}
 
 					#header > nav > ul > li > a {
-						color: rgba(255, 255, 255, 0.65);
+							color: rgba(255, 255, 255, 0.65);
 						overflow: hidden;
 						position: sticky;
 						text-decoration: none;

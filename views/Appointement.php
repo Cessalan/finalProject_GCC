@@ -31,16 +31,16 @@
                     </span>
                 <div class="row gtr-uniform">
                     <div class="col-6 col-12-xsmall">
-                        <input type="text" name="demo-firstName" id="fName" value="" placeholder=<?php echo placeholder_fName ?> />
+                        <input type="text" name="fName" id="fName" value="" placeholder=<?php echo placeholder_fName ?> required/>
                     </div>
                     <div class="col-6 col-12-xsmall">
-                        <input type="email" name="demo-lastName" id="lName" value="" placeholder=<?php echo placeholder_lName ?> />
+                        <input type="text" name="lName" id="lName" value="" placeholder=<?php echo placeholder_lName ?> required/>
                     </div>
                     <div class="col-6 col-12-xsmall">
-                        <input type="text" name="demo-phone" id="phone" value="" placeholder=<?php echo placeholder_phone ?> />
+                        <input type="text" name="phone" id="phone" value="" placeholder=<?php echo placeholder_phone ?> required maxlength="9" minlength="9"/>
                     </div>
                     <div class="col-6 col-12-xsmall">
-                        <input type="text" name="demo-email" id="email" value="" placeholder=<?php echo placeholder_email ?> />
+                        <input type="email" name="email" id="email" value="" placeholder=<?php echo placeholder_email ?> required/>
                     </div>
 
                     <!-- Break -->
@@ -48,7 +48,6 @@
                         <select name="demo-category" id="services" >
                             <option selected="selected" class="services"><?php echo SERVICE_QUESTION ?>  </option>
                             <option value="huile"><?php echo SERVICE_HUILE ?></option>
-                            <option value="penus"><?php echo SERVICE_PNEUS ?></option>
                             <option value="alignment"><?php echo SERVICE_ALIGNMENT ?></option>
                             <option value="injection"><?php echo SERVICE_INJECTION ?></option>
                             <option value="echappment"><?php echo SERVICE_ECHAPPMENT ?></option>
@@ -63,11 +62,17 @@
 
                     </div>
                     <div class="col-8">
-                    <input type="date" id="date"  name="bday">
+                    <input type="date" id="bday"  name="bday" required>
                     </div>
-                    <?php
 
-                    ?>
+                    <div class="col-8">
+                        <label><?php echo available_hours ?></label>
+                    </div>
+                    <div class="col-4">
+                        <select name ="hours">
+                            <option></option>
+                        </select>
+                    </div>
                     <!-- Break -->
                     <div class="col-4 col-12-small">
                         <label><?php echo CONTACT_LABEL?></label>

@@ -3,7 +3,7 @@
  *HOME PAGE
  */
 
-define("GARAGE_NAME", "Garage Chemin Chambly");
+define("GARAGE_NAME", "Chemin Chambly Auto Service ");
 
 define("DESC_GARAGE","The Chemin de Chambly Garage offers exceptional and courteous customer service.
                     Benefit from the expertise of our team that will analyze, repair and maintain 
@@ -53,7 +53,7 @@ define("CONTACT_US", "Contact Us");
     //SERVICE PAGE
 */
 
-define("SERVICE_INFO", "Garage Chemin de Chambly Services");
+define("SERVICE_INFO", "Chemin Chambly Auto Services");
 
 define("SERVICE_LIST",array(
     "Oil change service",
@@ -90,13 +90,15 @@ define("DETAILS_MECHANIQUE2_TEXT",
      recommendations from car dealers and manufacturers.
       We also maintain antique vehicles.");
 
-define("DETAILS_MECHANIQUE3", "Automotive alignment");
+define("DETAILS_MECHANIQUE3", "Sale of tires");
 define("DETAILS_MECHANIQUE3_TEXT",
 
-    "the Garage Chemin de Chambly is the alignment specialist in Longueuil.
-     After any repair to the pipe, suspension or after a road accident
-     it is important to check and adjust the parallelism of your wheels
-     to prolong the life of your tires and save fuel.");
+    "Garage Chemin de Chambly is a retailer of new tires for most brands,
+    models and dimensions for automobile and light truck in Longueuil.
+    Do you need advice on purchasing new tires, winter tires and all-season tires?
+    Our advisers are responsible for finding a product that meets your needs.
+
+");
 
 define("DETAILS_MECHANIQUE4", "Engine & Power Diagnostics");
 define("DETAILS_MECHANIQUE4_TEXT",
@@ -156,3 +158,4 @@ define("Welcome", "Welcome dear member");
 define("Connect","Connect");
 define("Password", "Password");
 
+define("available_hours", "Available Hours: ");

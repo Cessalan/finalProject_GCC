@@ -3,9 +3,9 @@
  *HOME PAGE
  */
 
-define("GARAGE_NAME", "Le Garage Chemin Chambly");
+define("GARAGE_NAME", "Chemin Chambly Auto Service ");
 
-define("DESC_GARAGE","offre un service à la clientèle exceptionnel et courtois. Profitez de l'expertise de notre équipe qui
+define("DESC_GARAGE","Offre un service à la clientèle exceptionnel et courtois. Profitez de l'expertise de notre équipe qui
                 saura analyser, réparer et entretenir votre automobile.
                 Notre garage à Longueuil est équipé avec les outils les plus modernes afin d'effectuer 
                 des réparations de mécanique américaine, mécanique asiatique et mécanique européenne.");
@@ -36,7 +36,7 @@ define("SUBSCRIPTION_EMAIL", "Entrez votre courriel pour vous inscrire");
 define("EMAIL", "votre courriel");
 define("SUBSCRIPTION_SUBMIT", "Enregistrez-Vous");
 
-define("QUESTION_TEXT","Si vous avez une quelquonce question à propos de nos services ou si vous avez
+define("QUESTION_TEXT","Si vous avez une quelconque question à propos de nos services ou si vous avez
                     besoin de renseignements additionels, n' hesitez pas à nous contacter. Nous nous ferons
                     un plaisir de vous répondre.");
 
@@ -84,13 +84,13 @@ define("DETAILS_MECHANIQUE2_TEXT",
      recommandations des concessionnaires et manufacturiers automobiles.
       Nous entretenons également les véhicules antiques.");
 
-define("DETAILS_MECHANIQUE3", "Alignement automobile ");
+define("DETAILS_MECHANIQUE3", "Vente de pneus");
 define("DETAILS_MECHANIQUE3_TEXT",
 
-    "Le spécialiste de l'alignement à Longueuil, c'est le Garage Chemin de Chambly.
-     Après toute réparation de la conduite, de la suspension ou après un accident de la route
-     il est important de vérifier et ajuster le parallélisme de vos roues
-     afin de prolonger la vie de vos pneus et déconomiser en essence.");
+    "Le Garage Chemin de Chambly est détaillant de pneus neufs de la plupart des marques, 
+    modèles et dimensions pour automobile et camion léger à Longueuil.
+    Vous avez besoin de conseils pour l'achat de pneus neufs, pneus d'hiver et quatre-saisons? 
+    Nos conseillers s'occupent de trouver un produit qui correspond à vos besoins.");
 
 define("DETAILS_MECHANIQUE4", "Diagnostic de moteur & d'électricité ");
 define("DETAILS_MECHANIQUE4_TEXT",
@@ -150,3 +150,4 @@ define("Welcome", "Bienvenue cher membre");
 define("Connect","Se connecter");
 define("Password", "Mot de passe");
 
+define("available_hours", "Heures disponibles: ");
