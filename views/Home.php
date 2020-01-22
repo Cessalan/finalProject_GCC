@@ -54,7 +54,7 @@ include_once("../inc/config.php");
         <div class="inner">
             <h2 class="alt"><?php echo SUBSCRIPTION ?></h2>
             <p><?php echo SUBSCRIPTION_EMAIL ?> </p>
-            <form method="post" action="" class="combined">
+            <form method="get" action="../controllers/Subscriber_Add.php" class="combined">
                 <input type="email" name="email" id="email" placeholder="<?php echo EMAIL ?>" class="invert" />
                 <input type="submit" class="special" value="<?php echo SUBSCRIPTION_SUBMIT ?>" />
             </form>

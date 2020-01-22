@@ -34,7 +34,7 @@
 
 	<div class="limiter">
         <a href="CreateAccount.php">NOUVEAU COMPTE</a>
-        <form method="get" action="../controllers/Email_Sender.php">
+        <form method="get" action="../controllers/SubscriptionController.php">
             <input type="submit" value="Send Email">
         </form>
 		<div class="container-login100">

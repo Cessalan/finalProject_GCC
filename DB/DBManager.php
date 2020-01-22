@@ -119,8 +119,8 @@ function getAccountInfos($email){
     $conn=connection();
     $info= array();
 
-    $sqlGetAcccountInfos="SELECT * FROM account where email='".$email."'";
-    $results=$conn->query($sqlGetAcccountInfos) or die($conn->error);
+    $salGetAccountInfo="SELECT * FROM account where email='".$email."'";
+    $results=$conn->query($salGetAccountInfo) or die($conn->error);
     if($results->num_rows==1){
        while($record=$results->fetch_array()){
            $info["fname"]=$record["first_name"];
@@ -133,6 +133,33 @@ function getAccountInfos($email){
 
 
  return $info;
+}
+
+
+function insertSubscriber($email){
+    $conn=connection();
+    $sqlInsertSubscriber="INSERT INTO subscription(email) values ('$email')";
+    $conn->query($sqlInsertSubscriber) or die($conn->error);
+
+}
+
+function getSubscribers(){
+    $conn=connection();
+    $subscriber_array=array();
+
+    $sqlGetSubscribers="SELECT * FROM subscription";
+    $result=$conn->query($sqlGetSubscribers)or die($conn->error);
+
+    if($result->num_rows>0){
+
+        while($record=$result->fetch_array()){
+
+            array_push($subscriber_array,$record["email"]);
+        }
+    }
+
+return $subscriber_array;
+
 }
 
 
