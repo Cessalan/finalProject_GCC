@@ -58,6 +58,7 @@ function  getAccount($email,$pwd){
 }
 
 
+//updates account
 function updateAccount($email,$fname,$lname,$phone,$address,$zip){
 $conn=connection();
 $sqlUpdateAccount="UPDATE account set first_name='$fname',
@@ -71,6 +72,8 @@ $conn->query($sqlUpdateAccount) or die($conn->error);
 
 }
 
+
+//change user's password
 function updatePassword($email,$oldPassword,$newPassword){
 $conn=connection();
 
@@ -114,7 +117,7 @@ function insertAppointment(){
   $sqlInsertAppointment="";
 }
 
-
+//Get all the information about a user using his email
 function getAccountInfos($email){
     $conn=connection();
     $info= array();
@@ -143,6 +146,8 @@ function insertSubscriber($email){
 
 }
 
+
+//get all the subscribers from the subscribers table
 function getSubscribers(){
     $conn=connection();
     $subscriber_array=array();
@@ -159,7 +164,6 @@ function getSubscribers(){
     }
 
 return $subscriber_array;
-
 }
 
 
