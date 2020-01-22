@@ -62,7 +62,7 @@
 
                     </div>
                     <div class="col-8">
-                    <input type="date" id="bday"  name="bday" required>
+                    <input type="date" id="appointment_date"  name="appointment_date" required>
                     </div>
 
                     <div class="col-8">

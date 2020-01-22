@@ -12,7 +12,7 @@ $fName=$_GET['fName'];
 $lName=$_GET['lName'];
 $phone=$_GET['phone'];
 $email=$_GET['email'];
-$bday=$_GET['bday'];
+$bday=$_GET['appointment_date'];
 $contact_choice=$_GET['demo-radio'];
 $message=$_GET['message'];
 
