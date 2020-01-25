@@ -31,7 +31,6 @@ function sendMail($subject,$message,$recipient){
     }
     $mail->Subject=$subject;
     $mail->Body=$message;
-
     $mail->SMTPDebug = 2;
 
     if($mail->Send()){

@@ -109,7 +109,11 @@ function getHours($date){
     }
 }
 
+function getAvailabilities($availabilities){
+    $conn=connection();
+    $sqlInsertDays="";
 
+}
 
 //insert appointment in the db when users books an appointment
 function insertAppointment(){

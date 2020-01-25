@@ -8,10 +8,10 @@
 include('../DB/DBManager.php');
 include('../controllers/Email_Sender.php');
 
-function emailSubscriber(){
+function emailSubscriber($subject,$message){
     $array=getSubscribers();
     foreach($array as $email){
-        sendMail("Promotion","Venez nous voir","$email");
+        sendMail($subject,$message,"$email");
     }
 }
 
