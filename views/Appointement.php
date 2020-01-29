@@ -1,7 +1,8 @@
 <?php
     include("../inc/header.php");
+include('../DB/DBManager.php');
 
-
+$conn = connection();
 define("NORMAL" ,array("8:30","9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","15:00","15:30"
 ,"16:00", "16:30", "17:00"));
 define("SAT_HOURS", array("\"9:00\",\"9:30\",\"10:00\",\"10:30\",\"11:00\",\"11:30\",\"12:00\",\"12:30\",\"13:00\",\"13:30\",\"14:00\",\"15:00\",\"15:30\"
@@ -78,13 +79,27 @@ $available_hours = array();
                     <div class="col-4">
                         <select name ="hours">
                             <?php
-                            foreach(NORMAL as $item)
+                            $app_date = $_GET['appointment_date'];
+                            $sql_select = "SELECT Time FROM appointment WHERE date='".$app_date."'";
+
+                            $res=$conn->query($sql_select) or die($conn->error);
+                            if($res->num_rows > 0){
+                                while($rec = $res ->fetch_array()){
+                                    array_push($available_hours, $rec['Time']);
+                                }
+                            }
+                            $FREE_HOURS = array_diff(NORMAL,$available_hours);
+
+                            foreach($FREE_HOURS as $item)
                             {
                                 echo "<option value='$item'>$item</option>";
                             }
-
                             ?>
                         </select>
+                        <?php
+/*                        print_r($available_hours);
+                        print_r($FREE_HOURS);*/
+                        ?>
                     </div>
                     <!-- Break -->
                     <div class="col-4 col-12-small">
