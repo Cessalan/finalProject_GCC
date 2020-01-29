@@ -28,7 +28,7 @@
 <header id="header">
     <?php
     include(PREAMBLE . 'inc/nav-bar.php');?>
-    <a class="logo" href="index.html"> <span>GCC</span></a>
+    <a class="logo" href="../views/Home.php"> <span>GCC</span></a>
 </header>
 
 <div class="limiter">
@@ -36,7 +36,7 @@
         <div class="wrap-login100">
             <div class="login100-pic js-tilt" data-tilt>
                 <br><br><br>
-                <img src="../assets/pictures/GCCMEC.png" alt="member icon" height="100px" >
+                <img src="../assets/pictures/GCCMEC.png" alt="member icon"  >
                 <p> Notez que les jours de travails dépendent du gérant et de la clientèle.
                     Nous ne donnons donc aucune garantie.
                     Merci de votre compréhension.
@@ -77,7 +77,7 @@
                     <label for="saturday">Samedi</label>
                 </div><br>
                 <input type="submit" value="Envoyer" class="primary" /><br><br>
-               <a href="../view/EmployeeSchedule.php"> <input type="Button" value="Voir mon horaire" class="primary"  onclick=""/></a>  <br> <br>
+               <a href="../views/EmployeeSchedule.php"> <input type="Button" value="Voir mon horaire" class="primary"  onclick=""/></a>  <br> <br>
                 <a href="../views/SetUpAccount.php"><input type="Button" value="Mettre à jour mon compte" class="primary" /></a><br>
             </form>
 

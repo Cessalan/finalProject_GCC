@@ -1,5 +1,12 @@
 <?php
     include("../inc/header.php");
+
+
+define("NORMAL" ,array("8:30","9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","15:00","15:30"
+,"16:00", "16:30", "17:00"));
+define("SAT_HOURS", array("\"9:00\",\"9:30\",\"10:00\",\"10:30\",\"11:00\",\"11:30\",\"12:00\",\"12:30\",\"13:00\",\"13:30\",\"14:00\",\"15:00\",\"15:30\"
+                        ,\"16:00\""));
+$available_hours = array();
     ?>
 
     <title>Login</title>
@@ -20,7 +27,7 @@
                 <img id="imgPosition" src="../assets/pictures/GCCMEC.png" alt="member icon" height="100px" >
             </div>
 
-            <form class="login100-form validate-form" method="GET" action="../controllers/Account_Login.php">
+            <form class="login100-form validate-form" method="GET" action="../controllers/AppointmentController.php">
 					<span class="login100-form-title">
                         <?php
                         echo APPOINTMENT_TEXT
@@ -70,7 +77,13 @@
                     </div>
                     <div class="col-4">
                         <select name ="hours">
-                            <option></option>
+                            <?php
+                            foreach(NORMAL as $item)
+                            {
+                                echo "<option value='$item'>$item</option>";
+                            }
+
+                            ?>
                         </select>
                     </div>
                     <!-- Break -->
@@ -124,6 +137,7 @@
     <script src="js/main.js"></script>
     <?php
     include(PREAMBLE.'inc/scripts.php');
+
     ?>
 </div>
 </body>
