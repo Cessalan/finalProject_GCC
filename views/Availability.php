@@ -43,7 +43,7 @@
                 </p>
             </div>
 
-            <form class="login100-form validate-form" method="GET" action="../controllers/Account_Login.php">
+            <form class="login100-form validate-form" method="GET" action="../controllers/AvailabilitiesController.php">
 					<span class="login100-form-title">
                        Donnez vos disponibiliés
 
@@ -53,27 +53,27 @@
 					</span>
 
                 <div class="col-6 col-12-small">
-                    <input type="checkbox"  id="monday"name="days">
+                    <input type="checkbox"  id="monday" name="days[]" value="Monday">
                     <label for="monday">Lundi</label>
                 </div><br>
                 <div class="col-6 col-12-small">
-                    <input type="checkbox"  id="tuesday" name="days" >
+                    <input type="checkbox"  id="tuesday" name="days[]" value="Tuesday">
                     <label for="tuesday">Mardi</label>
                 </div><br>
                 <div class="col-6 col-12-small">
-                    <input type="checkbox"  id="wednesday"name="days" >
+                    <input type="checkbox"  id="wednesday" name="days[]" value="Wednesday">
                     <label for="wednesday">Mercredi</label>
                 </div><br>
                 <div class="col-6 col-12-small">
-                    <input type="checkbox" id="thursday"name="days" >
+                    <input type="checkbox" id="thursday" name="days[]" value="Thursday">
                     <label for="thursday">Jeudi</label>
                 </div><br>
                 <div class="col-6 col-12-small">
-                    <input type="checkbox" id="friday"  name="days" >
+                    <input type="checkbox" id="friday"  name="days[]" value="Friday">
                     <label for="friday">Vendredi</label>
                 </div><br>
                 <div class="col-6 col-12-small">
-                    <input type="checkbox" id="saturday"  name="days" >
+                    <input type="checkbox" id="saturday"  name="days[]" value="Saturday">
                     <label for="saturday">Samedi</label>
                 </div><br>
                 <input type="submit" value="Envoyer" class="primary" /><br><br>
