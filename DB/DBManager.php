@@ -8,6 +8,16 @@ function connection(){
     return $conn;
 }
 
+function insertAppointment($date,$time,$lName,$fName,$phone,$email)
+{
+    $conn = connection();
+
+    $sqlStatement ="INSERT into appointment (date, Time, customer_LastName, customer_FirstName, customer_phone, customer_email)
+                    values('$date','$time','$lName','$fName','$phone','$email')";
+
+
+}
+
 //create account in db when admin creates account
 function insertAccount($email,$password){
     $conn=connection();
@@ -109,10 +119,6 @@ function getHours($date){
 
 
 //insert appointment in the db when users books an appointment
-function insertAppointment(){
-  $conn=connection();
-  $sqlInsertAppointment="";
-}
 
 
 function getAccountInfos($email){
