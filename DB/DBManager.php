@@ -1,22 +1,13 @@
 <?php
 function connection(){
 
-    $conn = new mysqli("127.0.0.1","root","","gcc");
+    $conn = new mysqli("localhost:3308","root","","gcc");
     if($conn->error){
         echo $conn->error;
     }
     return $conn;
 }
 
-function insertAppointment($date,$time,$lName,$fName,$phone,$email)
-{
-    $conn = connection();
-
-    $sqlStatement ="INSERT into appointment (date, Time, customer_LastName, customer_FirstName, customer_phone, customer_email)
-                    values('$date','$time','$lName','$fName','$phone','$email')";
-
-
-}
 
 //create account in db when admin creates account
 function insertAccount($email,$password){

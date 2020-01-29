@@ -12,25 +12,11 @@ $contact_choice=$_GET['demo-radio'];
 $message=$_GET['message'];
 $app_time=$_GET['hours'];
 
-
-
-
-}
 if(!is_numeric($_GET['fName']) ){
     if(!is_numeric($_GET['lName'])){
         if(is_numeric($_GET['phone'])) {
-            if (isset($_GET["bday"]) && ($_GET["bday"] >= date('yy-m-d'))) {
-                $sql_select = "SELECT time FROM appointment WHERE date='".$bday."'";
+            if(isset($_GET["bday"]) && ($_GET["bday"] >= date('yy-m-d'))) {
 
-                $res=$conn->query($sql_select) or die($conn->error);
-                if($res->num_rows < 3){
-                    array_push($available_hours,$res);
-
-
-                }
-
-                $sqlStatement ="INSERT into appointment (date, Time, customer_LastName, customer_FirstName, customer_phone, customer_email)
-                    values('$date','$time','$lName','$fName','$phone','$email')";
 
             }
             echo "Please select a valid date";
