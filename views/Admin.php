@@ -43,8 +43,7 @@
             <a href="../views/Promotion.php"> <input type="Button" value="Promotion" class="primary"/></a>
             <a href="../views/Reports.php"> <input type="Button" value="Reports" class="primary"/></a><br>
             <a href="../views/EmployeeSchedule.php"> <input type="Button" value="L'horaire de la semaine" class="primary"  onclick=""/></a><br>
-            <a href="../views/SetUpAccount.php"><input type="Button" value="L'horaire des Employees" class="primary" /></a>
-
+            <a href="../views/CreateAccount.php"> <input type="Button" value="Ajouter un employer" class="primary"/></a>
 
         </div>
     </div>

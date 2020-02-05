@@ -15,4 +15,4 @@ function emailSubscriber($subject,$message){
     }
 }
 
-emailSubscriber();
+emailSubscriber($_GET['subject'],$_GET['message']);

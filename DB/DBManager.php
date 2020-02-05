@@ -1,7 +1,7 @@
 <?php
 function connection(){
 
-    $conn = new mysqli("localhost:3308","root","","gcc");
+    $conn = new mysqli("127.0.0.1","root","","gcc");
     if($conn->error){
         echo $conn->error;
     }
@@ -110,11 +110,6 @@ function getHours($date){
     }
 }
 
-function getAvailabilities($availabilities){
-    $conn=connection();
-    $sqlInsertDays="";
-
-}
 
 //insert appointment in the db when users books an appointment
 
@@ -126,19 +121,66 @@ function getAccountInfos($email){
     $salGetAccountInfo="SELECT * FROM account where email='".$email."'";
     $results=$conn->query($salGetAccountInfo) or die($conn->error);
     if($results->num_rows==1){
-       while($record=$results->fetch_array()){
-           $info["fname"]=$record["first_name"];
-           $info["lname"]=$record["last_name"];
-           $info["phone_number"]=$record["phone_number"];
-           $info["address"]=$record["address"];
-           $info["zip"]=$record["zip"];
-       }
+        while($record=$results->fetch_array()){
+            $info["id"]=$record["emp_id"];
+            $info["fname"]=$record["first_name"];
+            $info["lname"]=$record["last_name"];
+            $info["phone_number"]=$record["phone_number"];
+            $info["address"]=$record["address"];
+            $info["zip"]=$record["zip"];
+
+
+        }
     }
 
 
- return $info;
+    return $info;
 }
 
+function getAccountList(){
+    $conn=connection();
+    $info= array();
+    $list=array();
+
+    $salGetAccountInfo="SELECT * FROM account ";
+    $results=$conn->query($salGetAccountInfo) or die($conn->error);
+    if($results->num_rows>1){
+        while($record=$results->fetch_array()){
+            $info["id"]=$record["emp_id"];
+            $info["fname"]=$record["first_name"];
+            $info["lname"]=$record["last_name"];
+            $info["email"]=$record["email"];
+            $info["phone_number"]=$record["phone_number"];
+            $info["address"]=$record["address"];
+            $info["zip"]=$record["zip"];
+            array_push($list,$info);
+
+        }
+
+    }
+
+
+    return $list;
+}
+function getUserName($id){
+    $conn=connection();
+    $info="";
+
+    $salGetAccountInfo="SELECT * FROM account where emp_id='".$id."'";
+    $results=$conn->query($salGetAccountInfo) or die($conn->error);
+    if($results->num_rows==1){
+        while($record=$results->fetch_array()){
+
+            $info.=$record["first_name"];
+            $info.=$record["last_name"];
+
+
+        }
+    }
+
+
+    return $info;
+}
 
 function insertSubscriber($email){
     $conn=connection();
@@ -167,4 +209,49 @@ function getSubscribers(){
 return $subscriber_array;
 }
 
+function insertAvailabilities($emp_id,$array){
+    $conn=connection();
+    $numbers=implode(",",$array);
 
+    $deleteExistingAvailabilities="DELETE from availabilities where emp_id='".$emp_id."'";
+    $sqlInsertAvailabilities="INSERT into availabilities (emp_id,lundi,mardi,mercredi,jeudi,vendredi,samedi,dimanche)
+    values($emp_id,$numbers)";
+
+    $conn->query($deleteExistingAvailabilities) or die($conn->error);
+    $conn->query($sqlInsertAvailabilities)or die($conn->error);
+}
+
+function getAvailabilities(){
+    $conn=connection();
+    $table="<table width=\"40\"><tr><th>Nom</th><th>Lundi</th><th>Mardi</th><th>Mercredi</th><th>Jeudi</th><th>Vendredi</th><th>Samedi</th><th>Dimanche</th></tr>";
+    $sqlGetAvailabilities="SELECT * FROM availabilities";
+    $result=$conn->query($sqlGetAvailabilities) or die($conn->error);
+
+
+    if($result->num_rows>0){
+        while($rec=$result->fetch_array()){
+            $table.="<tr><td>".getUserName($rec['emp_id'])."</td>
+                          <td>".x($rec['lundi'])."</td>
+                          <td>".x($rec['mardi'])."</td>
+                          <td>".x($rec['mercredi'])."</td>
+                          <td>".x($rec['jeudi'])."</td>
+                          <td>".x($rec['vendredi'])."</td>
+                          <td>".x($rec['samedi'])."</td>
+                          <td>".x($rec['dimanche'])."</td>
+                    
+                    </tr></table>";
+        }
+    }
+
+    return $table;
+}
+
+function x($num){
+    if($num==1){
+
+
+        return " 8:30am-Fermeture";
+    }else{
+        return " ";
+    }
+}
