@@ -289,18 +289,34 @@ function insertWeeklySchedule($date,$emp1,$emp2,$emp3,$emp4){
     }
 
 }
-
+function conversion(){
+    $french_days=array(
+        "Mon"=>"Lundi",
+        "Tue"=>"Mardi",
+        "Wed"=>"Mercredi",
+        "Thu"=>"Jeudi",
+        "Fri"=>"Vendredi",
+        "Sat"=>"Samedi",
+        "Sun"=>"Dimanche"
+    );
+    return $french_days;
+}
 
 //displays the weekly schedule
 function displayWeeklySchedule()
 {
-    $sqlGetSchedule = "SELECT * From schedule ";
+    $french_days=conversion();
+    $sqlGetSchedule = "SELECT * From schedule where selectedDay > NOW() order by selectedDay ASC  ";
+
     $res = execute($sqlGetSchedule);
-    $table = "<table  class=\"table-wrapper\" width=\"40\"><tr><th>Date/Jour</th><th>Employée 1</th><th>Employé 2</th><th>Employé 3</th><th>Employeé 4</th></tr>";
+
+    $table = "<table  class=\"table-wrapper\" width=\"40\"><tr>
+    <th>Jour/Date</th><th>Employée 1</th><th>Employé 2</th><th>Employé 3</th><th>Employeé 4</th></tr>";
+
     if ($res->num_rows > 0) {
         while ($rec = $res->fetch_array()) {
         $table.="<tr>
-                <td>".$rec['selectedDay']."</td>
+                <td>".$french_days[date('D', strtotime($rec['selectedDay']))]."<br>".$rec['selectedDay']."</td>
 
                 <td>".getEmployeeDetails($rec['emp1'])."</td>
                 
@@ -313,7 +329,42 @@ function displayWeeklySchedule()
                 ;
         }
         $table .= "</tr></table>";
+
         return $table;
     }
 }
 
+function doSelect($statement,$action){
+   $res= execute($statement);
+   if($res->num_rows>0){
+        while($rec=$res->fetch_array()){
+            $action;
+        }
+   }
+}
+
+function displayIndividualSchedule($id){
+    $french_days=conversion();
+
+    $sqlGetDates="Select * From schedule where emp1='".$id."' or emp2='".$id."' or emp3='".$id."' or emp4='".$id."' ";
+    $res=execute($sqlGetDates);
+    $table="<table><tr><th>Date</th><th>Periode 1</th><th>Pause</th><th>Periode 2</th></tr>";
+    if($res->num_rows>0){
+        while($rec=$res->fetch_array()){
+            $day=$french_days[date('D', strtotime($rec['selectedDay']))];
+            $table.="<tr>  
+            <td>".$french_days[date('D', strtotime($rec['selectedDay']))]."<br>".$rec['selectedDay']."</td>
+            <td>8:30 - 12:00 </td><td>12:00-13:00</td>
+            ";
+            if($day=="samedi"){
+                $table.="<td>13:00-16:00</td>";
+            }else{
+                $table.="<td>13:00-17:00</td>";
+            }
+            $table.="<tr>";
+        }
+
+    }
+    $table.="</table>";
+    return $table;
+}

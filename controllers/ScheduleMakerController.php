@@ -15,15 +15,13 @@ $emp4 = $_GET['emp4'];
 
 if(isset($_GET['date'])&&isset($_GET['emp1'])&&isset($_GET['emp2'])&&isset($_GET['emp3'])&&isset($_GET['emp4'])){
 
-    echo insertWeeklySchedule($dateSelected,$_GET['emp1'],$_GET['emp2'],$_GET['emp3'],$_GET['emp4']);
-    /*    $conn = connection();
-     $add_sql = "INSERT into schedule(selectedDay,emp1,emp2,emp3,emp4)
-                 VALUES('" . $dateSelected . "','" . $emp1 . "','".$emp2."','" . $emp3 . "','" . $emp4 . "')";
-                                                $add_res = $conn->query($add_sql) or die($conn->error);*/
 
+    echo insertWeeklySchedule($dateSelected,$_GET['emp1'],$_GET['emp2'],$_GET['emp3'],$_GET['emp4']);
 
 
 }
+
+
 
 
 

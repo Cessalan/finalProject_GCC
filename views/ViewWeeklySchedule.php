@@ -53,7 +53,8 @@ include('../DB/DBManager.php');
                         Bienvenue au page d'Administration
 					</span>
         <div>
-            <?php echo displayWeeklySchedule();?>
+            <?php echo displayWeeklySchedule();
+            echo displayIndividualSchedule(1);?>
         </div>
 
 
