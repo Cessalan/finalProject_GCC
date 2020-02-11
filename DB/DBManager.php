@@ -346,7 +346,8 @@ function doSelect($statement,$action){
 function displayIndividualSchedule($id){
     $french_days=conversion();
 
-    $sqlGetDates="Select * From schedule where emp1='".$id."' or emp2='".$id."' or emp3='".$id."' or emp4='".$id."' ";
+    $sqlGetDates="Select * From schedule where emp1='".$id."' or emp2='".$id."' or emp3='".$id."' or emp4='".$id."'  and
+    selectedDay > NOW() order by selectedDay ASC ";
     $res=execute($sqlGetDates);
     $table="<table><tr><th>Date</th><th>Periode 1</th><th>Pause</th><th>Periode 2</th></tr>";
     if($res->num_rows>0){
