@@ -8,23 +8,7 @@
 
 include('../DB/DBManager.php');
 
-function getEmp(){
-    $list="";
-    $employees=getAccountList();
-    foreach($employees as $rec){
-        if($rec["lname"]!="") $display=$rec["lname"]; else $display=$rec["email"];
 
-
-        $list.="<option value='".$rec["id"]."'>";
-        $list.=$display;
-        $list.="</option>";
-
-    }
-
-    return $list;
-
-
-}
 
 
 ?>
@@ -56,49 +40,25 @@ function getEmp(){
     <?php
     include("../inc/header.php");?>
 </header>
-    <div class="container-login100">
 
-            <div class="container-login100">
-                <div class="wrap-login100">
-                    <div >
-                        <?php echo getAvailabilities() ?>
-                    </div>
 
-            <div>
-                <form  class="login100-form validate-form" action="../controllers/ScheduleMakerController.php" method="GET">
+<div class="container-login100">
+    <div class="">
+        <div class="login100-pic js-tilt" data-tilt>
+            <br><br><br>
 
-                    `   <b>Jour:    </b> <br> <input type="date" id="date"  name="date" required>
-                    <label>Employée 1</label>
-                    <select name="emp1" required>
-                        <?php echo getEmp()?>
-                    </select><br>
-
-                    <label>Employée 2</label>
-                    <select name="emp2" required>
-                        <?php echo getEmp()?>
-                    </select><br>
-
-                    <label >Employée 3</label>
-                    <select name="emp3" required >
-                        <?php echo getEmp()?>
-                    </select><br>
-
-                    <label>Employée 4</label>
-                    <select name="emp4" required>
-                        <?php echo getEmp()?>
-                    </select>
-                    <br>
-
-                    <input type="submit" value="Save"> <br> <br>
-                    <a href="../views/ViewWeeklySchedule.php"><input type="button" value="Voir Horaire General"></a>
-
-                </form>
-
-            </div>
 
         </div>
-    </div>
+        <span class="login100-form-title">
+                        Bienvenue au page d'Administration
+					</span>
+        <div>
+            <?php echo displayWeeklySchedule();?>
+        </div>
 
+
+    </div>
+</div>
 
 <div><!--===============================================================================================-->
     <script src="../assets/login/vendor/jquery/jquery-3.2.1.min.js"></script>

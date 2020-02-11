@@ -1,4 +1,5 @@
 <?php
+//connection to the database
 function connection(){
 
     $conn = new mysqli("127.0.0.1","root","","gcc");
@@ -111,9 +112,8 @@ function getHours($date){
 }
 
 
-//insert appointment in the db when users books an appointment
 
-//Get all the information about a user using his email
+//Get all the information about a specific user using his email
 function getAccountInfos($email){
     $conn=connection();
     $info= array();
@@ -136,7 +136,7 @@ function getAccountInfos($email){
 
     return $info;
 }
-
+//stores the employees and their related infos in an array for display
 function getAccountList(){
     $conn=connection();
     $info= array();
@@ -162,7 +162,10 @@ function getAccountList(){
 
     return $list;
 }
-function getUserName($id){
+
+// display employee email,fname & lname in a string
+function getEmployeeDetails($id){
+
     $conn=connection();
     $info="";
 
@@ -171,8 +174,16 @@ function getUserName($id){
     if($results->num_rows==1){
         while($record=$results->fetch_array()){
 
-            $info.=$record["first_name"];
-            $info.=$record["last_name"];
+            $info.=$record["first_name"]."<br>";
+            $info.=$record["last_name"]."<br>";
+            if($record["first_name"]==null||$record["last_name"]==null){
+                $info.=$record["email"];
+            }else{
+                $record["email"]="";
+                $info.=$record["email"];
+            }
+
+
 
 
         }
@@ -181,7 +192,7 @@ function getUserName($id){
 
     return $info;
 }
-
+ //insert subscriber into the Subscriber table
 function insertSubscriber($email){
     $conn=connection();
     $sqlInsertSubscriber="INSERT INTO subscription(email) values ('$email')";
@@ -208,7 +219,7 @@ function getSubscribers(){
 
 return $subscriber_array;
 }
-
+//insert employee's availabilities in DB//////
 function insertAvailabilities($emp_id,$array){
     $conn=connection();
     $numbers=implode(",",$array);
@@ -220,17 +231,16 @@ function insertAvailabilities($emp_id,$array){
     $conn->query($deleteExistingAvailabilities) or die($conn->error);
     $conn->query($sqlInsertAvailabilities)or die($conn->error);
 }
-
+// displays the availabilities of each employee in a table/////
 function getAvailabilities(){
     $conn=connection();
-    $table="<table width=\"40\"><tr><th>Nom</th><th>Lundi</th><th>Mardi</th><th>Mercredi</th><th>Jeudi</th><th>Vendredi</th><th>Samedi</th><th>Dimanche</th></tr>";
+    $table="<table  class=\"table-wrapper\" width=\"40\"><tr><th>Nom</th><th>Lundi</th><th>Mardi</th><th>Mercredi</th><th>Jeudi</th><th>Vendredi</th><th>Samedi</th><th>Dimanche</th></tr>";
     $sqlGetAvailabilities="SELECT * FROM availabilities";
     $result=$conn->query($sqlGetAvailabilities) or die($conn->error);
 
-
     if($result->num_rows>0){
         while($rec=$result->fetch_array()){
-            $table.="<tr><td>".getUserName($rec['emp_id'])."</td>
+            $table.="<tr><td>".getEmployeeDetails($rec['emp_id'])."</td>
                           <td>".x($rec['lundi'])."</td>
                           <td>".x($rec['mardi'])."</td>
                           <td>".x($rec['mercredi'])."</td>
@@ -239,13 +249,14 @@ function getAvailabilities(){
                           <td>".x($rec['samedi'])."</td>
                           <td>".x($rec['dimanche'])."</td>
                     
-                    </tr></table>";
+                    </tr>";
         }
     }
-
+    $table.="</table>";
     return $table;
 }
 
+//goes with getAvailabilities to format the display
 function x($num){
     if($num==1){
 
@@ -255,3 +266,54 @@ function x($num){
         return " ";
     }
 }
+
+function execute($statement){
+    $conn=connection();
+    $res= $conn->query($statement) or die($conn->error);
+    return $res;
+}
+
+//insert weekly schedule made by the admin in the DB
+function insertWeeklySchedule($date,$emp1,$emp2,$emp3,$emp4){
+    $sql_check="Select * from schedule where selectedDay='".$date ."'";
+    $res=execute($sql_check);
+
+    if($res->num_rows>0){
+        $sql_update="Update schedule set emp1='$emp1',emp2='$emp2',emp3='$emp3',emp4='$emp4' where selectedDay='$date'";
+        execute($sql_update);
+    }else{
+
+        $add_sql = "INSERT into schedule(selectedDay,emp1,emp2,emp3,emp4)
+             VALUES('" . $date . "','" . $emp1 . "','".$emp2."','" . $emp3 . "','" . $emp4 . "')";
+        execute($add_sql);
+    }
+
+}
+
+
+//displays the weekly schedule
+function displayWeeklySchedule()
+{
+    $sqlGetSchedule = "SELECT * From schedule ";
+    $res = execute($sqlGetSchedule);
+    $table = "<table  class=\"table-wrapper\" width=\"40\"><tr><th>Date/Jour</th><th>Employée 1</th><th>Employé 2</th><th>Employé 3</th><th>Employeé 4</th></tr>";
+    if ($res->num_rows > 0) {
+        while ($rec = $res->fetch_array()) {
+        $table.="<tr>
+                <td>".$rec['selectedDay']."</td>
+
+                <td>".getEmployeeDetails($rec['emp1'])."</td>
+                
+                <td>".getEmployeeDetails($rec['emp2'])."</td>
+                
+                <td>".getEmployeeDetails($rec['emp3'])."</td>
+                
+                <td>".getEmployeeDetails($rec['emp4'])."</td>
+                "
+                ;
+        }
+        $table .= "</tr></table>";
+        return $table;
+    }
+}
+

@@ -7,6 +7,6 @@
  */
 
 include('../DB/DBManager.php');
-if(!emtpy($_GET['email'])){
+if(isset($_GET['email'])){
     insertSubscriber($_GET['email']);
 }
