@@ -6,32 +6,34 @@
  * Time: 6:37 PM
  */
 session_start();
-$filename="../DB/Availabilities.xml";
-$availabilities=array();
+
+include("../DB/DBManager.php");
+$arr=array(
+    "lundi"=>0,"mardi"=>0,"mercredi"=>0,"jeudi"=>0,"vendredi"=>0,"samedi"=>0,"dimanche"=>0
+
+);
 
 
 
-$xml=simplexml_load_file($filename);
 
 if(!empty($_GET['days'])){
 
-    foreach($_GET['days'] as $val){
+    foreach($_GET['days'] as $choice){
 
-        foreach($xml as $week ){
+        foreach($arr as $key=>$value){
 
-                foreach($week as $day){
-
-
-                        if($day->getName()==$val){
-                            $day->addChild("employee",$_SESSION['currentAccount']);
-                        }
-
-
+            if($choice==$key){
+                $arr[$key]=1;
             }
+
         }
+
     }
 
-    $xml->asXML($filename);
+insertAvailabilities($_SESSION["currentUserID"],$arr);
+   /* echo"CHOICE ";
+    print_r($_GET['days']);
+    echo "My ARRAY:" ;print_r($arr);*/
 }else{
     header("../views/Availability.php");
 }

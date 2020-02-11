@@ -14,10 +14,22 @@ include("../inc/header.php");?>
                     <br>
 
 					</span>
-<form action="../controllers/upload.php" method="post" enctype="multipart/form-data">
+<form action="../controllers/SubscriptionController.php" method="get" enctype="multipart/form-data">
+
+    <div class="wrap-input100 validate-input">
+        <label>Sujet:</label>
+        <input class="input100" type="text" name="subject" required>
+        <span class="focus-input100"></span>
+    </div>
+
+    <div class="wrap-input100 validate-input">
+        <label>Message:</label>
+        <textarea rows="4" cols="50" class="input100" type="text" name="message" required></textarea>
+        <span class="focus-input100"></span>
+    </div>
     Select image to upload:
     <input type="file" name="fileToUpload" id="fileToUpload">
-    <input type="submit" value="Upload Image" name="submit">
+    <input type="submit" value="Send Promotion" name="submit">
 </form>
             <br>
         </div>

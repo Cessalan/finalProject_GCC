@@ -33,10 +33,6 @@
 </header>
 
 	<div class="limiter">
-        <a href="CreateAccount.php">NOUVEAU COMPTE</a>
-        <form method="get" action="../controllers/SubscriptionController.php">
-            <input type="submit" value="Send Email">
-        </form>
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
