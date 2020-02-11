@@ -36,34 +36,74 @@ $conn = connection();
                         ?>
                     </span>
                 <div class="row gtr-uniform">
-                    <div class="col-6 col-12-xsmall">
-                        <input type="text" name="fName" id="fName" value="" placeholder=<?php echo placeholder_fName ?> required/>
-                    </div>
-                    <div class="col-6 col-12-xsmall">
-                        <input type="text" name="lName" id="lName" value="" placeholder=<?php echo placeholder_lName ?> required/>
-                    </div>
-                    <div class="col-6 col-12-xsmall">
-                        <input type="text" name="phone" id="phone" value="" placeholder=<?php echo placeholder_phone ?> required maxlength="10" minlength="10"/>
-                    </div>
-                    <div class="col-6 col-12-xsmall">
-                        <input type="email" name="email" id="email" value="" placeholder=<?php echo placeholder_email ?> required/>
-                    </div>
 
                     <!-- Break -->
-                    <div class="col-4">
-                        <label><?php echo DATE ?></label>
-
+                    <div class="col-12">
+                        <select name="services" id="services" >
+                            <option selected="selected" class="services"><?php echo SERVICE_QUESTION ?>  </option>
+                        <?php
+                        foreach($services as $serv)
+                        {
+                            echo "<option value='$serv[0]'>$serv[1]</option>";
+                        }
+                        ?>
+                        </select>
                     </div>
+
                     <div class="col-8">
-                    <input type="date" id="appointment_date"  name="appointment_date" required>
+                        <label><?php echo available_hours ?></label>
+                    </div>
+                    <div class="col-4">
+                        <select name ="hours" required>
+                            <?php
+                            $app_date = $_GET['appointment_date'];
+                            $sql_select = "SELECT Time FROM appointment WHERE date='".$_GET['appointment_date']."'";
+
+                            $res=$conn->query($sql_select) or die($conn->error);
+                            if($res->num_rows > 0){
+                                while($rec = $res ->fetch_array()){
+                                    array_push($available_hours, $sql_select);
+                                    print_r($available_hours);
+                                }
+                            }
+                            $FREE_HOURS = array_diff(NORMAL,$available_hours);
+
+                            foreach($FREE_HOURS as $item)
+                            {
+                                echo "<option value='$item'>$item</option>";
+                            }
+                            ?>
+                        </select>
+                        <?php
+                       print_r($available_hours);
+                      /*  print_r($FREE_HOURS);*/
+                        ?>
+                    </div>
+                    <!-- Break -->
+                    <div class="col-4 col-12-small">
+                        <label><?php echo CONTACT_LABEL?></label>
                     </div>
 
+
+                    <div class="col-2 col-12-small">
+                        <input type="radio" id="demo-radio-alpha" name="demo-radio"  value="phone"checked>
+                        <label for="demo-radio-alpha"><?php echo placeholder_phone?></label>
+                    </div>
+                    <div class="col-2 col-12-small">
+                        <input type="radio" id="demo-radio-beta" name="demo-radio" value="email">
+                        <label for="demo-radio-beta"><?php echo placeholder_email?></label>
+                    </div>
+
+
+
+                    <!-- Break -->
+                    <div class="col-12">
+                        <textarea name="message" id="message" placeholder="<?php echo MORE_DETAILS ?>" rows="6"></textarea>
                     </div>
                     <!-- Break -->
                     <div id="act">
                         <ul class="actions" >
                             <li><input type="submit" value="<?php echo submit?>" class="primary" /></li>
-                            <li><input type="reset" value="<?php echo reset?>" /></li>
                         </ul>
                     </div>
                 </div>

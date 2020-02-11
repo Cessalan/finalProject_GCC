@@ -1,4 +1,5 @@
 <?php
+include('../inc/config.php');
 function connection(){
 
     $conn = new mysqli("localhost:3308","root","","gcc");
@@ -166,5 +167,21 @@ function getSubscribers(){
 
 return $subscriber_array;
 }
+
+define("NORMAL" ,array("8:30","9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","15:00","15:30"
+,"16:00", "16:30", "17:00"));
+define("SAT_HOURS", array("\"9:00\",\"9:30\",\"10:00\",\"10:30\",\"11:00\",\"11:30\",\"12:00\",\"12:30\",\"13:00\",\"13:30\",\"14:00\",\"15:00\",\"15:30\"
+                        ,\"16:00\""));
+$available_hours = array();
+
+$services=array(
+    // service, price
+    array("huile",SERVICE_HUILE,49.99),
+    array("alignment",SERVICE_ALIGNMENT,119.99),
+    array("injection",SERVICE_INJECTION,69.99),
+    array("echappment",SERVICE_ECHAPPMENT,99),
+    array("pare-brise",SERVICE_PARE_BRISE,150.50),
+    array("anaylse_moteur",SERVICE_ANAYLSE_MOTEUR,99.99),
+    array("frein",SERVICE_FREINS,80.99));
 
 
