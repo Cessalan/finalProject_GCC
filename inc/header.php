@@ -1,7 +1,8 @@
 <!DOCTYPE HTML>
+
 <html lang="fr">
 <?php
-
+session_start();
 define('PREAMBLE', '../');
 include(PREAMBLE.'inc/head.php');?>
 

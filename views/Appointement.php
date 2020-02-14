@@ -51,6 +51,7 @@ $conn = connection();
 
                     <!-- Break -->
                     <div class="col-4">
+
                         <label><?php echo DATE ?></label>
 
                     </div>

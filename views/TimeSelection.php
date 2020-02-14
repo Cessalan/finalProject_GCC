@@ -1,12 +1,14 @@
 <?php
+
     include("../inc/header.php");
 include('../DB/DBManager.php');
-
+include('../models/AppointmentClass.php');
 $conn = connection();
 
+$display_block = "<h1>Order Details</h1><br>";
 
-
-    ?>
+//$infoArray = array();
+?>
 
     <title>Login</title>
     <meta charset="UTF-8">
@@ -15,102 +17,88 @@ $conn = connection();
     <link rel="stylesheet" type="text/css" href="../assets/appoint/util.css">
     <link rel="stylesheet" type="text/css" href="../assets/appoint/main.css">
     <!--===============================================================================================-->
-</head>
+
 <body class ="is-preload">
 
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <div class="login100-pic js-tilt" data-tilt>
+            <div class="login100-pic" >
                 <br><br><br>
                 <img id="imgPosition" src="../assets/pictures/GCCMEC.png" alt="member icon" height="100px" >
             </div>
 
-            <form class="login100-form validate-form" method="GET" action="../controllers/AppointmentController.php">
-					<span class="login100-form-title">
-                        <?php
-                        echo APPOINTMENT_TEXT
-                        . "<br>"
-                        .
-                        FORM_TEXT
-                        ?>
-                    </span>
-                <div class="row gtr-uniform">
+            <?php
+            if (!isset($_SESSION['info'])) {
+                //print message
+                $display_block .= "<p>You have no items in your cart.
+            Please <a href=\"../views/Appointement.php\">Make a reservation</a>!</p>";
+                echo $display_block;
 
-                    <!-- Break -->
-                    <div class="col-12">
-                        <select name="services" id="services" >
-                            <option selected="selected" class="services"><?php echo SERVICE_QUESTION ?>  </option>
-                        <?php
-                        foreach($services as $serv)
-                        {
-                            echo "<option value='$serv[0]'>$serv[1]</option>";
-                        }
-                        ?>
-                        </select>
-                    </div>
-
-                    <div class="col-8">
-                        <label><?php echo available_hours ?></label>
-                    </div>
-                    <div class="col-4">
-                        <select name ="hours" required>
-                            <?php
-                            $app_date = $_GET['appointment_date'];
-                            $sql_select = "SELECT Time FROM appointment WHERE date='".$_GET['appointment_date']."'";
-
-                            $res=$conn->query($sql_select) or die($conn->error);
-                            if($res->num_rows > 0){
-                                while($rec = $res ->fetch_array()){
-                                    array_push($available_hours, $sql_select);
-                                    print_r($available_hours);
-                                }
-                            }
-                            $FREE_HOURS = array_diff(NORMAL,$available_hours);
-
-                            foreach($FREE_HOURS as $item)
-                            {
-                                echo "<option value='$item'>$item</option>";
-                            }
-                            ?>
-                        </select>
-                        <?php
-                       print_r($available_hours);
-                      /*  print_r($FREE_HOURS);*/
-                        ?>
-                    </div>
-                    <!-- Break -->
-                    <div class="col-4 col-12-small">
-                        <label><?php echo CONTACT_LABEL?></label>
-                    </div>
+            }
+            else {
+             $infoArray = unserialize($_SESSION['info']);
+            $timeSelected = $infoArray[0]['timeSelected'];
+            $LastName = $infoArray['lName'];
+            $firstName = $infoArray['fName'];
+            $dateSelected = $infoArray['dateSelected'];
+            $phoneSelected = $infoArray['phone'];
+            $emailSelected = $infoArray['email'];
+            $serviceSelected = $infoArray[0]['serviceSelected'];
+            $price = $infoArray[0]['price'];
 
 
-                    <div class="col-2 col-12-small">
-                        <input type="radio" id="demo-radio-alpha" name="demo-radio"  value="phone"checked>
-                        <label for="demo-radio-alpha"><?php echo placeholder_phone?></label>
-                    </div>
-                    <div class="col-2 col-12-small">
-                        <input type="radio" id="demo-radio-beta" name="demo-radio" value="email">
-                        <label for="demo-radio-beta"><?php echo placeholder_email?></label>
-                    </div>
+            $display_block .= "<table class='table' celpadding=\"3\" cellspacing=\"2\" border=\"1\" width=\"98%\">
+    <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>Date/Time</th>
+	<th>Service</th>
+    <th>Price</th>
+	<tr>";
+           $order = new AppointmentClass($LastName, $firstName, $emailSelected, $phoneSelected, $timeSelected, $dateSelected, $price, $serviceSelected);
+           $taxes = $order->getTax();
+            $totalPrice =  $order->getPriceAfterTax();
+            $payPrice = $totalPrice * 100 +(1);
+            //echo $totalPrice;
+            $display_block .= "<td>" . $order->getFName() . "</td>";
+            $display_block .= "<td>" . $order->getLName() . "</td>";
+            $display_block .= "<td>" . $order->getEmail() . "</td>";
+            $display_block .= "<td>" . $order->getPhone() . "</td>";
+            $display_block .= "<td>" . $order->getDate() . ' ' . $order->getTime() . "</td>";
+            $display_block .= "<td>" . $order->getService() . "</td>";
+            $display_block .= "<td>" . number_format($order->getPrice(), 2) . '$' . "</td>";
+            $display_block .= "</table>";
+            $display_block .= "<table align='right' class=' table-striped' celpadding=\"3\" cellspacing=\"2\" border=\"1\" width=\"30%\">
+				<tr><th align='center'>Total Before Tax:</th><td align='center'> $" . number_format($order->getPrice(), 2) . "</td></tr>";
+            $display_block .= "<tr><th align='center'>Tax Amount:</th><td align='center'>$" . number_format($order->getTax(), 2) . "</td></tr>";
+            $display_block .= "<tr><th align='center'>Total After Tax:</th><td align='center'>$" . number_format($order->getPriceAfterTax(), 2) . "</td></tr></table>";
+
+            $display_block .=
+                "<form action='deleteCart.php'>
+                <input type='submit' value='Remove from cart'  class='btn btn-secondary btn-lg active'role='button'>
+</form>";
 
 
+            $display_block .= '<form action="../controllers/stripeIPN.php"  method="POST">
+                <script
+                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="pk_test_maFVZX8AxdhJl3nollGaWeJU00WrJrPO6D"
+                       data-amount="'.$payPrice.'"
+                        data-name= "'.$serviceSelected.'"
+                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                        data-locale="auto">
+                </script>
+            </form>';
 
-                    <!-- Break -->
-                    <div class="col-12">
-                        <textarea name="message" id="message" placeholder="<?php echo MORE_DETAILS ?>" rows="6"></textarea>
-                    </div>
-                    <!-- Break -->
-                    <div id="act">
-                        <ul class="actions" >
-                            <li><input type="submit" value="<?php echo submit?>" class="primary" /></li>
-                        </ul>
-                    </div>
-                </div>
-            </form>
+
+            echo $display_block;
+             ?>
+            </div>
         </div>
     </div>
-</div>
 <div><!--===============================================================================================-->
     <script src="../assets/login/vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
@@ -126,10 +114,12 @@ $conn = connection();
         })
     </script>
     <!--===============================================================================================-->
-    <script src="js/main.js"></script>
+    <script src="../assets/login/js/main.js"></script>
     <?php
     include(PREAMBLE.'inc/scripts.php');
 
+    }
     ?>
+
 </div>
 </body>

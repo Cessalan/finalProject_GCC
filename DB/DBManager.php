@@ -273,7 +273,13 @@ function execute($statement){
     $res= $conn->query($statement) or die($conn->error);
     return $res;
 }
+function insertAppointement($LastName,$firstName,$emailSelected,$phoneSelected,$timeSelected,$dateSelected,$serviceSelected,$radioSelected,$price){
+    $add_sql = "INSERT into appointment(date, Time, status, customer_LastName, customer_FirstName, customer_phone, customer_email,service,contactChoise,price)
+                                                VALUES('" . $dateSelected . "','" . $timeSelected . "','" . "enable" . "','" . $LastName . "','" . $firstName .
+        "','" . $phoneSelected . "','" . $emailSelected . "','" . $serviceSelected . "','" . $radioSelected . "','" . $price . "')";
 
+    execute($add_sql);
+}
 //insert weekly schedule made by the admin in the DB
 function insertWeeklySchedule($date,$emp1,$emp2,$emp3,$emp4){
     $sql_check="Select * from schedule where selectedDay='".$date ."'";
@@ -386,3 +392,81 @@ function displayIndividualSchedule($id){
         array("pare-brise",SERVICE_PARE_BRISE,150.50),
         array("anaylse_moteur",SERVICE_ANAYLSE_MOTEUR,99.99),
         array("frein",SERVICE_FREINS,80.99));
+
+    function getConfirmationNumber($fName, $lName, $timeSelected, $dateSelected)
+    {
+        $conn = connection();
+        $getAppointmentId="Select appointment_id From appointment where customer_LastName ='".$lName."' and customer_FirstName='".$fName.
+            "' and Time='".$timeSelected."' and date='".$dateSelected."'";
+        $get_item_res = $conn->query($getAppointmentId) or die($conn->error);
+
+        if ($get_item_res->num_rows < 1) {
+            //invalid item
+            echo  "<p><em>Invalid item selection.</em></p>";
+        }else{
+            while ($item_info = $get_item_res->fetch_array()) {
+                $confirmation_number = $item_info['appointment_id'];
+
+            }
+        }
+        echo "$confirmation_number";
+        return $confirmation_number;
+
+    }
+    function matchID($id)
+    {
+        echo "<h1>Your Appointments</h1><br>";
+        $conn = connection();
+        $getAppointmentID = "Select * From appointment where appointment_id = '".$id."' AND status = 'enable'";
+        $table="<table width=\"20%\"><tr></th><th>First Name</th><th>Last Name</th><th>Date</th><th>Time</th><th>Service</th><th>Price</th></tr>";
+        $res=$conn->query($getAppointmentID) or die($conn->error);
+        if($res->num_rows>0) {
+            while ($rec = $res->fetch_array()) {
+                if ($rec['appointment_id'] = $id) {
+
+                    $table .= "<tr>
+                          <td>" . ($rec['customer_LastName']) . "</td>
+                          <td>" . ($rec['customer_FirstName']) . "</td>
+                          <td>" . ($rec['date']) . "</td>
+                          <td>" . ($rec['Time']) . "</td>
+                          <td>" . ($rec['service']) . "</td>
+                          <td>" . ($rec['price']) . "</td></tr>"; ?>
+                    <input type='button' value='Cancel Appointment'
+                           onclick="deleteme(<?php echo $rec['appointment_id']; ?>)" name="Delete"><br><br>
+
+                    <?php $table .= "</table><br>"; ?>
+
+
+                    <script language="javascript">
+                        function deleteme(delid) {
+                            if (confirm("Do you want Delete!")) {
+                                window.location.href = 'delete.php?del_id=' + delid + '';
+                                return true;
+                            }
+                        }
+                    </script>
+                <?php }
+
+                else {
+                    echo " You have no appointment";
+                }
+                return $table;
+            }
+
+
+
+        }
+        else{
+            echo " You have no appointment";
+        }
+
+
+}?>
+
+
+
+<!--    function deleteAppointment($id)
+    {
+        $conn = connection();
+        $sql_update="Update appointment SET status= 'disable' WHERE appointment_id = '".$id."'";
+    }-->

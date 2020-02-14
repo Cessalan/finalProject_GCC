@@ -3,7 +3,9 @@
 <head>
     <?php
     define('PREAMBLE', '../');
-    include(PREAMBLE.'inc/head.php'); ?>
+    include(PREAMBLE.'inc/head.php');
+    session_start();?>
+
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -29,7 +31,6 @@
 <header id="header">
     <?php
     include(PREAMBLE.'inc/nav-bar.php');?>
-    <a class="logo" href="index.html"> <span>GCC</span></a>
 </header>
 
 	<div class="limiter">

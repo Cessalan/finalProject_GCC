@@ -3,6 +3,15 @@
  *HOME PAGE
  */
 
+define("HOME", "Home");
+define("SERVICES", "Services");
+define("CONTACT", "Contact Us");
+define("OUR_SERVICES", "Our services");
+define("MEMBERS", "Members");
+define("APPOINTMENT", "Appointment");
+define("TAKE","Schedule an appointment");
+define("CANCEL", "Cancellation");
+
 define("GARAGE_NAME", "Chemin Chambly Auto Service ");
 
 define("DESC_GARAGE","The Chemin de Chambly Garage offers exceptional and courteous customer service.

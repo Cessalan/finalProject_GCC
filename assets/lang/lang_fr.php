@@ -3,6 +3,15 @@
  *HOME PAGE
  */
 
+
+define("HOME", "Acceuil");
+define("SERVICES", "Services");
+define("CONTACT", "Nous Joindre");
+define("OUR_SERVICES", "Nos services");
+define("MEMBERS", "Membres");
+define("APPOINTMENT", "Rendez-vous");
+define("TAKE","Prendre rendez-vous");
+define("CANCEL", "Annulation");
 define("GARAGE_NAME", "Chemin Chambly Auto Service ");
 
 define("DESC_GARAGE","Offre un service à la clientèle exceptionnel et courtois. Profitez de l'expertise de notre équipe qui

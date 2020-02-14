@@ -1,25 +1,26 @@
 <?php include("../inc/config.php"); ?>
+
 <!-- Nav -->
 <nav id="nav">
     <ul>
-        <li class="current"><a href="../views/Home.php">Home</a></li>
+        <li><a href="../views/Home.php"><?php echo HOME?></a></li>
         <li> <a class="dropdown">Services</a>
 
             <ul>
-                <li><a href="../views/Services.php">Nos services</a></li>
-                <li><a href="../views/Login.php">Membres</a></li>
+                <li><a href="../views/Services.php"><?php echo OUR_SERVICES?></a></li>
+                <li><a href="../views/Login.php"><?php echo MEMBERS?></a></li>
                 <li>
-                    <a href="#">Rendez-vous</a>
+                    <a href="#"><?php echo APPOINTMENT?></a>
                     <ul>
-                        <li><a href="../views/Appointement.php">Prendre rendez-vous</a></li>
-                        <li><a href="#">Annuler</a></li>
+                        <li><a href="../views/Appointement.php"><?php echo TAKE?></a></li>
+                        <li><a href="../views/Cancellation.php"><?php echo CANCEL?></a></li>
                     </ul>
                 </li>
             </ul>
         </li>
-        <li><a href="../views/Contact.php">Contact Us</a></li>
+        <li><a href="../views/Contact.php"><?php echo CONTACT?></a></li>
             <form class="lang_btn" method='get' action='' id='form_lang' >
-                <select name='lang' onchange='changeLang();'>
+                <select name='lang' onchange='changeLang();' style="background-color:#F0E68C">
                     <option value='en' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } ?> >EN</option>
                     <option value='fr' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'fr'){ echo "selected"; } ?> >FR</option>
                 </select>
