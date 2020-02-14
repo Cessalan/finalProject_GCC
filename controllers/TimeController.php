@@ -1,7 +1,6 @@
 <?php
 include("../inc/header.php");
 include('../DB/DBManager.php');
-include('../models/AppointmentClass.php');
 
 $conn = connection();
 

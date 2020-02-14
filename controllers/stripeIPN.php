@@ -2,7 +2,6 @@
 session_start();
 	require_once "../inc/config.php";
 	include("../controllers/Email_Sender.php");
-    include('../models/AppointmentClass.php');
 include('../DB/DBManager.php');
 	\Stripe\Stripe::setVerifySslCerts(false);
 
@@ -31,15 +30,14 @@ $confirmationNumber = array (
 
 array_push($fullArray,$confirmationNumber);
 $_SESSION['fullInfo'] = serialize($fullArray);
-exit();
 
 $totalPrice =  number_format($order->getPriceAfterTax(),2);
 
-/*$payPrice = $totalPrice * 100;
+$payPrice = $totalPrice * 100;
 	if (!isset($_POST['stripeToken'])) {
 		header("Location: ../views/Appointement.php");
 		exit();
-	}*/
+	}
 
 
 	$token = $_POST['stripeToken'];
@@ -56,7 +54,7 @@ $totalPrice =  number_format($order->getPriceAfterTax(),2);
 
 	$message = "Thanks for scheduling an appointment with garage Auto Service!
 
-	            This email confirms your appoint at $timeSelected on $dateSelected at GCC Auto Service Longueuil. Your confirmation number is $confirmationNumber
+	            This email confirms your appoint at $timeSelected on $dateSelected at GCC Auto Service Longueuil. Your confirmation number is $confirmation_number
 	            If you have questions before your appointment, you could us at 1(450) 647 2000
 	            You may cancel your appointment up to 12 hours before the appointment start time
 	            
@@ -67,6 +65,5 @@ $totalPrice =  number_format($order->getPriceAfterTax(),2);
 	sendMail($subject,$message,trim($emailSelected));
 
 	//send an email
-	//store information to the databasS
-	echo 'Success! You have been charged $' . ($totalPrice);
-	//header("Location: ../views/Invoice");
+	//store information to the database
+	header("Location: ../views/Invoice");
