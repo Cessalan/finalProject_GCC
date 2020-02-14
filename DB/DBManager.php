@@ -1,6 +1,7 @@
 <?php
 //connection to the database
 include('../inc/config.php');
+include('../models/AppointmentClass.php');
 function connection(){
 
     $conn = new mysqli("localhost:3308","root","","gcc");
@@ -11,6 +12,8 @@ function connection(){
 }
 
 
+
+/////////////////////////////////////////////ACCOUNT////////////////////////////////////////////////////
 //create account in db when admin creates account
 function insertAccount($email,$password){
     $conn=connection();
@@ -178,7 +181,7 @@ function getEmployeeDetails($id){
             $info.=$record["first_name"]."<br>";
             $info.=$record["last_name"]."<br>";
             if($record["first_name"]==null||$record["last_name"]==null){
-                $info.=$record["email"];
+                $info=$record["email"];
             }else{
                 $record["email"]="";
                 $info.=$record["email"];
@@ -193,6 +196,65 @@ function getEmployeeDetails($id){
 
     return $info;
 }
+
+function getAllEmployees(){
+
+
+    $table="<h2>Liste de tout les employes</h2><table><tr><th>Nom</th><th>Courriel</th><th>Telephone</th><th>Addresse</th><th>Code Postal</th></tr>";
+
+    $salGetAccountInfo="SELECT * FROM account ";
+    $results=execute($salGetAccountInfo);
+    if($results->num_rows>0){
+        while($rec=$results->fetch_array()){
+
+            $table.="<tr><td>".$rec['first_name']."  ".$rec['last_name']."</td>
+                         <td>".$rec['email']."</td><td>".$rec['phone_number']."</td>
+                         <td>".$rec['address']."</td><td>".$rec['zip']."</td></tr>";
+
+        }
+        $table.="</table>";
+    }else{
+        return "Aucun employer enregistrer";
+    }
+
+
+    return $table;
+}
+
+
+function getIncompleteAccounts(){
+    $list="<h2>List de compte(s) incomplet(s)</h2><h3>Email(s):</h3><ul>";
+
+    $salGetAccountInfo="SELECT * FROM account WHERE (first_name is null) or 
+                                                      (last_name is null) or
+                                                      (address is null) or 
+                                                      (email  is null) or 
+                                                      (phone_number is null) or 
+                                                      (zip is null)  ";
+    $results=execute($salGetAccountInfo);
+    if($results->num_rows>0){
+        while($rec=$results->fetch_array()){
+
+            $list.="<li>".$rec['email']."</li>";
+
+        }
+        $list.="</ul>";
+    }else{
+        return "Excellent, tous les comptes sont complets";
+    }
+
+
+    return $list;
+
+}
+
+
+
+
+
+////////////////////////////////////////////SUBSCRIBERS//////////////////////////////////////
+
+
  //insert subscriber into the Subscriber table
 function insertSubscriber($email){
     $conn=connection();
@@ -220,6 +282,10 @@ function getSubscribers(){
 
 return $subscriber_array;
 }
+
+
+/////////////////////////////////////////AVAILABILITIES///////////////////////////////
+
 //insert employee's availabilities in DB//////
 function insertAvailabilities($emp_id,$array){
     $conn=connection();
@@ -232,12 +298,13 @@ function insertAvailabilities($emp_id,$array){
     $conn->query($deleteExistingAvailabilities) or die($conn->error);
     $conn->query($sqlInsertAvailabilities)or die($conn->error);
 }
+
 // displays the availabilities of each employee in a table/////
 function getAvailabilities(){
     $conn=connection();
     $table="<table  class=\"table-wrapper\" width=\"40\"><tr><th>Nom</th><th>Lundi</th><th>Mardi</th><th>Mercredi</th><th>Jeudi</th><th>Vendredi</th><th>Samedi</th><th>Dimanche</th></tr>";
     $sqlGetAvailabilities="SELECT * FROM availabilities";
-    $result=$conn->query($sqlGetAvailabilities) or die($conn->error);
+    $result=execute($sqlGetAvailabilities);
 
     if($result->num_rows>0){
         while($rec=$result->fetch_array()){
@@ -313,7 +380,7 @@ function conversion(){
 function displayWeeklySchedule()
 {
     $french_days=conversion();
-    $sqlGetSchedule = "SELECT * From schedule where selectedDay > NOW() order by selectedDay ASC  ";
+    $sqlGetSchedule = "SELECT * From schedule where selectedDay >=CURRENT_DATE  AND selectedDay<= CURRENT_DATE +INTERVAL 7 DAY";
 
     $res = execute($sqlGetSchedule);
 
@@ -342,14 +409,196 @@ function displayWeeklySchedule()
     }
 }
 
-function doSelect($statement,$action){
-   $res= execute($statement);
-   if($res->num_rows>0){
-        while($rec=$res->fetch_array()){
-            $action;
+
+//displays the whole (past&future)schedule
+function displayWholeSchedule()
+{
+    $french_days=conversion();
+    $sqlGetSchedule = "SELECT * From schedule where selectedDay  order by selectedDay ASC  ";
+
+    $res = execute($sqlGetSchedule);
+
+    $table = "<table  class=\"table-wrapper\" width=\"40\"><tr>
+    <th>Jour/Date</th><th>Employée 1</th><th>Employé 2</th><th>Employé 3</th><th>Employeé 4</th></tr>";
+
+
+    if ($res->num_rows > 0) {
+        while ($rec = $res->fetch_array()) {
+            $table.="<tr>
+                <td>".$french_days[date('D', strtotime($rec['selectedDay']))]."<br>".$rec['selectedDay']."</td>
+
+                <td>".getEmployeeDetails($rec['emp1'])."</td>
+                
+                <td>".getEmployeeDetails($rec['emp2'])."</td>
+                
+                <td>".getEmployeeDetails($rec['emp3'])."</td>
+                
+                <td>".getEmployeeDetails($rec['emp4'])."</td>
+                "
+            ;
         }
-   }
+        $table .= "</tr></table>";
+
+        return $table;
+    }
 }
+
+
+///////////////////////////////////////APPOINTMENT///////////////////////////////////////////////////////////
+function getAllAppointments(){
+   $arrayOfOrders=array();
+    $sqlSelect="SELECT * FROM APPOINTMENT WHERE STATUS='enable'";
+    $res=execute($sqlSelect);
+    if($res->num_rows>0){
+        while($rec=$res->fetch_array()){
+
+            $order= new AppointmentClass(
+                $rec['customer_LastName'],
+                $rec['customer_FirstName'],
+                $rec['customer_email'],
+                $rec['customer_phone'],
+                $rec['Time'],
+                $rec['date'],
+                $rec['price'],
+                $rec['service']);
+
+           array_push($arrayOfOrders,$order);
+        }
+    }
+
+   return $arrayOfOrders;
+
+}
+
+function getTodayAppointments(){
+    $arrayOfOrders=array();
+    $sqlSelect="SELECT * FROM APPOINTMENT WHERE STATUS='enable' AND DATE=current_date ";
+    $res=execute($sqlSelect);
+    if($res->num_rows>0){
+        while($rec=$res->fetch_array()){
+
+            $order= new AppointmentClass(
+                $rec['customer_LastName'],
+                $rec['customer_FirstName'],
+                $rec['customer_email'],
+                $rec['customer_phone'],
+                $rec['Time'],
+                $rec['date'],
+                $rec['price'],
+                $rec['service']);
+
+            array_push($arrayOfOrders,$order);
+        }
+    }
+
+    return $arrayOfOrders;
+
+}
+
+
+function getCancelledAppointments(){
+    $appointment_obj=array();
+    $sqlSelect="SELECT * FROM APPOINTMENT WHERE STATUS='disable'";
+    $res=execute($sqlSelect);
+    if($res->num_rows>0){
+        while($rec=$res->fetch_array()){
+            $order= new AppointmentClass(
+                $rec['customer_LastName'],
+                $rec['customer_FirstName'],
+                $rec['customer_email'],
+                $rec['customer_phone'],
+                $rec['Time'],
+                $rec['date'],
+                $rec['price'],
+                $rec['service']);
+
+            array_push($appointment_obj,$order);
+        }
+    }else{
+        return null;
+    }
+
+    return $appointment_obj;
+}
+
+function getWeeklyAppointment(){
+
+    $appointment_obj=array();
+    $sqlSelect="SELECT * FROM APPOINTMENT WHERE STATUS='enable' AND date >=CURRENT_DATE  AND date<= CURRENT_DATE +INTERVAL 7 DAY";
+    $res=execute($sqlSelect);
+    if($res->num_rows>0){
+        while($rec=$res->fetch_array()){
+
+            $order= new AppointmentClass(
+                $rec['customer_LastName'],
+                $rec['customer_FirstName'],
+                $rec['customer_email'],
+                $rec['customer_phone'],
+                $rec['Time'],
+                $rec['date'],
+                $rec['price'],
+                $rec['service']);
+
+            array_push($appointment_obj,$order);
+        }
+    }
+
+ return $appointment_obj;
+}
+
+function getTomorrowAppointment(){
+
+    $appointment_obj=array();
+    $sqlSelect="SELECT * FROM APPOINTMENT WHERE STATUS='enable' AND date >=CURRENT_DATE  AND date<= CURRENT_DATE +INTERVAL 1 DAY";
+    $res=execute($sqlSelect);
+    if($res->num_rows>0){
+        while($rec=$res->fetch_array()){
+
+            $order= new AppointmentClass(
+                $rec['customer_LastName'],
+                $rec['customer_FirstName'],
+                $rec['customer_email'],
+                $rec['customer_phone'],
+                $rec['Time'],
+                $rec['date'],
+                $rec['price'],
+                $rec['service']);
+
+            array_push($appointment_obj,$order);
+        }
+    }
+
+    return $appointment_obj;
+}
+
+function createAppointmentTable($array){
+    $estimatedRevenue=0;
+    if(!empty($array)){
+
+        $table="<table><tr><th>Date</th><th>Client</th><th>Contact</th><th>Service</th><th>Coût</th></tr>";
+        foreach($array as $obj){
+            $table.="<tr><td> ".$obj->getDate()."</td>
+                      <td>".$obj->getFName() ." ,".$obj->getLName()."</td>
+                      <td>Telephone:". $obj->getPhone()."<br>Courriel: ".$obj->getEmail()."</td>
+                      <td>".$obj->getService()."</td>
+                      <td>".number_format($obj->getPrice(),2)."</td>
+                 </tr>";
+
+            $estimatedRevenue+=$obj->getPrice();
+            $formattedRevenue=number_format($estimatedRevenue,2);
+        }
+        $table.="</table><br><h4>Revenu Estimé: .".$formattedRevenue."$</h4>";
+        return $table;
+
+    }else{
+
+        return "Aucun resultat disponible";
+    }
+
+
+}
+
+
 
 function displayIndividualSchedule($id){
     $french_days=conversion();
@@ -377,6 +626,11 @@ function displayIndividualSchedule($id){
     $table.="</table>";
     return $table;
 }
+
+
+
+
+////////////////////////////////APPOINTMENT RELATED ARRAYS//////////////////////////////////////////////
     define("NORMAL" ,array("8:30","9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","15:00","15:30"
     ,"16:00", "16:30", "17:00"));
     define("SAT_HOURS", array("\"9:00\",\"9:30\",\"10:00\",\"10:30\",\"11:00\",\"11:30\",\"12:00\",\"12:30\",\"13:00\",\"13:30\",\"14:00\",\"15:00\",\"15:30\"

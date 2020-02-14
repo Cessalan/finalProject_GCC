@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php
-
+    session_start();
     define('PREAMBLE', '../');
     include(PREAMBLE.'inc/head.php');
     include (PREAMBLE.'DB/DBManager.php')
@@ -90,7 +90,7 @@
                 </div>
 
                 <input type="submit" value="Enregistrer" class="primary" /><br><br>
-                <a href=""><input type="button" value="Changer mot de passe" class="primary" /></a>
+                <a href="../views/Availability.php"><input type="button" value="🢀" class="primary" /></a>
 
             </form>
 

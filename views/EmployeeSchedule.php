@@ -67,7 +67,7 @@ function getEmp(){
             <div>
                 <form  class="login100-form validate-form" action="../controllers/ScheduleMakerController.php" method="GET">
 
-                    `   <b>Jour:    </b> <br> <input type="date" id="date"  name="date" required>
+                    <h3>  <b>Jour:    </b> <br> <input type="date" id="date"  name="date" required> </h3>
                     <label>Employée 1</label>
                     <select name="emp1" required>
                         <?php echo getEmp()?>
@@ -88,8 +88,8 @@ function getEmp(){
                         <?php echo getEmp()?>
                     </select>
                     <br>
-
-                    <input type="submit" value="Save"> <br> <br>
+                    <a href="../views/Admin.php"><input type="button" value="🢀"  /></a>
+                    <input type="submit" value="Sauvegarder"> <br><br>
                     <a href="../views/ViewWeeklySchedule.php"><input type="button" value="Voir Horaire General"></a>
 
                 </form>

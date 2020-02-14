@@ -51,10 +51,11 @@ include('../DB/DBManager.php');
         </div>
         <span class="login100-form-title">
                         Bienvenue au page d'Administration
+            <p>Ceci est l'horaire pour les 7 prochains  jours à partir de maintenant (<?php echo date("Y/m/d") ?>)</p>
 					</span>
         <div>
-            <?php echo displayWeeklySchedule();
-            echo displayIndividualSchedule(1);?>
+            <?php echo displayWeeklySchedule(); ?>
+            <a href="../views/EmployeeSchedule.php"><input type="button" value="🢀"  /></a>
         </div>
 
 

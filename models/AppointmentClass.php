@@ -9,6 +9,7 @@ class AppointmentClass
     private $Date;
     private $price;
     private $service;
+    private $contactChoice;
     const TAX = 0.15;
 
 
@@ -24,6 +25,7 @@ class AppointmentClass
      * @param $price
      * @param $service
      */
+
     public function __construct($lName, $fName, $email, $phone, $Time, $Date, $price, $service)
     {
         $this->lName = $lName;
@@ -50,6 +52,22 @@ class AppointmentClass
     public function setService($service)
     {
         $this->service = $service;
+    }
+
+    /**
+     * @param mixed $contactChoice
+     */
+    public function setContactChoice($contactChoice)
+    {
+        $this->contactChoice = $contactChoice;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContactChoice()
+    {
+        return $this->contactChoice;
     }
     /**
      * @return mixed

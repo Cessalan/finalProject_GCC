@@ -25,8 +25,19 @@
                     <option value='fr' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'fr'){ echo "selected"; } ?> >FR</option>
                 </select>
             </form>
+            <form method="get" action="../controllers/Logout.php">
+
+                <?php
+                if(isset( $_SESSION['currentUserID'])|| isset( $_SESSION['currentAccount'])){
+                    echo"<input type='submit' value='Déconnexion'>/>";
+                }
+                ?>
+
+            </form>
+
 
     </ul>
+
 </nav>
 
 <!--<script>-->

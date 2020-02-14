@@ -65,7 +65,10 @@
                     <input class="input100" type="password" name="pass_confirm" placeholder="password confirmation" required>
                     <span class="focus-input100"></span>
                 </div>
-                <input type="submit" value="Créer un nouveau compte" class="primary" />
+
+                <input type="submit" value="Créer un nouveau compte" class="primary" /><br><br>
+                <a href="../views/Admin.php"><input type="button" value="🢀"   /></a>
+
             </form>
         </div>
     </div>
