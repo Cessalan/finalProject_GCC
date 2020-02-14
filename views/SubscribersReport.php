@@ -5,7 +5,7 @@
  * Date: 2020-01-29
  * Time: 11:01 PM
  */
-
+session_start();
 include('../DB/DBManager.php');
 
 
@@ -50,16 +50,32 @@ include('../DB/DBManager.php');
 
         </div>
         <span class="login100-form-title">
-                       Options
-
+                        Liste d'abonnés
 					</span>
         <div>
-            <a href="../views/Admin.php"><input type="button" value="🢀"  /></a>
-            <a href="../views/AppointmentReport.php"><input type="button" value="Rapports sur les rendez-vous"  /></a>
-            <a href="../views/EmployeeReport.php"><input type="button" value="Rapports sur les employés"  /></a>
-            <a href="../views/SubscribersReport.php"><input type="button" value="Voir la liste d'abonnés"  /></a>
+
+            <?php
+
+            $subscribers=getSubscribers();
+
+            if(!empty($subscribers)){
+                $count=1;
+                $list="<ol>";
+                foreach($subscribers as $sub){
+                    $count++;
+                    $list.="<li>".$sub."</li>";
+
+                }
+                $list.="</ol>";
+                echo "<h4>Nombre d'abonnés: ".$count."</h4>";
+                echo $list;
+            }else{
+                echo "<h3>Aucun abonnement n'a encore été effectué.</h3>";
+            }
 
 
+            ?>
+            <a href="../views/Report.php"><input type="button" value="🢀Retour" /></a>
         </div>
 
 

@@ -5,7 +5,7 @@
  * Date: 2020-01-29
  * Time: 11:01 PM
  */
-
+session_start();
 include('../DB/DBManager.php');
 
 
@@ -50,16 +50,27 @@ include('../DB/DBManager.php');
 
         </div>
         <span class="login100-form-title">
-                       Options
-
+                        Liste de rendez- vous pour
 					</span>
         <div>
-            <a href="../views/Admin.php"><input type="button" value="🢀"  /></a>
-            <a href="../views/AppointmentReport.php"><input type="button" value="Rapports sur les rendez-vous"  /></a>
-            <a href="../views/EmployeeReport.php"><input type="button" value="Rapports sur les employés"  /></a>
-            <a href="../views/SubscribersReport.php"><input type="button" value="Voir la liste d'abonnés"  /></a>
 
+            <form method="get" action="../controllers/EmployeeReportController.php">
+                <select name="choice">
+                    <!--STICKY SELECT!-->
+                    <option value="all" <?php if(isset($_SESSION['choice'])&&$_SESSION['choice']=="all"){echo "selected";}?> >Voir liste des employes</option>
+                    <option value="notSetUp" <?php if(isset($_SESSION['choice'])&&$_SESSION['choice']=="notSetUp"){echo "selected";}?>>Voir les comptes incomplets</option>
+                  </select
+                    <a href="../views/Report.php"><input type="button" value="🢀 Retour"  /></a>
+                <input type="submit" value="Voir">
 
+            </form>
+
+            <?php
+            if(isset($_SESSION['employee']) &&!empty($_SESSION['employee'])){
+                echo $_SESSION['employee'];
+            }
+
+            ?>
         </div>
 
 

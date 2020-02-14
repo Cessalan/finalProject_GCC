@@ -197,6 +197,56 @@ function getEmployeeDetails($id){
     return $info;
 }
 
+function getAllEmployees(){
+
+
+    $table="<h2>Liste de tout les employes</h2><table><tr><th>Nom</th><th>Courriel</th><th>Telephone</th><th>Addresse</th><th>Code Postal</th></tr>";
+
+    $salGetAccountInfo="SELECT * FROM account ";
+    $results=execute($salGetAccountInfo);
+    if($results->num_rows>0){
+        while($rec=$results->fetch_array()){
+
+            $table.="<tr><td>".$rec['first_name']."  ".$rec['last_name']."</td>
+                         <td>".$rec['email']."</td><td>".$rec['phone_number']."</td>
+                         <td>".$rec['address']."</td><td>".$rec['zip']."</td></tr>";
+
+        }
+        $table.="</table>";
+    }else{
+        return "Aucun employer enregistrer";
+    }
+
+
+    return $table;
+}
+
+
+function getIncompleteAccounts(){
+    $list="<h2>List de compte(s) incomplet(s)</h2><h3>Email(s):</h3><ul>";
+
+    $salGetAccountInfo="SELECT * FROM account WHERE (first_name is null) or 
+                                                      (last_name is null) or
+                                                      (address is null) or 
+                                                      (email  is null) or 
+                                                      (phone_number is null) or 
+                                                      (zip is null)  ";
+    $results=execute($salGetAccountInfo);
+    if($results->num_rows>0){
+        while($rec=$results->fetch_array()){
+
+            $list.="<li>".$rec['email']."</li>";
+
+        }
+        $list.="</ul>";
+    }else{
+        return "Excellent, tous les comptes sont complets";
+    }
+
+
+    return $list;
+
+}
 
 
 
