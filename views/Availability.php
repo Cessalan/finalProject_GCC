@@ -76,8 +76,8 @@
                     <input type="checkbox" id="saturday"  name="days[]" value="samedi">
                     <label for="saturday">Samedi</label>
                 </div><br>
-                <input type="submit" value="Envoyer" class="primary" /><br><br>
-               <a href="../views/EmployeeSchedule.php"> <input type="Button" value="Voir mon horaire" class="primary"  onclick=""/></a>  <br> <br>
+                <input type="submit" value="Envoyer" class="primary" onclick="alert('Confrimez les disponibilites')"/><br><br>
+                <a href="../views/IndividualSchedule.php"> <input type="Button" value="Voir mon horaire" class="primary"  onclick=""/></a>  <br> <br>
                 <a href="../views/SetUpAccount.php"><input type="Button" value="Mettre à jour mon compte" class="primary" /></a><br>
             </form>
 

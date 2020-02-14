@@ -8,6 +8,7 @@ $pass=$_GET['pass'];
 
 if(getAccount($mail,$pass)=="logged" && $mail=="fatsy"){
     $createAccount="../views/Admin.php";
+    $_SESSION['currentAccount']=$mail;
     header("location:".$createAccount);
 
 }else if(getAccount($mail,$pass)=="logged"){

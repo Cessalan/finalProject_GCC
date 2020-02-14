@@ -27,10 +27,13 @@ include("../inc/header.php");?>
         <textarea rows="4" cols="50" class="input100" type="text" name="message" required></textarea>
         <span class="focus-input100"></span>
     </div>
-    Select image to upload:
-    <input type="file" name="fileToUpload" id="fileToUpload">
+<!--    Select image to upload:-->
+<!--    <input type="file" name="fileToUpload" id="fileToUpload">-->
+    <a href="../views/Admin.php"><input type="button" value="🢀"  /></a>
     <input type="submit" value="Send Promotion" name="submit">
 </form>
+
+
             <br>
         </div>
     </div>

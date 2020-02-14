@@ -1,13 +1,17 @@
-<?php include("../inc/config.php"); ?>
+<?php include("../inc/config.php");
+
+?>
 <!-- Nav -->
 <nav id="nav">
     <ul>
+
         <li class="current"><a href="../views/Home.php">Home</a></li>
         <li> <a class="dropdown">Services</a>
 
             <ul>
                 <li><a href="../views/Services.php">Nos services</a></li>
                 <li><a href="../views/Login.php">Membres</a></li>
+
                 <li>
                     <a href="#">Rendez-vous</a>
                     <ul>
@@ -24,8 +28,19 @@
                     <option value='fr' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'fr'){ echo "selected"; } ?> >FR</option>
                 </select>
             </form>
+            <form method="get" action="../controllers/Logout.php">
+
+                <?php
+                if(isset( $_SESSION['currentUserID'])|| isset( $_SESSION['currentAccount'])){
+                    echo"<input type='submit' value='Déconnexion'></>";
+                }
+                ?>
+
+            </form>
+
 
     </ul>
+
 </nav>
 
 <!--<script>-->

@@ -5,7 +5,7 @@
  * Date: 2020-01-29
  * Time: 11:01 PM
  */
-
+session_start();
 include('../DB/DBManager.php');
 
 
@@ -50,15 +50,12 @@ include('../DB/DBManager.php');
 
         </div>
         <span class="login100-form-title">
-                       Options
-
+                        Bienvenue <?php getEmployeeDetails( $_SESSION['currentUserID'])?>
 					</span>
         <div>
-            <a href="../views/Admin.php"><input type="button" value="🢀"  /></a>
-            <a href="../views/AppointmentReport.php"><input type="button" value="Rapports sur les rendez-vous"  /></a>
-            <a href="../views/AppointmentReport.php"><input type="button" value="Rapports sur les employés"  /></a>
 
-
+            <?php echo displayIndividualSchedule(1);?>
+            <a href="../views/Availability.php"><input type="button" value="🢀" class="primary" /></a>
         </div>
 
 

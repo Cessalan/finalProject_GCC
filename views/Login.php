@@ -47,7 +47,7 @@
 
 					</span>
                     <span class="login100-form-title">
-                        <?php echo Connect . ":"?>
+                        <?php echo  "Connexion"?>
 					</span>
 
                         <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">

@@ -136,13 +136,13 @@ if(!empty($_GET)) {
                             ?>
                         </select>
                         <?php
-                        echo"HOURS PICKED:<BR>";
-                        print_r($available_hours);
-                        echo"HOURS DISPLAYED<BR>";
-                       print_r($FREE_HOURS);
-                       echo "<BR></BR>COUNT<BR>";
-                      echo $count
-                      /*  print_r($FREE_HOURS);*/
+//                        echo"HOURS PICKED:<BR>";
+//                        print_r($available_hours);
+//                        echo"HOURS DISPLAYED<BR>";
+//                       print_r($FREE_HOURS);
+//                       echo "<BR></BR>COUNT<BR>";
+//                      echo $count
+//                      /*  print_r($FREE_HOURS);*/
                         ?>
                     </div>
                     <!-- Break -->
@@ -153,11 +153,11 @@ if(!empty($_GET)) {
 
                     <div class="col-2 col-12-small">
                         <input type="radio" id="demo-radio-alpha" name="demo-radio" checked>
-                        <label for="demo-radio-alpha"><?php echo placeholder_phone?></label>
+                        <label for="demo-radio-alpha"><?php echo placeholder_phone?>☏</label>
                     </div>
                     <div class="col-2 col-12-small">
                         <input type="radio" id="demo-radio-beta" name="demo-radio">
-                        <label for="demo-radio-beta"><?php echo placeholder_email?></label>
+                        <label for="demo-radio-beta"><?php echo placeholder_email?>📧</label>
                     </div>
 
 

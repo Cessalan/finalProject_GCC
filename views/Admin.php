@@ -29,21 +29,33 @@
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-            <div class="login100-pic js-tilt" data-tilt>
-                <br><br><br>
-                <img src="../assets/pictures/GCCMEC.png" alt="member icon" height="100px" style= "margin-left: 220px" >
-                <p>
-                </p>
-            </div>
+
 					</span>
                 <span class="login100-form-title">
                         Bienvenue au page d'Administration
 					</span>
             <br>
-            <a href="../views/Promotion.php"> <input type="Button" value="Promotion" class="primary"/></a>
-            <a href="../views/Reports.php"> <input type="Button" value="Reports" class="primary"/></a><br>
-            <a href="../views/EmployeeSchedule.php"> <input type="Button" value="L'horaire de la semaine" class="primary"  onclick=""/></a><br>
-            <a href="../views/CreateAccount.php"> <input type="Button" value="Ajouter un employer" class="primary"/></a>
+            <div class="col-12 col-12-medium">
+
+                <!-- Buttons -->
+                <ul class="actions">
+                    <li>  <a href="../views/Promotion.php"> <input type="Button" value="Promotion 📣" class="primary"/></a></li>
+                    <li> <a href="../views/Report.php"> <input type="Button" value="Raports 📄" class="primary"/></a></li>
+                    <li> <a href="../views/EmployeeSchedule.php"> <input type="Button" value="Horaire 🕓" class="primary"  onclick=""/></a></li>
+
+                </ul>
+                <ul class="actions">
+
+                    <li> <a href="../views/CreateAccount.php"> <input type="Button" value="Ajouter un employer 🙍" class="primary"/></a></li>
+                    <li><a href="https://dashboard.stripe.com/test/dashboard"> <input type="Button" value="Paiments/Stripe 💲" class="primary"/></a></li>
+                </ul>
+
+            </div>
+
+
+
+
+
 
         </div>
     </div>

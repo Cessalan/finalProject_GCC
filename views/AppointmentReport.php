@@ -5,7 +5,7 @@
  * Date: 2020-01-29
  * Time: 11:01 PM
  */
-
+session_start();
 include('../DB/DBManager.php');
 
 
@@ -50,15 +50,32 @@ include('../DB/DBManager.php');
 
         </div>
         <span class="login100-form-title">
-                       Options
-
+                        Liste de rendez- vous pour
 					</span>
         <div>
-            <a href="../views/Admin.php"><input type="button" value="🢀"  /></a>
-            <a href="../views/AppointmentReport.php"><input type="button" value="Rapports sur les rendez-vous"  /></a>
-            <a href="../views/AppointmentReport.php"><input type="button" value="Rapports sur les employés"  /></a>
 
+            <form method="get" action="../controllers/AppointmentReportController.php">
+                <select name="choice">
+                    <!--STICKY SELECT!-->
+                    <option value="today" <?php if(isset($_SESSION['choice'])&&$_SESSION['choice']=="today"){echo "selected";}?> >Voir les rendez-vous d'aujourd'hui</option>
+                    <option value="tomorrow" <?php if(isset($_SESSION['choice'])&&$_SESSION['choice']=="tomorrow"){echo "selected";}?>>Voir les rendez-vous de demain</option>
+                    <option value="cancelled" <?php if(isset($_SESSION['choice'])&&$_SESSION['choice']=="cancelled"){echo "selected";}?>>Voir les rendez-vous annuller</option>
+                    <option value="week" <?php if(isset($_SESSION['choice'])&&$_SESSION['choice']=="week"){echo "selected";}?>>Voir les rendez vous de cette semaine </option>
+                    <option value="all" <?php if(isset($_SESSION['choice'])&&$_SESSION['choice']=="all"){echo "selected";}?>>Voir tous les rendez-vous</option>
+                </select>
+                <a href="../views/Report.php"><input type="button" value="🢀 Retour"  /></a>
+                <input type="submit" value="Voir">
 
+            </form>
+
+            <?php
+            if(isset($_SESSION['appointment_report']) &&!empty($_SESSION['appointment_report'])){
+                echo $_SESSION['appointment_report'];
+            }else{
+                echo "Aucun resultat disponible";
+            }
+
+            ?>
         </div>
 
 
