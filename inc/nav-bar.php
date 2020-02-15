@@ -1,6 +1,7 @@
 <?php include("../inc/config.php"); ?>
 
 <!-- Nav -->
+
 <nav id="nav">
     <ul>
         <li><a href="../views/Home.php"><?php echo HOME?></a></li>
@@ -19,21 +20,24 @@
             </ul>
         </li>
         <li><a href="../views/Contact.php"><?php echo CONTACT?></a></li>
+        <li>
+            <form method="get" action="../controllers/Logout.php">
+
+                <?php
+                if(isset( $_SESSION['currentUserID'])|| isset( $_SESSION['currentAccount'])){
+                    echo"<input type='submit' value='Déconnexion'>";
+                }
+                ?>
+
+            </form>
+        </li>
             <form class="lang_btn" method='get' action='' id='form_lang' >
                 <select name='lang' onchange='changeLang();' style="background-color:#F0E68C">
                     <option value='en' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'en'){ echo "selected"; } ?> >EN</option>
                     <option value='fr' <?php if(isset($_SESSION['lang']) && $_SESSION['lang'] == 'fr'){ echo "selected"; } ?> >FR</option>
                 </select>
             </form>
-            <form method="get" action="../controllers/Logout.php">
 
-                <?php
-                if(isset( $_SESSION['currentUserID'])|| isset( $_SESSION['currentAccount'])){
-                    echo"<input type='submit' value='Déconnexion'>/>";
-                }
-                ?>
-
-            </form>
 
 
     </ul>

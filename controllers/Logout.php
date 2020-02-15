@@ -7,4 +7,4 @@
  */
 session_start();
 session_destroy() or die("FAILED");
-header("../views/Home.php");
+header("Location: ../views/Login.php");

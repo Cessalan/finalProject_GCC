@@ -693,7 +693,7 @@ function displayIndividualSchedule($id){
 
                     <script language="javascript">
                         function deleteme(delid) {
-                            if (confirm("Do you want Delete!")) {
+                            if (confirm("Are you sure, You want to Cancel your Appointment?")) {
                                 window.location.href = 'delete.php?del_id=' + delid + '';
                                 return true;
                             }
@@ -702,7 +702,7 @@ function displayIndividualSchedule($id){
                 <?php }
 
                 else {
-                    echo " You have no appointment";
+
                 }
                 return $table;
             }
@@ -711,7 +711,8 @@ function displayIndividualSchedule($id){
 
         }
         else{
-            echo " You have no appointment";
+            echo " You have no appointments" .
+            "<br> <a href='../views/Cancellation.php'>Go back.</a>";
         }
 
 
