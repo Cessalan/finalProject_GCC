@@ -5,7 +5,6 @@
  * Date: 2020-01-29
  * Time: 11:01 PM
  */
-session_start();
 include('../DB/DBManager.php');
 
 
