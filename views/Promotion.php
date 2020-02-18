@@ -3,12 +3,6 @@
 <?php
 include("../inc/header.php");
 include_once ("../DB/DBManager.php");
-if(isset($_GET['m'])){
-    echo '<script language="javascript">';
-    echo 'alert("'.$_GET['m'].'")';
-    echo '</script>';
-
-}
 ?>
 
 
@@ -23,41 +17,63 @@ if(isset($_GET['m'])){
 
 					</span>
 <br>
-<h3> Send a mail to the Subscribers</h3>
-<form action="../controllers/SubscriptionController.php" method="get" enctype="multipart/form-data">
+<?php
+if(!isset($_SESSION['currentAccount']) || $_SESSION['currentAccount']!="fatsy") {
 
-    <div class="wrap-input100 validate-input">
-        <label>Sujet:</label>
-        <input class="input100" type="text" name="subject" required>
-        <span class="focus-input100"></span>
-    </div>
 
-    <div class="wrap-input100 validate-input">
-        <label>Message:</label>
-        <textarea rows="4" cols="50" class="input100" type="text" name="message" required></textarea>
-        <span class="focus-input100"></span>
-    </div>
+    ?>
 
-    <a href="../views/Admin.php"><input type="button" value="🢀"  /></a>
-    <input type="submit" value="Send Promotion" name="submit">
-</form>
+    <?php }
 
-<br>
-<h3> Insert an Image into the Database</h3>
-<form action="../controllers/upload.php" method="post" enctype="multipart/form-data">
-    Name:<input type="text" name="name" style="width: 350px">
+    else{
+if (isset($_GET['m'])) {
+    echo '<script language="javascript">';
+    echo 'alert("' . $_GET['m'] . '")';
+    echo '</script>';
+}
+    ?>
+    <h3> Send a mail to the Subscribers</h3>
+    <form action="../controllers/SubscriptionController.php" method="get" enctype="multipart/form-data">
+
+        <div class="wrap-input100 validate-input">
+            <label>Sujet:</label>
+            <input class="input100" type="text" name="subject" required>
+            <span class="focus-input100"></span>
+        </div>
+
+        <div class="wrap-input100 validate-input">
+            <label>Message:</label>
+            <textarea rows="4" cols="50" class="input100" type="text" name="message" required></textarea>
+            <span class="focus-input100"></span>
+        </div>
+
+        <a href="../views/Admin.php"><input type="button" value="🢀"/></a>
+        <input type="submit" value="Send Promotion" name="submit">
+    </form>
+
     <br>
- Select image to upload:
-    <input type="file" id="fileToUpload" name="fileToUpload" accept=".jpg, .jpeg, .png">
-    <input type="submit" name="submit" value="Upload The Image">
-</form>
-            <br>
+    <h3> Insert an Image into the Database</h3>
+    <form action="../controllers/upload.php" method="post" enctype="multipart/form-data">
+        Name:<input type="text" name="name" style="width: 350px" required>
+        <br>
+        Select image to upload:
+        <input type="file" id="fileToUpload" name="fileToUpload" accept=".jpg, .jpeg, .png">
+        <input type="submit" name="submit" value="Upload The Image">
+    </form>
+    <br>
 
-<div class="col-4">
-    <h3> Select a Promotion image</h3>
-<?php echo getImage();?>
-    <br><br>
-</div>
+    <form action="Promotion.php" method="post">
+        <h3> Select a Promotion image</h3>
+        <?php echo getImage(); ?>
+        <br>
+        <input type="submit" value="Show a Promotion Picture">
+        <br>
+
+    </form>
+    <?php
+}
+
+?>
         </div>
     </div>
 </div>
