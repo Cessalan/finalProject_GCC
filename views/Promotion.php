@@ -22,9 +22,11 @@ include_once ("../DB/DBManager.php");
 if(!isset($_SESSION['currentAccount']) || $_SESSION['currentAccount']!="fatsy") {
     if(isset($_SESSION['imgSession'])) {
         $imgArray = unserialize($_SESSION['imgSession']);
-
+        $item_image = $imgArray['imgSelected'];
+        echo "<img src='../controllers/uploads/$item_image' alt='picture here'>";
     }
     else{
+        echo "h1";
         echo "<h1>No Promotion Available</h1>";
     }
     }

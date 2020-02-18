@@ -38,11 +38,12 @@ $display_block = "<h1>Order Details</h1><br>";
             }
             else {
             $infoArray = unserialize($_SESSION['info']);
+            if(isset($_SESSION['fullInfo'])){
             $fullInfoArray = unserialize($_SESSION['fullInfo']);
             if($infoArray['lName'] == $fullInfoArray['lName'] && $infoArray[0]['serviceSelected'] == $fullInfoArray[0]['serviceSelected'])
             {
                 header("Location: ../views/Home");
-            }else{
+            }}
             $infoArray = unserialize($_SESSION['info']);
             $timeSelected = $infoArray[0]['timeSelected'];
             $LastName = $infoArray['lName'];
@@ -124,7 +125,7 @@ $display_block = "<h1>Order Details</h1><br>";
     <?php
     include(PREAMBLE.'inc/scripts.php');
 
-    }}
+    }
     ?>
 
 </div>
