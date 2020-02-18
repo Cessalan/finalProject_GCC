@@ -1,10 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <?php
+    define('PREAMBLE', '../');
+    include(PREAMBLE.'inc/head.php');
+    session_start();
+
+
+    if(!isset($_SESSION['currentAccount'])|| $_SESSION['currentAccount']!="fatsy"){
+        header("location:../views/Login.php");
+    }
+
+
+
+
+
+    ?>
+
     <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="../assets/login/images/icons/favicon.ico"/>
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="../assets/login/vendor/bootstrap/css/bootstrap.min.css">
     <!--===============================================================================================-->
@@ -21,43 +38,40 @@
     <!--===============================================================================================-->
 </head>
 <body>
+
 <header id="header">
     <?php
-    include("../inc/header.php");?>
+    include(PREAMBLE.'inc/nav-bar.php');?>
 </header>
 
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
-
-					</span>
-                <span class="login100-form-title">
-                        Bienvenue au page d'Administration
-					</span>
-            <br>
-            <div class="col-12 col-12-medium">
-
-                <!-- Buttons -->
-                <ul class="actions">
-                    <li>  <a href="../views/Promotion.php"> <input type="Button" value="Promotion 📣" class="primary"/></a></li>
-                    <li> <a href="../views/Report.php"> <input type="Button" value="Raports 📄" class="primary"/></a></li>
-                    <li> <a href="../views/EmployeeSchedule.php"> <input type="Button" value="Horaire 🕓" class="primary"  onclick=""/></a></li>
-
-                </ul>
-                <ul class="actions">
-
-                    <li> <a href="../views/CreateAccount.php"> <input type="Button" value="Ajouter un employer 🙍" class="primary"/></a></li>
-                    <li> <a href="../views/ResetAccount.php"> <input type="Button" value="Reinitialiser mot de passe &#128272;" class="primary"/></a></li>
-                    <li><a href="https://dashboard.stripe.com/test/dashboard"> <input type="Button" value="Paiments/Stripe 💲" class="primary"/></a></li>
-                </ul>
-
+            <div class="login100-pic js-tilt" data-tilt>
+                <br><br><br>
+                <img src="../assets/pictures/GCCMEC.png" alt="member icon" height="100px" >
+                <p><?php if(isset($_GET['error']))echo "<h5 style='color:red'>".$_GET['error']."</h5>";?></p>
             </div>
 
+            <form class="login100-form validate-form" method="GET" action="../controllers/Account_Login.php">
+					<span class="login100-form-title">
+                       Page de reinitialisation
+
+					</span>
 
 
+                <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                    <input class="input100" type="text" name="email" placeholder="<?php echo placeholder_email?>" required>
+                    <span class="focus-input100"></span>
+                </div>
 
 
-
+                <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                    <input class="input100" type="password" name="pass" placeholder="Nouveau Mot De Passe" required>
+                    <span class="focus-input100"></span>
+                </div>
+                <input type="submit" value="<?php echo Connect ?>" class="primary" />
+            </form>
         </div>
     </div>
 </div>
@@ -78,7 +92,7 @@
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
     <?php
-    include(PREAMBLE . 'inc/scripts.php');
+    include(PREAMBLE.'inc/scripts.php');
     ?>
 </div>
 

@@ -5,6 +5,10 @@
     include('../inc/header.php');
     include(PREAMBLE . 'inc/head.php');
 
+    if(!isset($_SESSION['currentAccount'])||$_SESSION['currentAccount']=="fatsy"){
+        header("location:../views/Home.php");
+    }
+
 
     if(isset($_GET['m'])){
         echo '<script language="javascript">';

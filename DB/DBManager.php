@@ -2,9 +2,17 @@
 //connection to the database
 include('../inc/config.php');
 include('../models/AppointmentClass.php');
+
+function loginCheck(){
+    if(!isset($_SESSION['currentAccount'])||$_SESSION['currentAccount']=="fatsy"){
+        header("location:../views/Home.php");
+    }
+}
+
+
 function connection(){
 
-    $conn = new mysqli("localhost:3308","root","","gcc");
+    $conn = new mysqli("localhost","root","","gcc");
     if($conn->error){
         echo $conn->error;
     }
