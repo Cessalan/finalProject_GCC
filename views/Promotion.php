@@ -26,7 +26,6 @@ if(!isset($_SESSION['currentAccount']) || $_SESSION['currentAccount']!="fatsy") 
         echo "<img src='../controllers/uploads/$item_image' alt='picture here'>";
     }
     else{
-        echo "h1";
         echo "<h1>No Promotion Available</h1>";
     }
     }

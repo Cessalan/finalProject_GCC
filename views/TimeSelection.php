@@ -28,7 +28,12 @@ $display_block = "<h1>Order Details</h1><br>";
             </div>
 
             <?php
-
+            if(isset($_SESSION['fullInfo'])) {
+                $fullInfoArray = unserialize($_SESSION['fullInfo']);
+                if ($infoArray['lName'] == $fullInfoArray['lName'] && $infoArray[0]['serviceSelected'] == $fullInfoArray[0]['serviceSelected']) {
+                    header("Location: ../views/Invoice");
+                }
+            }else{
             if (!isset($_SESSION['info']) && $_SESSION['info']) {
                 //print message
                 $display_block .= "<p>You have no items in your cart.
@@ -38,24 +43,19 @@ $display_block = "<h1>Order Details</h1><br>";
             }
             else {
             $infoArray = unserialize($_SESSION['info']);
-            if(isset($_SESSION['fullInfo'])){
-            $fullInfoArray = unserialize($_SESSION['fullInfo']);
-            if($infoArray['lName'] == $fullInfoArray['lName'] && $infoArray[0]['serviceSelected'] == $fullInfoArray[0]['serviceSelected'])
-            {
-                header("Location: ../views/Home");
-            }}
-            $infoArray = unserialize($_SESSION['info']);
-            $timeSelected = $infoArray[0]['timeSelected'];
-            $LastName = $infoArray['lName'];
-            $firstName = $infoArray['fName'];
-            $dateSelected = $infoArray['dateSelected'];
-            $phoneSelected = $infoArray['phone'];
-            $emailSelected = $infoArray['email'];
-            $serviceSelected = $infoArray[0]['serviceSelected'];
-            $price = $infoArray[0]['price'];
+
+                $infoArray = unserialize($_SESSION['info']);
+                $timeSelected = $infoArray[0]['timeSelected'];
+                $LastName = $infoArray['lName'];
+                $firstName = $infoArray['fName'];
+                $dateSelected = $infoArray['dateSelected'];
+                $phoneSelected = $infoArray['phone'];
+                $emailSelected = $infoArray['email'];
+                $serviceSelected = $infoArray[0]['serviceSelected'];
+                $price = $infoArray[0]['price'];
 
 
-            $display_block .= "<table class='table' celpadding=\"3\" cellspacing=\"2\" border=\"1\" width=\"98%\">
+                $display_block .= "<table class='table' celpadding=\"3\" cellspacing=\"2\" border=\"1\" width=\"98%\">
     <tr>
     <th>First Name</th>
     <th>Last Name</th>
@@ -65,43 +65,44 @@ $display_block = "<h1>Order Details</h1><br>";
 	<th>Service</th>
     <th>Price</th>
 	<tr>";
-           $order = new AppointmentClass($LastName, $firstName, $emailSelected, $phoneSelected, $timeSelected, $dateSelected, $price, $serviceSelected);
-           $taxes = $order->getTax();
-            $totalPrice =  $order->getPriceAfterTax();
-            $payPrice = $totalPrice * 100 +(1);
-            //echo $totalPrice;
-            $display_block .= "<td>" . $order->getFName() . "</td>";
-            $display_block .= "<td>" . $order->getLName() . "</td>";
-            $display_block .= "<td>" . $order->getEmail() . "</td>";
-            $display_block .= "<td>" . $order->getPhone() . "</td>";
-            $display_block .= "<td>" . $order->getDate() . ' ' . $order->getTime() . "</td>";
-            $display_block .= "<td>" . $order->getService() . "</td>";
-            $display_block .= "<td>" . number_format($order->getPrice(), 2) . '$' . "</td>";
-            $display_block .= "</table>";
-            $display_block .= "<table align='right' class=' table-striped' celpadding=\"3\" cellspacing=\"2\" border=\"1\" width=\"30%\">
+                $order = new AppointmentClass($LastName, $firstName, $emailSelected, $phoneSelected, $timeSelected, $dateSelected, $price, $serviceSelected);
+                $taxes = $order->getTax();
+                $totalPrice = $order->getPriceAfterTax();
+                $payPrice = $totalPrice * 100 + (1);
+                //echo $totalPrice;
+                $display_block .= "<td>" . $order->getFName() . "</td>";
+                $display_block .= "<td>" . $order->getLName() . "</td>";
+                $display_block .= "<td>" . $order->getEmail() . "</td>";
+                $display_block .= "<td>" . $order->getPhone() . "</td>";
+                $display_block .= "<td>" . $order->getDate() . ' ' . $order->getTime() . "</td>";
+                $display_block .= "<td>" . $order->getService() . "</td>";
+                $display_block .= "<td>" . number_format($order->getPrice(), 2) . '$' . "</td>";
+                $display_block .= "</table>";
+                $display_block .= "<table align='right' class=' table-striped' celpadding=\"3\" cellspacing=\"2\" border=\"1\" width=\"30%\">
 				<tr><th align='center'>Total Before Tax:</th><td align='center'> $" . number_format($order->getPrice(), 2) . "</td></tr>";
-            $display_block .= "<tr><th align='center'>Tax Amount:</th><td align='center'>$" . number_format($order->getTax(), 2) . "</td></tr>";
-            $display_block .= "<tr><th align='center'>Total After Tax:</th><td align='center'>$" . number_format($order->getPriceAfterTax(), 2) . "</td></tr></table>";
+                $display_block .= "<tr><th align='center'>Tax Amount:</th><td align='center'>$" . number_format($order->getTax(), 2) . "</td></tr>";
+                $display_block .= "<tr><th align='center'>Total After Tax:</th><td align='center'>$" . number_format($order->getPriceAfterTax(), 2) . "</td></tr></table>";
 
-            $display_block .=
-                "<form action='deleteCart.php'>
+                $display_block .=
+                    "<form action='deleteCart.php'>
                 <input type='submit' value='Remove from cart'  class='btn btn-secondary btn-lg active'role='button'>
 </form>";
 
 
-            $display_block .= '<form action="../controllers/stripeIPN.php"  method="POST">
+                $display_block .= '<form action="../controllers/stripeIPN.php"  method="POST">
                 <script
                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key="pk_test_maFVZX8AxdhJl3nollGaWeJU00WrJrPO6D"
-                       data-amount="'.$payPrice.'"
-                        data-name= "'.$serviceSelected.'"
+                       data-amount="' . $payPrice . '"
+                        data-name= "' . $serviceSelected . '"
                         data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                         data-locale="auto">
                 </script>
             </form>';
 
 
-            echo $display_block;
+                echo $display_block;
+            }
              ?>
             </div>
         </div>
@@ -126,6 +127,7 @@ $display_block = "<h1>Order Details</h1><br>";
     include(PREAMBLE.'inc/scripts.php');
 
     }
+
     ?>
 
 </div>
