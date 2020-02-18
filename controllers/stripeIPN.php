@@ -66,4 +66,4 @@ $payPrice = $totalPrice * 100;
 
 	//send an email
 	//store information to the database
-	header("Location: ../views/Invoice");
+	header("Location: ../views/Invoice.php");

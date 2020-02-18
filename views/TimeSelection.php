@@ -28,10 +28,11 @@ $display_block = "<h1>Order Details</h1><br>";
             </div>
 
             <?php
+            $infoArray = unserialize($_SESSION['info']);
             if(isset($_SESSION['fullInfo'])) {
                 $fullInfoArray = unserialize($_SESSION['fullInfo']);
                 if ($infoArray['lName'] == $fullInfoArray['lName'] && $infoArray[0]['serviceSelected'] == $fullInfoArray[0]['serviceSelected']) {
-                    header("Location: ../views/Invoice");
+                    header("Location: ../views/Invoice.php");
                 }
             }else{
             if (!isset($_SESSION['info']) && $_SESSION['info']) {
