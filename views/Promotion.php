@@ -20,9 +20,13 @@ include_once ("../DB/DBManager.php");
 <br>
 <?php
 if(!isset($_SESSION['currentAccount']) || $_SESSION['currentAccount']!="fatsy") {
-    $imgArray = unserialize($_SESSION['imgSession']);
-    echo $imgArray;
+    if(isset($_SESSION['imgSession'])) {
+        $imgArray = unserialize($_SESSION['imgSession']);
 
+    }
+    else{
+        echo "<h1>No Promotion Available</h1>";
+    }
     }
 
     else{
