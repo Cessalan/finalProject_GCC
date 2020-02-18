@@ -6,5 +6,5 @@
  * Time: 1:29 PM
  */
 session_start();
-session_destroy() or die("FAILED");
-header("Location: ../views/Login.php");
+unset($_SESSION['currentAccount']);
+header("location: ../views/Login.php");
