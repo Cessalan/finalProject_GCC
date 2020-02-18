@@ -23,5 +23,5 @@ if(!isset($_SESSION['currentAccount'])||$_SESSION['currentAccount']!="fatsy"){
         }else{
             header("location:../views/ResetAccount.php?m=Ne laissez aucune case vide");
         }
-
+    header("location:../views/ResetAccount.php?box=Le mot de passe a ete change");
 }

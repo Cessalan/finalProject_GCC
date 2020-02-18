@@ -51,9 +51,14 @@
                 <br><br><br>
                 <img src="../assets/pictures/GCCMEC.png" alt="member icon" height="100px" >
                 <p><?php if(isset($_GET['m']))echo "<h5 style='color:red'>".$_GET['m']."</h5>";?></p>
+                <?php if(isset($_GET['box'])){
+                    echo '<script language="javascript">';
+                    echo 'alert("'.$_GET['box'].'")';
+                    echo '</script>';
+                }?>
             </div>
 
-            <form class="login100-form validate-form" method="POST" action="../controllers/Account_Login.php">
+            <form class="login100-form validate-form" method="POST" action="../controllers/PasswordReset.php">
 					<span class="login100-form-title">
                        Page de reinitialisation
 

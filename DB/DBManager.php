@@ -40,7 +40,7 @@ function insertAccount($email,$password){
 //reset account password (UPDATE)
 function resetPassword($email,$newpass){
     $hash=password_hash($newpass,PASSWORD_DEFAULT);
-    $sqlRest="UPDATE account set password=$hash where email='$email' ";
+    $sqlRest="UPDATE account set password='$hash' where email='$email' ";
     execute($sqlRest);
 }
 
