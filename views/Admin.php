@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+if(!isset($_SESSION['currentAccount'])|| $_SESSION['currentAccount']!="fatsy"){
+    header("location:../views/Login.php");
+}?><!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Login</title>
@@ -25,9 +28,7 @@
     <?php
     session_start();
     include("../inc/header.php");
-    if(!isset($_SESSION['currentAccount'])|| $_SESSION['currentAccount']!="fatsy"){
-        header("location:../views/Login.php");
-    }
+
     ?>
 
 </header>
