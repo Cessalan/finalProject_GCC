@@ -70,6 +70,10 @@
                     <input class="input100" type="password" name="pass" placeholder="Nouveau Mot De Passe" required>
                     <span class="focus-input100"></span>
                 </div>
+                <div class="wrap-input100 validate-input" data-validate = "Password is required">
+                    <input class="input100" type="password" name="passConfirm" placeholder="Confirmation Mot De Passe" required>
+                    <span class="focus-input100"></span>
+                </div>
                 <input type="submit" value="<?php echo Connect ?>" class="primary" />
             </form>
         </div>
