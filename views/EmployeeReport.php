@@ -58,8 +58,8 @@ include('../DB/DBManager.php');
                     <!--STICKY SELECT!-->
                     <option value="all" <?php if(isset($_SESSION['choice'])&&$_SESSION['choice']=="all"){echo "selected";}?> >Voir liste des employes</option>
                     <option value="notSetUp" <?php if(isset($_SESSION['choice'])&&$_SESSION['choice']=="notSetUp"){echo "selected";}?>>Voir les comptes incomplets</option>
-                  </select
-                    <a href="../views/Report.php"><input type="button" value="🢀 Retour"  /></a>
+                  </select>
+                <a href="../views/Report.php"><input type="button" value="🢀 Retour"  /></a>
                 <input type="submit" value="Voir">
 
             </form>

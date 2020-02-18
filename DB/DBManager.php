@@ -3,11 +3,6 @@
 include('../inc/config.php');
 include('../models/AppointmentClass.php');
 
-function loginCheck(){
-    if(!isset($_SESSION['currentAccount'])||$_SESSION['currentAccount']=="fatsy"){
-        header("location:../views/Home.php");
-    }
-}
 
 
 function connection(){
@@ -40,6 +35,13 @@ function insertAccount($email,$password){
     }
 
 
+}
+
+//reset account password (UPDATE)
+function resetPassword($email,$newpass){
+    $hash=password_hash($newpass,PASSWORD_DEFAULT);
+    $sqlRest="UPDATE account set password='$hash' where email='$email' ";
+    execute($sqlRest);
 }
 
 
