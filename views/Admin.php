@@ -1,8 +1,4 @@
-<?php
-session_start();
-if(!isset($_SESSION['currentAccount'])|| $_SESSION['currentAccount']!="fatsy"){
-    header("location:../views/Login.php");
-}?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Login</title>
@@ -33,7 +29,11 @@ if(!isset($_SESSION['currentAccount'])|| $_SESSION['currentAccount']!="fatsy"){
     ?>
 
 </header>
-
+<?php
+if(!isset($_SESSION['currentAccount'])|| $_SESSION['currentAccount']!="fatsy"){
+    header("location:../views/Login.php");
+}
+?>
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">

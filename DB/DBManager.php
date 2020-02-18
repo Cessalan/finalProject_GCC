@@ -755,7 +755,14 @@ function getImage()
     $display_block .="</select>";
     return $display_block;
 }
+function getImagePicture($name)
+{
+    $conn = connection();
+    $selectSQL = "SELECT imagename from images WHERE name = '".$name."'";
+    
+}
 ?>
+
 
 
 
