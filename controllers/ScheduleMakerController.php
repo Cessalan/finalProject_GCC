@@ -17,6 +17,7 @@ if(isset($_GET['date'])&&isset($_GET['emp1'])&&isset($_GET['emp2'])&&isset($_GET
 
 
     echo insertWeeklySchedule($dateSelected,$_GET['emp1'],$_GET['emp2'],$_GET['emp3'],$_GET['emp4']);
+    header("location:../views/EmployeeSchedule.php?m=L'employee a ete sauvegarder");
 
 
 }

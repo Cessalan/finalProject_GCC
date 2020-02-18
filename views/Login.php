@@ -4,7 +4,22 @@
     <?php
     define('PREAMBLE', '../');
     include(PREAMBLE.'inc/head.php');
-    session_start();?>
+    session_start();
+
+    if(isset($_SESSION['currentAccount'])){
+
+        if($_SESSION['currentAccount']=="fatsy"){
+        header("location:../views/Admin.php");}else{
+            header("location:../views/Availability.php");
+        }
+
+    }
+
+
+
+
+
+    ?>
 
 	<title>Login</title>
 	<meta charset="UTF-8">

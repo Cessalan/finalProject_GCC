@@ -1,7 +1,15 @@
 <link rel="stylesheet" type="text/css" href="../assets/login/css/util.css">
 <link rel="stylesheet" type="text/css" href="../assets/login/css/main.css">
 <?php
-include("../inc/header.php");?>
+include("../inc/header.php");
+include_once ("../DB/DBManager.php");
+if(isset($_GET['m'])){
+    echo '<script language="javascript">';
+    echo 'alert("'.$_GET['m'].'")';
+    echo '</script>';
+
+}
+?>
 
 
                 <img id="promotionLogo" src="../assets/pictures/GCCMEC.png" alt="member icon" height="100px" style= "margin-left: 500px" >
@@ -14,6 +22,8 @@ include("../inc/header.php");?>
                     <br>
 
 					</span>
+<br>
+<h3> Send a mail to the Subscribers</h3>
 <form action="../controllers/SubscriptionController.php" method="get" enctype="multipart/form-data">
 
     <div class="wrap-input100 validate-input">
@@ -27,14 +37,27 @@ include("../inc/header.php");?>
         <textarea rows="4" cols="50" class="input100" type="text" name="message" required></textarea>
         <span class="focus-input100"></span>
     </div>
-<!--    Select image to upload:-->
-<!--    <input type="file" name="fileToUpload" id="fileToUpload">-->
+
     <a href="../views/Admin.php"><input type="button" value="🢀"  /></a>
     <input type="submit" value="Send Promotion" name="submit">
 </form>
 
-
+<br>
+<h3> Insert an Image into the Database</h3>
+<form action="../controllers/upload.php" method="post" enctype="multipart/form-data">
+    Name:<input type="text" name="name" style="width: 350px">
+    <br>
+ Select image to upload:
+    <input type="file" id="fileToUpload" name="fileToUpload" accept=".jpg, .jpeg, .png">
+    <input type="submit" name="submit" value="Upload The Image">
+</form>
             <br>
+
+<div class="col-4">
+    <h3> Select a Promotion image</h3>
+<?php echo getImage();?>
+    <br><br>
+</div>
         </div>
     </div>
 </div>

@@ -26,6 +26,11 @@ function getEmp(){
 
 }
 
+if(isset($_GET['m'])){
+    echo '<script language="javascript">';
+    echo 'alert("'.$_GET['m'].'")';
+    echo '</script>';
+}
 
 ?>
 

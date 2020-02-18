@@ -2,6 +2,10 @@
 include("../inc/header.php");
 include('../DB/DBManager.php');
 $conn = connection();
+if(isset($_SESSION['info']))
+{
+    $infoArray = unserialize($_SESSION['info']);
+}
 
 $fName=$_GET['fName'];
 $lName=$_GET['lName'];
@@ -90,9 +94,16 @@ if (!empty($_GET)) {
                             <select name="services" id="services" required>
                                 <option value=""><?php echo SERVICE_QUESTION ?>  </option>
                                 <?php
+                                $list="";
                                 foreach ($services as $serv) {
-                                    echo "<option value='$serv[0]'>$serv[1]" . " $serv[2]" . '$' . "</option>";
+                                    if(!empty($infoArray)&&$infoArray[0]["serviceSelected"]==$serv[0]){
+                                        $list.="<option  value='$serv[0]' selected>$serv[1]" . " $serv[2]" . '$' . "</option>";
+                                    }else{
+                                        $list.="<option  value='$serv[0]' >$serv[1]" . " $serv[2]" . '$' . "</option>";
+                                    }
+
                                 }
+                                echo $list;
                                 ?>
                             </select>
                         </div>

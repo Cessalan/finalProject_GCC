@@ -38,4 +38,4 @@ insertAvailabilities($_SESSION["currentUserID"],$arr);
     header("../views/Availability.php");
 }
 
-
+header("Location:../views/Availability.php?m=Merci,vos disponibilite ont ete envoye");

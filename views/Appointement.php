@@ -3,8 +3,11 @@
 include('../DB/DBManager.php');
 
 $conn = connection();
-
-
+$infoArray = array();
+if(isset($_SESSION['info']))
+{
+    $infoArray = unserialize($_SESSION['info']);
+}
 
     ?>
 
@@ -37,16 +40,16 @@ $conn = connection();
                     </span>
                 <div class="row gtr-uniform">
                     <div class="col-6 col-12-xsmall">
-                        <input type="text" name="fName" id="fName" value="" placeholder=<?php echo placeholder_fName ?> required/>
+                        <input type="text" name="fName" id="fName" value="<?php if(!empty($infoArray)) echo $infoArray['fName'] ?>" placeholder=<?php echo placeholder_fName ?> required/>
                     </div>
                     <div class="col-6 col-12-xsmall">
-                        <input type="text" name="lName" id="lName" value="" placeholder=<?php echo placeholder_lName ?> required/>
+                        <input type="text" name="lName" id="lName" value="<?php if(!empty($infoArray)) echo $infoArray['lName'] ?>" placeholder=<?php echo placeholder_lName ?> required/>
                     </div>
                     <div class="col-6 col-12-xsmall">
-                        <input type="text" name="phone" id="phone" value="" placeholder=<?php echo placeholder_phone ?> required maxlength="10" minlength="10"/>
+                        <input type="text" name="phone" id="phone" value="<?php if(!empty($infoArray)) echo $infoArray['phone'] ?>" placeholder=<?php echo placeholder_phone ?> required maxlength="10" minlength="10"/>
                     </div>
                     <div class="col-6 col-12-xsmall">
-                        <input type="email" name="email" id="email" value="" placeholder=<?php echo placeholder_email ?> required/>
+                        <input type="email" name="email" id="email" value="<?php if(!empty($infoArray)) echo $infoArray['email'] ?>" placeholder=<?php echo placeholder_email ?> required/>
                     </div>
 
                     <!-- Break -->
@@ -56,7 +59,7 @@ $conn = connection();
 
                     </div>
                     <div class="col-8">
-                    <input type="date" id="appointment_date"  name="appointment_date" required>
+                    <input type="date" id="appointment_date"  name="appointment_date" value="<?php if(!empty($infoArray)) echo $infoArray['dateSelected'] ?>" required>
                     </div>
 
                     </div>

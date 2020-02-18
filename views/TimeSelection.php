@@ -28,7 +28,8 @@ $display_block = "<h1>Order Details</h1><br>";
             </div>
 
             <?php
-            if (!isset($_SESSION['info'])) {
+
+            if (!isset($_SESSION['info']) && $_SESSION['info']) {
                 //print message
                 $display_block .= "<p>You have no items in your cart.
             Please <a href=\"../views/Appointement.php\">Make a reservation</a>!</p>";
@@ -36,7 +37,13 @@ $display_block = "<h1>Order Details</h1><br>";
 
             }
             else {
-             $infoArray = unserialize($_SESSION['info']);
+            $infoArray = unserialize($_SESSION['info']);
+            $fullInfoArray = unserialize($_SESSION['fullInfo']);
+            if($infoArray['lName'] == $fullInfoArray['lName'] && $infoArray[0]['serviceSelected'] == $fullInfoArray[0]['serviceSelected'])
+            {
+                header("Location: ../views/Home");
+            }else{
+            $infoArray = unserialize($_SESSION['info']);
             $timeSelected = $infoArray[0]['timeSelected'];
             $LastName = $infoArray['lName'];
             $firstName = $infoArray['fName'];
@@ -117,7 +124,7 @@ $display_block = "<h1>Order Details</h1><br>";
     <?php
     include(PREAMBLE.'inc/scripts.php');
 
-    }
+    }}
     ?>
 
 </div>

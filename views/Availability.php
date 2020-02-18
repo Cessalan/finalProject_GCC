@@ -2,8 +2,18 @@
 <html lang="en">
 <head>
     <?php
-    define('PREAMBLE', '../');
-    include(PREAMBLE . 'inc/head.php');?>
+    include('../inc/header.php');
+    include(PREAMBLE . 'inc/head.php');
+
+
+    if(isset($_GET['m'])){
+        echo '<script language="javascript">';
+        echo 'alert("'.$_GET['m'].'")';
+        echo '</script>';
+    }
+
+
+    ?>
     <title>Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,11 +35,6 @@
     <!--===============================================================================================-->
 </head>
 <body>
-<header id="header">
-    <?php
-    include(PREAMBLE . 'inc/nav-bar.php');?>
-    <a class="logo" href="../views/Home.php"> <span>GCC</span></a>
-</header>
 
 <div class="limiter">
     <div class="container-login100">

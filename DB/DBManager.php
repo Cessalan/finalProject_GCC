@@ -716,7 +716,36 @@ function displayIndividualSchedule($id){
         }
 
 
-}?>
+}
+
+function insertImage($name,$img,$Image)
+{
+    $insertQuery = "INSERT INTO images (name,imagename) VALUES('$name','$img')";
+    $result =execute($insertQuery);
+            move_uploaded_file($Image, "../controllers/uploads/$img");
+            echo "Image has been added";
+        return $result;
+}
+
+
+function getImage()
+{
+    $conn = connection();
+    $selectSQL = "SELECT * from images";
+    $display_block = "<select name='pictures' id='pictures' style='width: 350px'>
+                        <option value=''>Select a Picture</option>";
+
+    $res = $conn->query($selectSQL) or die($conn->error);
+    if ($res->num_rows > 0) {
+        while ($rec = $res->fetch_array()) {
+            $display_block .= "<option value='" . $rec['name'] . "'>" . $rec['name'] . "</option>";
+        }
+
+    }
+    $display_block .="</select>";
+    return $display_block;
+}
+?>
 
 
 
