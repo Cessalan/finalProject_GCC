@@ -746,7 +746,7 @@ function getImage()
     $res = $conn->query($selectSQL) or die($conn->error);
     if ($res->num_rows > 0) {
         while ($rec = $res->fetch_array()) {
-            $display_block .= "<option value='" . $rec['name'] . "'>" . $rec['name'] . "</option>";
+            $display_block .= "<option value='" . $rec['imagename'] . "'>" . $rec['name'] . "</option>";
         }
 
     }
@@ -756,8 +756,17 @@ function getImage()
 function getImagePicture($name)
 {
     $conn = connection();
-    $selectSQL = "SELECT imagename from images WHERE name = '".$name."'";
-    
+    $display_block = "";
+    $selectSQL = "SELECT imagename from images WHERE name = '" . $name . "'";
+    $res = execute($selectSQL);
+    if ($res->num_rows > 0) {
+        while ($rec = $res->fetch_array()) {
+            $item_image= $rec['imagename'];
+            $display_block .= "<img src='../controllers/uploads/$item_image' alt='picture here'>";
+
+    }
+    }
+    return $display_block;
 }
 ?>
 

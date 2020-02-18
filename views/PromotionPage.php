@@ -1,6 +1,12 @@
 <?php
-include('../inc/header.php');
+session_start();
 
 $image = $_POST['pictures'];
-echo $image;
 
+$imgArray = array(
+    "imgSelected"=> $image
+);
+
+$_SESSION['imgSession'] = serialize($imgArray);
+header("location:../views/Promotion.php?m=Votre nouvelle promotion a ete ajoute");
+print_r($imgArray);

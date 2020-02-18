@@ -3,6 +3,7 @@
 <?php
 include("../inc/header.php");
 include_once ("../DB/DBManager.php");
+
 ?>
 
 
@@ -19,11 +20,10 @@ include_once ("../DB/DBManager.php");
 <br>
 <?php
 if(!isset($_SESSION['currentAccount']) || $_SESSION['currentAccount']!="fatsy") {
+    $imgArray = unserialize($_SESSION['imgSession']);
+    echo $imgArray;
 
-
-    ?>
-
-    <?php }
+    }
 
     else{
 if (isset($_GET['m'])) {
@@ -62,12 +62,13 @@ if (isset($_GET['m'])) {
     </form>
     <br>
 
-    <form action="Promotion.php" method="post">
+    <form action="PromotionPage.php" method="post">
         <h3> Select a Promotion image</h3>
         <?php echo getImage(); ?>
         <br>
         <input type="submit" value="Show a Promotion Picture">
         <br>
+
 
     </form>
     <?php
