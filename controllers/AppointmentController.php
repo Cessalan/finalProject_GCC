@@ -2,57 +2,34 @@
 include("../inc/header.php");
 include('../DB/DBManager.php');
 $conn = connection();
-if(isset($_SESSION['info']))
-{
-    $infoArray = unserialize($_SESSION['info']);
+$infoArray = array();
+if(isset($_SESSION['info2']) && !empty($_SESSION['info2'])) {
+    $infoArray = unserialize($_SESSION['info2']);
 }
+if(isset($_GET['submit'])){
+if (!is_numeric($_GET['fName'])) {
+if (!is_numeric($_GET['lName'])) {
+if (is_numeric($_GET['phone'])) {
+if (isset($_GET["appointment_date"]) && ($_GET["appointment_date"] >= date("Y-m-d"))) {
+$fName = $_GET['fName'];
+$lName = $_GET['lName'];
+$phone = $_GET['phone'];
+$email = $_GET['email'];
+$bday = $_GET['appointment_date'];
+$info = array(
+    "fName" => $fName,
+    "lName" => $lName,
+    "phone" => $phone,
+    "email" => $email,
+    "dateSelected" => $bday);
+$_SESSION['infoTime'] = serialize($info);
 
-$fName=$_GET['fName'];
-$lName=$_GET['lName'];
-$phone=$_GET['phone'];
-$email=$_GET['email'];
-$bday=$_GET['appointment_date'];
-$info = array (
-    "fName"=>$fName,
-    "lName"=>$lName,
-    "phone"=>$phone,
-    "email"=>$email,
-    "dateSelected" =>$bday);
-$_SESSION['info'] = serialize($info);
-if (!empty($_GET)) {
-    if (!is_numeric($_GET['fName'])) {
-        if (!is_numeric($_GET['lName'])) {
-            if (is_numeric($_GET['phone'])) {
-                if (isset($_GET["appointment_date"]) && ($_GET["appointment_date"] >= date("Y-m-d"))) {
-
-
-                    echo $_SESSION['info'] . '<br>';
-
-
-                    /*                    $add_sql = "INSERT into appointment
-                                                (date, Time, status, customer_LastName, customer_FirstName, customer_phone, customer_email,service)
-                                                VALUES('" . $bday . "','" . $app_time . "','"."enable"."','" . $lName . "','" . $fName . "','" . $phone . "','" . $email . "','".$services."')";
-                                        $add_res = $conn->query($add_sql) or die($conn->error);*/
+/*                    $add_sql = "INSERT into appointment
+                            (date, Time, status, customer_LastName, customer_FirstName, customer_phone, customer_email,service)
+                            VALUES('" . $bday . "','" . $app_time . "','"."enable"."','" . $lName . "','" . $fName . "','" . $phone . "','" . $email . "','".$services."')";
+                    $add_res = $conn->query($add_sql) or die($conn->error);*/
 
 
-                } else
-                    echo "Please select a valid date";
-                echo "<br> <a href='../views/Appointement.php'>Go back.</a>";
-            } else {
-                echo "Please enter a valid phone number";
-                echo "<br> <a href='../views/Appointement.php'>Go back.</a>";
-
-            }
-        } else {
-
-            echo "The last name cannot be numeric";
-            echo "<br> <a href='../views/Appointement.php'>Go back.</a>";
-        }
-    } else {
-        echo "The first name cannot be numeric";
-        echo "<br> <a href='../views/Appointement.php'>Go back.</a>";
-    }
-}
 ?>
 <title>Appointment</title>
 <meta charset="UTF-8">
@@ -94,12 +71,12 @@ if (!empty($_GET)) {
                             <select name="services" id="services" required>
                                 <option value=""><?php echo SERVICE_QUESTION ?>  </option>
                                 <?php
-                                $list="";
+                                $list = "";
                                 foreach ($services as $serv) {
-                                    if(!empty($infoArray)&&$infoArray[0]["serviceSelected"]==$serv[0]){
-                                        $list.="<option  value='$serv[0]' selected>$serv[1]" . " $serv[2]" . '$' . "</option>";
-                                    }else{
-                                        $list.="<option  value='$serv[0]' >$serv[1]" . " $serv[2]" . '$' . "</option>";
+                                    if (!empty($infoArray) && $infoArray[0]["serviceSelected"] == $serv[0]) {
+                                        $list .= "<option  value='$serv[0]' selected>$serv[1]" . " $serv[2]" . '$' . "</option>";
+                                    } else {
+                                        $list .= "<option  value='$serv[0]' >$serv[1]" . " $serv[2]" . '$' . "</option>";
                                     }
 
                                 }
@@ -120,7 +97,8 @@ if (!empty($_GET)) {
                                 //                            $count=$conn->query($sql_check_time) or die ($conn->error);
 
                                 $app_date = $_GET['appointment_date'];
-                                $sql_select = "SELECT Time FROM appointment WHERE date='" . $_GET['appointment_date'] . "'";
+                                $currentDay = date('D', strtotime($app_date));
+                                $sql_select = "SELECT Time FROM appointment WHERE date='" . $_GET['appointment_date'] . "' and status = 'enable'";
 
                                 $res = $conn->query($sql_select) or die($conn->error);
                                 if ($res->num_rows > 0) {
@@ -132,7 +110,11 @@ if (!empty($_GET)) {
                                     }
                                 }
                                 $FREE_HOURS = array_diff(NORMAL, $available_hours);
-
+                                if ($currentDay == "Sat") {
+                                    $FREE_HOURS = array_diff(SAT_HOURS, $available_hours);
+                                } elseif ($currentDay == "Sun") {
+                                    $FREE_HOURS = array();
+                                }
 
                                 foreach ($FREE_HOURS as $item) {
                                     echo "<option value='$item'>$item</option>";
@@ -144,6 +126,15 @@ if (!empty($_GET)) {
                                                     print_r($available_hours);
                                                     echo"HOURS DISPLAYED<BR>";
                                                    print_r($FREE_HOURS);*/
+                            if (empty($FREE_HOURS)) {
+                                if(isset($_SESSION['lang'])&& $_SESSION['lang']=='en'){
+                                    $m="<h4 style='color:red'> We re close on sundays</h4>";
+                                }else{
+                                    $m="<h4 style='color:red'> Nous sommes fermes les Dimanches</h4>";
+                                }
+
+                              echo $m;
+                            }
 
                             ?>
                         </div>
@@ -171,8 +162,30 @@ if (!empty($_GET)) {
                         <!-- Break -->
                         <div id="act">
                             <ul class="actions">
+                                <li><a href="../views/Appointement.php"><input type="button" value="🢀"/></a></li>
                                 <li><input type="submit" value="<?php echo submit ?>" class="primary"/></li>
                             </ul>
+                            <?php }
+                            else {
+                                echo "Please select a valid date";
+                                echo "<br> <a href='../views/Appointement.php'>Go back</a>";
+                            }
+                            } else {
+                                echo "Please enter a valid phone number";
+                                echo "<br> <a href='../views/Appointement.php'>Go back</a>";
+
+                            }
+                            } else {
+
+                                echo "The last name cannot be numeric";
+                                echo "<br> <a href='../views/Appointement.php'>Go back</a>";
+                            }
+                            } else {
+                                echo "The first name cannot be numeric";
+                                echo "<br> <a href='../views/Appointement.php'>Go back</a>";
+
+
+                            }     } ?>
                         </div>
                     </div>
                 </form>
@@ -199,7 +212,8 @@ if (!empty($_GET)) {
     <?php
 
 
-    include(PREAMBLE.'inc/scripts.php');
+
+    include(PREAMBLE . 'inc/scripts.php');
 
     ?>
 </div>

@@ -163,6 +163,11 @@ $totalPrice = $order->getPriceAfterTax();
                             Total: <?php echo number_format($totalPrice, 2); ?>$
                         </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <a href="../controllers/ResetInvoice.php">Back to Home Page</a>
+                        </td>
+                    </tr>
                 </table>
                 </div>
             </div>

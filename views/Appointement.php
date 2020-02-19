@@ -4,9 +4,9 @@ include('../DB/DBManager.php');
 
 $conn = connection();
 $infoArray = array();
-if(isset($_SESSION['info']))
+if(isset($_SESSION['infoTime']))
 {
-    $infoArray = unserialize($_SESSION['info']);
+    $infoArray = unserialize($_SESSION['infoTime']);
 }
 
     ?>
@@ -66,7 +66,7 @@ if(isset($_SESSION['info']))
                     <!-- Break -->
                     <div id="act">
                         <ul class="actions" >
-                            <li><input type="submit" value="<?php echo submit?>" class="primary" /></li>
+                            <li><input type="submit" name="submit" value="<?php echo submit?>" class="primary" /></li>
                             <li><input type="reset" value="<?php echo reset?>" /></li>
                         </ul>
                     </div>

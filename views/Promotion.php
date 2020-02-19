@@ -4,6 +4,13 @@
 include("../inc/header.php");
 include_once ("../DB/DBManager.php");
 
+if(isset($_SESSION['msgUpload'])){
+    echo '<script language="javascript">';
+    echo 'alert("'.$_SESSION['msgUpload'].'")';
+    echo '</script>';
+}
+
+unset($_SESSION['msgUpload']);
 ?>
 
 
@@ -31,11 +38,7 @@ if(!isset($_SESSION['currentAccount']) || $_SESSION['currentAccount']!="fatsy") 
     }
 
     else{
-if (isset($_GET['m'])) {
-    echo '<script language="javascript">';
-    echo 'alert("' . $_GET['m'] . '")';
-    echo '</script>';
-}
+
     ?>
     <h3> Send a mail to the Subscribers</h3>
     <form action="../controllers/SubscriptionController.php" method="get" enctype="multipart/form-data">

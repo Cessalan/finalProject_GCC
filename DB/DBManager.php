@@ -643,9 +643,10 @@ function displayIndividualSchedule($id){
 ////////////////////////////////APPOINTMENT RELATED ARRAYS//////////////////////////////////////////////
     define("NORMAL" ,array("8:30","9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","15:00","15:30"
     ,"16:00", "16:30", "17:00"));
-    define("SAT_HOURS", array("\"9:00\",\"9:30\",\"10:00\",\"10:30\",\"11:00\",\"11:30\",\"12:00\",\"12:30\",\"13:00\",\"13:30\",\"14:00\",\"15:00\",\"15:30\"
-                        ,\"16:00\""));
+    define("SAT_HOURS", array("9:00","9:30","10:00","10:30","11:00","11:30","12:00","12:30","13:00","13:30","14:00","15:00","15:30"
+            ,"16:00"));
     $available_hours = array();
+
 
     $services=array(
         // service, price
@@ -731,10 +732,17 @@ function displayIndividualSchedule($id){
 function insertImage($name,$img,$Image)
 {
     $insertQuery = "INSERT INTO images (name,imagename) VALUES('$name','$img')";
-    $result =execute($insertQuery);
-            move_uploaded_file($Image, "../controllers/uploads/$img");
-            echo "Image has been added";
+    $checkImg="SELECT * FROM images where name='$name'";
+    $res=execute($checkImg);
+    if($res->num_rows==0){
+        $result =execute($insertQuery);
+        move_uploaded_file($Image, "../controllers/uploads/$img");
+        echo "Image has been added";
         return $result;
+    }else {
+       return false;
+    }
+
 }
 
 
@@ -748,7 +756,7 @@ function getImage()
     $res = $conn->query($selectSQL) or die($conn->error);
     if ($res->num_rows > 0) {
         while ($rec = $res->fetch_array()) {
-            $display_block .= "<option value='" . $rec['imagename'] . "'>" . $rec['name'] . "</option>";
+            $display_block .= "<option value='" . $rec['imagename'] . "'>".$rec['name']." ". '('.$rec['imagename'].')'."</option>";
         }
 
     }

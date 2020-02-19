@@ -28,24 +28,21 @@ $display_block = "<h1>Order Details</h1><br>";
             </div>
 
             <?php
-            $infoArray = unserialize($_SESSION['info']);
+            if (!isset($_SESSION['info2'])) {
+                //print message
+                $display_block .= "<p>You have no items in your cart.
+            Please <a href=\"../views/Appointement.php\">Make a reservation</a>!</p>";
+                echo $display_block;
+                }
+            else {
+            $infoArray = unserialize($_SESSION['info2']);
             if(isset($_SESSION['fullInfo'])) {
                 $fullInfoArray = unserialize($_SESSION['fullInfo']);
                 if ($infoArray['lName'] == $fullInfoArray['lName'] && $infoArray[0]['serviceSelected'] == $fullInfoArray[0]['serviceSelected']) {
                     header("Location: ../views/Invoice.php");
                 }
-            }else{
-            if (!isset($_SESSION['info']) && $_SESSION['info']) {
-                //print message
-                $display_block .= "<p>You have no items in your cart.
-            Please <a href=\"../views/Appointement.php\">Make a reservation</a>!</p>";
-                echo $display_block;
-
             }
-            else {
-            $infoArray = unserialize($_SESSION['info']);
 
-                $infoArray = unserialize($_SESSION['info']);
                 $timeSelected = $infoArray[0]['timeSelected'];
                 $LastName = $infoArray['lName'];
                 $firstName = $infoArray['fName'];
@@ -56,7 +53,7 @@ $display_block = "<h1>Order Details</h1><br>";
                 $price = $infoArray[0]['price'];
 
 
-                $display_block .= "<table class='table' celpadding=\"3\" cellspacing=\"2\" border=\"1\" width=\"98%\">
+                $display_block .= "<table class='table' celpadding=\"3\" cellspacing=\"2\" bordr=\"1\" width=\"98%\">
     <tr>
     <th>First Name</th>
     <th>Last Name</th>
@@ -83,11 +80,8 @@ $display_block = "<h1>Order Details</h1><br>";
 				<tr><th align='center'>Total Before Tax:</th><td align='center'> $" . number_format($order->getPrice(), 2) . "</td></tr>";
                 $display_block .= "<tr><th align='center'>Tax Amount:</th><td align='center'>$" . number_format($order->getTax(), 2) . "</td></tr>";
                 $display_block .= "<tr><th align='center'>Total After Tax:</th><td align='center'>$" . number_format($order->getPriceAfterTax(), 2) . "</td></tr></table>";
-
-                $display_block .=
-                    "<form action='deleteCart.php'>
-                <input type='submit' value='Remove from cart'  class='btn btn-secondary btn-lg active'role='button'>
-</form>";
+                $display_block .= "<a href=\"../views/Appointement.php\"><input type=\"button\" value=\"🢀\"  /></a>";
+                $display_block .= "<input type='button' value='Cancel' onclick=\"deleteme()\" /></a>";
 
 
                 $display_block .= '<form action="../controllers/stripeIPN.php"  method="POST">
@@ -103,7 +97,18 @@ $display_block = "<h1>Order Details</h1><br>";
 
 
                 echo $display_block;
+                ?>
+            <script>
+                function deleteme() {
+                    if (confirm("You want to cancel your appointment?")) {
+                        location.href = "../controllers/ResetInvoice.php";
+                    }
+                }
+
+            </script>
+            <?php
             }
+
              ?>
             </div>
         </div>
@@ -122,12 +127,13 @@ $display_block = "<h1>Order Details</h1><br>";
             scale: 0.7
         })
     </script>
+
     <!--===============================================================================================-->
     <script src="../assets/login/js/main.js"></script>
     <?php
     include(PREAMBLE.'inc/scripts.php');
 
-    }
+
 
     ?>
 

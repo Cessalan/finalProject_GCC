@@ -10,11 +10,13 @@
     }
 
 
-    if(isset($_GET['m'])){
+    if(isset($_SESSION['msgAv'])){
         echo '<script language="javascript">';
-        echo 'alert("'.$_GET['m'].'")';
+        echo 'alert("'.$_SESSION['msgAv'].'")';
         echo '</script>';
     }
+
+    unset($_SESSION['msgAv']);
 
 
     ?>
@@ -52,7 +54,7 @@
                 </p>
             </div>
 
-            <form class="login100-form validate-form" method="GET" action="../controllers/AvailabilitiesController.php">
+            <form class="login100-form validate-form" method="GET" action="../controllers/AvailabilitiesController.php" onsubmit="return confirm('Are you sure you want to submit this form?')">
 					<span class="login100-form-title">
                        Donnez vos disponibiliés
 
@@ -85,7 +87,7 @@
                     <input type="checkbox" id="saturday"  name="days[]" value="samedi">
                     <label for="saturday">Samedi</label>
                 </div><br>
-                <input type="submit" value="Envoyer" class="primary" onclick="alert('Confrimez les disponibilites')"/><br><br>
+                <input type="submit" value="Envoyer" class="primary" /><br><br>
                 <a href="../views/IndividualSchedule.php"> <input type="Button" value="Voir mon horaire" class="primary"  onclick=""/></a>  <br> <br>
                 <a href="../views/SetUpAccount.php"><input type="Button" value="Mettre à jour mon compte" class="primary" /></a><br>
             </form>
