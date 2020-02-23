@@ -53,7 +53,7 @@ include('../DB/DBManager.php');
 					</span>
         <div>
 
-            <?php echo displayIndividualSchedule(1);?>
+            <?php echo displayIndividualSchedule($_SESSION['currentUserID']);?>
             <a href="../views/Availability.php"><input type="button" value="🢀" class="primary" /></a>
         </div>
 
