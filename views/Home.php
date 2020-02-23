@@ -1,4 +1,5 @@
 <?php
+
 include("../inc/header.php");
 include_once("../inc/config.php");
 

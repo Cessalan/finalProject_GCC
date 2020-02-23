@@ -9,7 +9,7 @@ include('../DB/DBManager.php');
 	// Get the payment token ID submitted by the form:
 
 $confirmation_number = 0;
-$fullArray = unserialize($_SESSION['info']);
+$fullArray = unserialize($_SESSION['info2']);
 $timeSelected = $fullArray[0]['timeSelected'];
 $LastName = $fullArray['lName'];
 $firstName = $fullArray['fName'];
@@ -66,4 +66,4 @@ $payPrice = $totalPrice * 100;
 
 	//send an email
 	//store information to the database
-	header("Location: ../views/Invoice");
+	header("Location: ../views/Invoice.php");

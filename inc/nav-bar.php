@@ -20,6 +20,7 @@
             </ul>
         </li>
         <li><a href="../views/Contact.php"><?php echo CONTACT?></a></li>
+        <li><a href="../views/Promotion.php">Promotion</a></li>
         <li>
             <form method="get" action="../controllers/Logout.php">
 

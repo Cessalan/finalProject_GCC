@@ -28,7 +28,7 @@ $conn = connection();
 
             <?php
                 if (isset($_GET['demo-radio']) && isset($_GET['hours']) && isset($_GET['services'])) {
-                    $infoArray = unserialize($_SESSION['info']);
+                    $infoArray = unserialize($_SESSION['infoTime']);
 
 
                     $LastName = $infoArray['lName'];
@@ -60,7 +60,7 @@ $conn = connection();
                    // print_r($infoArray);
 
                     //print_r(array_merge($infoArray,$TimeInfo));
-                    $_SESSION['info'] = serialize($infoArray);
+                    $_SESSION['info2'] = serialize($infoArray);
                     $timePage = "../views/TimeSelection.php";
                     header("location:".$timePage);
                 }

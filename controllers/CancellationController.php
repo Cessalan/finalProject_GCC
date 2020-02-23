@@ -3,7 +3,6 @@ include("../inc/header.php");
 include('../DB/DBManager.php');
 ?>
 
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -30,8 +29,10 @@ if(is_numeric($_POST['confirmation'])){
 
     $display_block = matchID($conNum);
     $display_block .=
-        " </div>
+        " 
+         <a href=\"../views/Cancellation.php\"><input type=\"button\" value=\"🢀\"/></div>
     </div>
+
 </div>
 <div><!--===============================================================================================-->
     <script src=\"../assets/login/vendor/jquery/jquery-3.2.1.min.js\"></script>
@@ -53,6 +54,7 @@ if(is_numeric($_POST['confirmation'])){
     <script src=\"js/main.js\"></script>";
      echo $display_block;
     ?>
+
 </div>
 
 <?php

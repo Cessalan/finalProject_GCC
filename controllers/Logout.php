@@ -7,6 +7,6 @@
  */
 session_start();
 unset($_SESSION['currentAccount']);
-
+unset($_SESSION['currentUserID']);
 
 header("location: ../views/Login.php");
