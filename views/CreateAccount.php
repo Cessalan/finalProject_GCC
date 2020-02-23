@@ -29,7 +29,6 @@
 <header id="header">
     <?php
     include(PREAMBLE.'inc/nav-bar.php');?>
-    <a class="logo" href="index.html"> <span>GCC</span></a>
 </header>
 
 <div class="limiter">

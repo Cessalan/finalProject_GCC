@@ -1,5 +1,4 @@
 <?php
-session_start();
 include('../DB/DBManager.php');
 
 $mail=$_GET['email'];

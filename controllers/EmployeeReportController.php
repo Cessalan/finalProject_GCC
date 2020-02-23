@@ -5,7 +5,6 @@
  * Date: 2020-02-13
  * Time: 9:35 PM
  */
-session_start();
 
 include ("../DB/DBManager.php");
 if(isset($_GET['choice'])){

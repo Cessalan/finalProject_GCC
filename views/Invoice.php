@@ -1,7 +1,7 @@
 <?php
 include("../inc/header.php");
 include('../models/AppointmentClass.php');
-
+/*session_destroy();*/
 if(isset($_SESSION['fullInfo'])){
 $infoArray = unserialize($_SESSION['fullInfo']);
 $timeSelected = $infoArray[0]['timeSelected'];

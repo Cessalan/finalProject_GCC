@@ -1,6 +1,4 @@
 <!DOCTYPE HTML>
-
-<html lang="fr">
 <?php
 session_start();
 define('PREAMBLE', '../');

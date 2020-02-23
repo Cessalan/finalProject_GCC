@@ -1,4 +1,5 @@
 <?php
+/*session_destroy();*/
 include("../inc/header.php");
 include('../DB/DBManager.php');
 $conn = connection();

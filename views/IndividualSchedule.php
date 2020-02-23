@@ -7,6 +7,7 @@
  */
 include('../DB/DBManager.php');
 
+include_once("../inc/header.php"); ?>
 
 
 
@@ -35,10 +36,7 @@ include('../DB/DBManager.php');
     <!--===============================================================================================-->
 </head>
 <body>
-<header id="header">
-    <?php
-    include("../inc/header.php");?>
-</header>
+
 
 
 <div class="container-login100">

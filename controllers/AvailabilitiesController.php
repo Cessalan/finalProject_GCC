@@ -5,7 +5,6 @@
  * Date: 2020-01-24
  * Time: 6:37 PM
  */
-session_start();
 
 include("../DB/DBManager.php");
 $arr=array(

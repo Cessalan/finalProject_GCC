@@ -57,10 +57,6 @@ if(isset($_GET['m'])){
     <!--===============================================================================================-->
 </head>
 <body>
-<header id="header">
-    <?php
-    include("../inc/header.php");?>
-</header>
     <div class="container-login100">
 
             <div class="container-login100">

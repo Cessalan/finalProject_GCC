@@ -35,11 +35,6 @@ include('../DB/DBManager.php');
     <!--===============================================================================================-->
 </head>
 <body>
-<header id="header">
-    <?php
-    include("../inc/header.php");?>
-</header>
-
 
 <div class="container-login100">
     <div class="">
@@ -58,7 +53,7 @@ include('../DB/DBManager.php');
             $subscribers=getSubscribers();
 
             if(!empty($subscribers)){
-                $count=1;
+                $count=0;
                 $list="<ol>";
                 foreach($subscribers as $sub){
                     $count++;

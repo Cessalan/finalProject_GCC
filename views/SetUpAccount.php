@@ -2,10 +2,8 @@
 <html lang="en">
 <head>
     <?php
-    session_start();
-    define('PREAMBLE', '../');
-    include(PREAMBLE.'inc/head.php');
-    include (PREAMBLE.'DB/DBManager.php')
+    include('../inc/head.php');
+    include ('../DB/DBManager.php')
     ?>
     <title>Login</title>
     <meta charset="UTF-8">
@@ -29,11 +27,6 @@
 </head>
 <body>
 
-<header id="header">
-    <?php
-    include(PREAMBLE.'inc/nav-bar.php');?>
-    <a class="logo" href="index.html"> <span>GCC</span></a>
-</header>
 
 <div class="limiter">
     <div class="container-login100">

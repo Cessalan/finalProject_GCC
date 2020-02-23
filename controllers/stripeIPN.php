@@ -1,6 +1,4 @@
 <?php
-session_start();
-	require_once "../inc/config.php";
 	include("../controllers/Email_Sender.php");
 include('../DB/DBManager.php');
 	\Stripe\Stripe::setVerifySslCerts(false);
@@ -64,6 +62,5 @@ $payPrice = $totalPrice * 100;
 
 	sendMail($subject,$message,trim($emailSelected));
 
-	//send an email
-	//store information to the database
-	header("Location: ../views/Invoice.php");
+echo '<script type="text/javascript">window.location = "../views/Invoice.php"</script>';
+exit();

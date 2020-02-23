@@ -1,6 +1,6 @@
 <?php
 //connection to the database
-include('../inc/config.php');
+include_once('../inc/header.php');
 include('../models/AppointmentClass.php');
 
 

@@ -5,7 +5,6 @@
  * Date: 2020-02-18
  * Time: 2:52 PM
  */
-session_start();
 include("../DB/DBManager.php");
 if(!isset($_SESSION['currentAccount'])||$_SESSION['currentAccount']!="fatsy"){
     header("location:../views/login.php");
