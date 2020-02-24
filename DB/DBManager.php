@@ -741,10 +741,12 @@ function insertImage($name,$img,$Image)
     if($res->num_rows==0){
         $result =execute($insertQuery);
         move_uploaded_file($Image, "../controllers/uploads/$img");
-        echo "<h1>Image has been added</h1>";
+        echo "<h1>Image has been added</h1>" .
+            "<br> <a href='../views/Promotion.php'>Go back to Promotion page</a>";
         return $result;
     }else {
-      echo "<h1>Image could not be added</h1>";
+      echo "<h1>Image could not be added</h1>" .
+          "<br> <a href='../views/Promotion.php'>Go back</a>";
     }
 
 }

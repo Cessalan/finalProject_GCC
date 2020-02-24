@@ -3,6 +3,16 @@
  *HOME PAGE
  */
 
+define("ORDER_DETAILS", "Order Details ");
+define("CDATE", "Date/Time ");
+define("CPRICE", "Price ");
+define("CTOTALBEFORE","Total Before Tax ");
+define("CTAX","Tax Amount ");
+define("cancel","Please enter your confirmation number ");
+define("cPolicy",
+    "Please take note, If you cancel with less than 12 hours before your appointment time, you will be billed for 20% of the cost of your appointment.
+     This also applies to same-day bookings which are subsequently cancelled.");
+define("CTOTAL","Total ");
 define("HOME", "Home");
 define("SERVICES", "Services");
 define("CONTACT", "Contact Us");

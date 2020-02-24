@@ -3,6 +3,17 @@
  *HOME PAGE
  */
 
+define("ORDER_DETAILS", "Détails de la commande");
+define("CDATE", "Date / heure");
+define("CPRICE", "Prix");
+define("CTOTALBEFORE","Total hors taxe ");
+define("CTAX","Taxe ");
+define("cancel","Veuillez ecrire votre numéro de confirmation ");
+define("cPolicy",
+    "Veuillez noter que si vous annulez moins de 12 heures avant l'heure de votre rendez-vous,
+     vous serez facturé 20% du coût de votre rendez-vous.
+      Cela vaut également pour les réservations le jour même qui sont ensuite annulées.");
+define("CTOTAL","Total ");
 
 define("HOME", "Acceuil");
 define("SERVICES", "Services");

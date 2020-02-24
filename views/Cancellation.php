@@ -24,15 +24,15 @@ $conn = connection();
             <form class="login100-form validate-form" method="POST" action="../controllers/CancellationController.php">
 					<span class="login100-form-title">
                         <?php
-                        echo APPOINTMENT_TEXT
-                        . "<br>"
-                        .
-                        FORM_TEXT
+                        echo cPolicy
+                        
                         ?>
                     </span>
                 <div class="row gtr-uniform">
                     <div class="col-12 col-12-xsmall">
-                       Please enter your confirmation number
+                        <?php
+                        echo cancel
+                        ?>
                         <input type="text" name="confirmation" id="confirmation" placeholder="Confirmation Number"<?php /*echo placeholder_fName */?> required/>
                     </div>
                     <!-- Break -->

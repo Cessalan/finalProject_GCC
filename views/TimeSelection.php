@@ -4,7 +4,7 @@
 include('../DB/DBManager.php');
 $conn = connection();
 
-$display_block = "<h1>Order Details</h1><br>";
+$display_block = "<h1>".ORDER_DETAILS."</h1><br>";
 
 //$infoArray = array();
 ?>
@@ -55,13 +55,13 @@ $display_block = "<h1>Order Details</h1><br>";
 
                 $display_block .= "<table class='table' celpadding=\"3\" cellspacing=\"2\" bordr=\"1\" width=\"98%\">
     <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Email</th>
-    <th>Phone</th>
-    <th>Date/Time</th>
+    <th>".placeholder_fName."</th>
+    <th>".placeholder_lName."</th>
+    <th>".placeholder_email."</th>
+    <th>".placeholder_phone."</th>
+    <th>".CDATE."</th>
 	<th>Service</th>
-    <th>Price</th>
+    <th>".CPRICE."</th>
 	<tr>";
                 $order = new AppointmentClass($LastName, $firstName, $emailSelected, $phoneSelected, $timeSelected, $dateSelected, $price, $serviceSelected);
                 $taxes = $order->getTax();
@@ -77,9 +77,9 @@ $display_block = "<h1>Order Details</h1><br>";
                 $display_block .= "<td>" . number_format($order->getPrice(), 2) . '$' . "</td>";
                 $display_block .= "</table>";
                 $display_block .= "<table align='right' class=' table-striped' celpadding=\"3\" cellspacing=\"2\" border=\"1\" width=\"30%\">
-				<tr><th align='center'>Total Before Tax:</th><td align='center'> $" . number_format($order->getPrice(), 2) . "</td></tr>";
-                $display_block .= "<tr><th align='center'>Tax Amount:</th><td align='center'>$" . number_format($order->getTax(), 2) . "</td></tr>";
-                $display_block .= "<tr><th align='center'>Total After Tax:</th><td align='center'>$" . number_format($order->getPriceAfterTax(), 2) . "</td></tr></table>";
+				<tr><th align='center'>".CTOTALBEFORE."</th><td align='center'> $" . number_format($order->getPrice(), 2) . "</td></tr>";
+                $display_block .= "<tr><th align='center'>".CTAX."</th><td align='center'>$" . number_format($order->getTax(), 2) . "</td></tr>";
+                $display_block .= "<tr><th align='center'>".CTOTAL."</th><td align='center'>$" . number_format($order->getPriceAfterTax(), 2) . "</td></tr></table>";
                 $display_block .= "<a href=\"../views/Appointement.php\"><input type=\"button\" value=\"🢀\"  /></a>";
                 $display_block .= "<input type='button' value='Cancel' onclick=\"deleteme()\" /></a>";
 

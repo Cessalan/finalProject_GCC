@@ -9,7 +9,7 @@ if(isset($_POST["submit"])) {
 
 
 
-   echo insertImage($name,$img,$image);
+   insertImage($name,$img,$image);
 /*    if(insertImage($name,$img,$image)==false){
         $_SESSION["msgUpload"]="LE NOM EXISTE DEJA";
         header("location:../views/Promotion.php");
