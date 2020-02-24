@@ -277,6 +277,13 @@ function insertSubscriber($email){
     $res=execute($sqlGetSubscribers);
     if($res->num_rows<1){
         execute($sqlInsertSubscriber);
+        echo "<h1>".subOk."</h1>
+                <br> <a href='../views/Home.php'><h3>Go back to Home Page</h3></a>";
+
+    }
+    else{
+        echo "<h1>".subAlready."</h1>
+                <br> <a href='../views/Home.php'><h3>Go back to Home Page</h3></a>";
     }
 
 

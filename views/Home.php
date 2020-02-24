@@ -1,12 +1,7 @@
 <?php
+
 include("../inc/header.php");
 include_once("../inc/config.php");
-if(isset(  $_SESSION['subscribeMsg'])){
-    echo '<script language="javascript">';
-    echo 'alert("'.$_SESSION['subscribeMsg'].'")';
-    echo '</script>';
-}
-unset( $_SESSION['subscribeMsg']);
 
 ?>
 

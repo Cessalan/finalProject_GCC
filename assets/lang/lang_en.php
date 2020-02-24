@@ -21,6 +21,8 @@ define("MEMBERS", "Members");
 define("APPOINTMENT", "Appointment");
 define("TAKE","Schedule an appointment");
 define("CANCEL", "Cancellation");
+define("subAlready", "Email is already subscribed.");
+define("subOk","You are now a subscriber,thank you.");
 
 define("GARAGE_NAME", "Chemin Chambly Auto Service ");
 

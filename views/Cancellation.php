@@ -25,7 +25,7 @@ $conn = connection();
 					<span class="login100-form-title">
                         <?php
                         echo cPolicy
-                        
+
                         ?>
                     </span>
                 <div class="row gtr-uniform">
