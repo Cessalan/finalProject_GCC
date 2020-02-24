@@ -13,6 +13,4 @@ include('../DB/DBManager.php');
 $mail=$_GET['email'];
 $pass=$_GET['pass'];
 $confirmation=$_GET['pass_confirm'];
-header("location:../views/AccountCreatedConf.php");
-
 insertAccount($mail,$pass);

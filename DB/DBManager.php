@@ -28,9 +28,13 @@ function insertAccount($email,$password){
 
     $accountCheck="Select * from account where email='".$email."'";
     $sqlAccountExists=$conn->query($accountCheck);
-    if($sqlAccountExists->num_rows>1){
-        echo "This account already exists";
+    if($sqlAccountExists->num_rows>0){
+        echo "<h1>This account already exists</h1>";
+        echo "<br> <a href='../views/CreateAccount.php'><h3>Go back to Promotion Page</h3></a>";
     }else{
+        echo "<h1>Account has been created</h1>";
+        echo "<br> <a href='../views/Admin.php'><h3>Go back to Promotion Page</h3></a>";
+
         $conn->query($sqlCreateAccount)or die($conn->error);
     }
 
@@ -737,10 +741,10 @@ function insertImage($name,$img,$Image)
     if($res->num_rows==0){
         $result =execute($insertQuery);
         move_uploaded_file($Image, "../controllers/uploads/$img");
-        echo "Image has been added";
+        echo "<h1>Image has been added</h1>";
         return $result;
     }else {
-       return false;
+      echo "<h1>Image could not be added</h1>";
     }
 
 }
@@ -761,21 +765,6 @@ function getImage()
 
     }
     $display_block .="</select>";
-    return $display_block;
-}
-function getImagePicture($name)
-{
-    $conn = connection();
-    $display_block = "";
-    $selectSQL = "SELECT imagename from images WHERE name = '" . $name . "'";
-    $res = execute($selectSQL);
-    if ($res->num_rows > 0) {
-        while ($rec = $res->fetch_array()) {
-            $item_image= $rec['imagename'];
-            $display_block .= "<img src='../controllers/uploads/$item_image' alt='picture here'>";
-
-    }
-    }
     return $display_block;
 }
 ?>

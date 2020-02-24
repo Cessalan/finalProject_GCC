@@ -16,3 +16,5 @@ function emailSubscriber($subject,$message){
 }
 
 emailSubscriber($_GET['subject'],$_GET['message']);
+echo '<script>window.location = "../controllers/ConfEmailSend.php"</script>';
+exit();

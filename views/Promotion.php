@@ -4,13 +4,6 @@
 include("../inc/header.php");
 include_once ("../DB/DBManager.php");
 
-if(isset($_SESSION['msgUpload'])){
-    echo '<script language="javascript">';
-    echo 'alert("'.$_SESSION['msgUpload'].'")';
-    echo '</script>';
-}
-
-unset($_SESSION['msgUpload']);
 ?>
 
 

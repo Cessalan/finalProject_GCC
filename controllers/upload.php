@@ -1,6 +1,5 @@
 
 <?php
-session_start();
 include("../DB/DBManager.php");
 if(isset($_POST["submit"])) {
 
@@ -9,18 +8,16 @@ if(isset($_POST["submit"])) {
     $image = $_FILES['fileToUpload']['tmp_name'];
 
 
-    echo $img."<BR>";
-    echo $image."<BR>";
 
-    insertImage($name,$img,$image);
-    if(insertImage($name,$img,$image)==false){
+   echo insertImage($name,$img,$image);
+/*    if(insertImage($name,$img,$image)==false){
         $_SESSION["msgUpload"]="LE NOM EXISTE DEJA";
         header("location:../views/Promotion.php");
     }else{
 
         $_SESSION["msgUpload"]="L'image a ete ajoute";
         header("location:../views/Promotion.php");
-    }
+    }*/
 
 
 
