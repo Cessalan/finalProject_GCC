@@ -54,10 +54,20 @@ $payPrice = $totalPrice * 100;
 
 	            This email confirms your appoint at $timeSelected on $dateSelected at GCC Auto Service Longueuil. Your confirmation number is $confirmation_number
 	            If you have questions before your appointment, you could us at 1(450) 647 2000
-	            You may cancel your appointment up to 12 hours before the appointment start time
+	            You may cancel your appointment up to 12 hours before the appointment start time, using the confirmation numberé
+	            
+	            Merci d'avoir pris rendez-vous à garage Auto Service!
+	            Ce courriel confirme que votre rendez-vous est à $timeSelected le $dateSelected à GCC Auto Service Longueuil. Votre numérp de conformation est $confirmation_number
+	            Si vous avez une question avant le rendez-vous n'hésitez pas à nous contacter au 1(450) 647 2000
+	            Il est possible d'annuler le rendez-vous jusqu'à 12 heures avant l'heure convenu, en utilisant le numéro de confirmation.
+	            
+	            
 	            
 	           
 	            Thanks for booking with us!
+	             Au plaisr de vous voir!
+	            
+	            L'équipe du Garage Auto Service
 	            Garage Auto Service team";
 
 	sendMail($subject,$message,trim($emailSelected));

@@ -7,7 +7,7 @@ include('../models/AppointmentClass.php');
 
 function connection(){
 
-    $conn = new mysqli("localhost:3308","root","","gcc");
+    $conn = new mysqli("localhost","root","","gcc");
     if($conn->error){
         echo $conn->error;
     }
