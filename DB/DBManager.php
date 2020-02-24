@@ -7,7 +7,7 @@ include('../models/AppointmentClass.php');
 
 function connection(){
 
-    $conn = new mysqli("localhost","root","","gcc");
+    $conn = new mysqli("localhost:3308","root","","gcc");
     if($conn->error){
         echo $conn->error;
     }
@@ -278,12 +278,12 @@ function insertSubscriber($email){
     if($res->num_rows<1){
         execute($sqlInsertSubscriber);
         echo "<h1>".subOk."</h1>
-                <br> <a href='../views/Home.php'><h3>Go back to Home Page</h3></a>";
+                <br> <a href='../views/Home.php'><h3>".goHome."</h3></a>";
 
     }
     else{
         echo "<h1>".subAlready."</h1>
-                <br> <a href='../views/Home.php'><h3>Go back to Home Page</h3></a>";
+                <br> <a href='../views/Home.php'><h3>".goHome."</h3></a>";
     }
 
 

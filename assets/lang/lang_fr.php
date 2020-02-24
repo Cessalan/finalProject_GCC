@@ -28,6 +28,8 @@ define("GARAGE_NAME", "Chemin Chambly Auto Service ");
 define("subAlready", "Le courriel est déjà abonné.");
 define("subOk","Vous êtes maintenant abonné, merci.");
 
+define("goHome","Retournez à la page d'accueil");
+
 define("DESC_GARAGE","Offre un service à la clientèle exceptionnel et courtois. Profitez de l'expertise de notre équipe qui
                 saura analyser, réparer et entretenir votre automobile.
                 Notre garage à Longueuil est équipé avec les outils les plus modernes afin d'effectuer 
