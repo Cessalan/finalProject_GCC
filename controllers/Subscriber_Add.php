@@ -5,7 +5,7 @@
  * Date: 2020-01-20
  * Time: 3:22 PM
  */
-
+session_start();
 include('../DB/DBManager.php');
 $m="";
 if(isset($_GET['email'])){
@@ -13,10 +13,10 @@ if(isset($_GET['email'])){
 
     if(isset($_SESSION['lang'])){
         if($_SESSION['lang']=="en"){
-            $m="You are subscribed";
+            $_SESSION['subscribeMsg']="You are now a subscriber,thank you.";
         }else{
-            $m="Vous etes abonne";
+            $_SESSION['subscribeMsg']="Vous venez de vous abonner,merci.";
         }
     }
-    header("location:../views/home.php?m=$m");
+    header("location:../views/home.php");
 }

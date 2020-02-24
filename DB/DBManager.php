@@ -271,9 +271,14 @@ function getIncompleteAccounts(){
 
  //insert subscriber into the Subscriber table
 function insertSubscriber($email){
-    $conn=connection();
+
     $sqlInsertSubscriber="INSERT INTO subscription(email) values ('$email')";
-    $conn->query($sqlInsertSubscriber) or die($conn->error);
+    $sqlGetSubscribers="SELECT * FROM subscription WHERE email='$email'";
+    $res=execute($sqlGetSubscribers);
+    if($res->num_rows<1){
+        execute($sqlInsertSubscriber);
+    }
+
 
 }
 
