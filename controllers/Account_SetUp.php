@@ -14,5 +14,5 @@ updateAccount($email,$_GET['fname'],$_GET['lname'],$_GET['telephone'],$_GET['add
 ?>
 <h2>Merci d'avoir mis à jour les informations de votre compte!</h2>
 
-<br> <a href='../views/Login.php'>Go back</a>
+<br> <a href='../views/Login.php'>Retour a la page précédente</a>
 
