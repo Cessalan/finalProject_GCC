@@ -3,6 +3,6 @@
 include_once("../inc/header.php");
 
 ?>
-<h2>Email has been sent</h2>
+<h2>Le courriel a été envoyé</h2>
 
-<br> <a href='../views/Promotion.php'><h3>Go back to Promotion Page</h3></a>
+<br> <a href='../views/Promotion.php'><h3>Revenir à la page de promotion</h3></a>
