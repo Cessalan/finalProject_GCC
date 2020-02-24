@@ -13,7 +13,7 @@ include_once ("../DB/DBManager.php");
             </div>
 					</span>
                 <span class="login100-form-title">
-                        Bienvenue au page de Promotion
+                        Bienvenue à la  page de Promotion
                     <br>
 
 					</span>
@@ -33,7 +33,7 @@ if(!isset($_SESSION['currentAccount']) || $_SESSION['currentAccount']!="fatsy") 
     else{
 
     ?>
-    <h3> Send a mail to the Subscribers</h3>
+    <h3> Envoyer un email aux abonné(e)s</h3>
     <form action="../controllers/SubscriptionController.php" method="get" enctype="multipart/form-data">
 
         <div class="wrap-input100 validate-input">
@@ -49,25 +49,25 @@ if(!isset($_SESSION['currentAccount']) || $_SESSION['currentAccount']!="fatsy") 
         </div>
 
         <a href="../views/Admin.php"><input type="button" value="🢀"/></a>
-        <input type="submit" value="Send Promotion" name="submit">
+        <input type="submit" value="Envoyer le courriel" name="submit">
     </form>
 
     <br>
-    <h3> Insert an Image into the Database</h3>
+    <h3> Inserer une image de promotion dans la base de donnée</h3>
     <form action="../controllers/upload.php" method="post" enctype="multipart/form-data">
-        Name:<input type="text" name="name" style="width: 350px" required>
+        Nom:<input type="text" name="name" style="width: 350px" required>
         <br>
-        Select image to upload:
+        Image à upload:
         <input type="file" id="fileToUpload" name="fileToUpload" accept=".jpg, .jpeg, .png">
-        <input type="submit" name="submit" value="Upload The Image">
+        <input type="submit" name="submit" value="Enregister l'image">
     </form>
     <br>
 
     <form action="PromotionPage.php" method="post">
-        <h3> Select a Promotion image</h3>
+        <h3> Selectionner une image pour la promotion</h3>
         <?php echo getImage(); ?>
         <br>
-        <input type="submit" value="Show a Promotion Picture">
+        <input type="submit" value="Montrer l'image">
         <br>
 
 
