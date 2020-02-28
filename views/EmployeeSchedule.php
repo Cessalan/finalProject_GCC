@@ -62,6 +62,7 @@ if(isset($_GET['m'])){
             <div class="container-login100">
                 <div class="wrap-login100">
                     <div >
+                        <h1>Disponinilités des employés</h1><br>
                         <?php echo getAvailabilities() ?>
                     </div>
 

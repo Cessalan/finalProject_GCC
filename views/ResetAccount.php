@@ -79,7 +79,7 @@
                     <input class="input100" type="password" name="passConfirm" placeholder="Confirmation Mot De Passe" required>
                     <span class="focus-input100"></span>
                 </div>
-                <input type="submit" value="<?php echo Connect ?>" class="primary" />
+                <input type="submit" value="Réinitialiser" class="primary" />
             </form>
         </div>
     </div>
